@@ -1,0 +1,359 @@
+@import url(https://fonts.googleapis.com/css?family=Luckiest+Guy);
+@import "background";
+@import "header";
+@import "search";
+@import "debug";
+@import "sidebar";
+@import "footer";
+
+body {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 3em;
+  padding: 0;
+  font-family: 'Impact', 'Arial Black', Helvetica, sans-serif;
+  /*	display:none;*/
+}
+a:link,
+a:visited {
+  color: #008;
+  text-decoration: none;
+}
+a:hover {
+  color: #00F;
+  text-decoration: underline;
+}
+a:active {
+  color: #8F0;
+  text-decoration: none;
+}
+div,
+form {
+  margin: 0;
+  padding: 0;
+}
+label {
+  cursor: default;
+  padding: 0 5px;
+  margin-left: 5px;
+}
+label:hover {
+  color: #004;
+}
+hr {
+  border: 1px outset #444;
+}
+div.user {
+  display: inline-table;
+  background: url('/img/login_lt.png') left top no-repeat;
+  margin: 0;
+  min-width: 20px;
+  text-align: left;
+}
+div.user span {
+  padding: 30px;
+  display: inline-table;
+  background: url('/img/login_rb.png') right bottom no-repeat;
+  min-width: 20px;
+  text-align: left;
+}
+div.item {
+  display: inline-table;
+  background: url('/img/login_lt.png') left top no-repeat;
+  padding: 21px 31px 1px;
+  margin: 0;
+  min-width: 150px;
+  min-height: 200px;
+  color: #222;
+}
+/*
+div.item:hover{
+	color:#000;
+}*/
+div.item div.side_item {
+  float: right;
+  font-size: 15px;
+  color: #888;
+  padding: 5px;
+}
+#contact_content {
+  margin: 30px;
+}
+img {
+  border: none;
+}
+span.clearance {
+  color: #08B;
+  font-size: 1.2em;
+}
+div.error {
+  display: inline-table;
+  padding: 40px;
+  min-width: 200px;
+  text-align: left;
+  background: url('/img/login_lt.png') left top no-repeat;
+}
+.col_left {
+  background: #FF0;
+  width: 50%;
+  text-align: right;
+}
+.col_right {
+  background: #F0F;
+  text-align: left;
+  width: 50%;
+}
+strong {
+  color: #F20;
+  text-shadow: 1px 1px 2px #000;
+}
+table.list {
+  text-align: center;
+  margin: 20px auto;
+  width: 95%;
+}
+table.list td {
+  border: 2px ridge #888;
+  padding: 1px 2px;
+  margin: 0;
+  background: #EEE;
+}
+table#users-list tr:hover td {
+  cursor: pointer;
+  background: #BF8;
+  border: 2px solid #0B0;
+}
+table.list td.hidden span {
+  visibility: hidden;
+}
+table.list tr:hover td.hidden span {
+  visibility: visible;
+}
+/* ERROR */
+table tr.admin td {
+  background: #600;
+  color: #FFF;
+}
+table tr.admin td a {
+  color: #FFF;
+}
+table tr.account td {
+  background: #F80;
+  color: #000;
+}
+table tr.password td {
+  background: #FD0;
+  color: #000;
+}
+table tr.provider td {
+  background: #FF8;
+  color: #000;
+}
+table tr.url td {
+  background: #F40;
+  color: #FFF;
+}
+div#login {
+  width: 50%;
+  min-width: 700px;
+  margin: 30px auto 0;
+  background: url('/img/login_lt.png') left top no-repeat;
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 50px;
+  right: 50px;
+}
+div#login form {
+  padding: 80px;
+  background: url('/img/login_rb.png') right bottom no-repeat;
+}
+div#login label {
+  display: inline-table;
+  padding: 10px;
+}
+
+ul#admin_bar {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  background: url('/img/white.png');
+  border: none;
+  border-right: 2px solid #bbb;
+  border-bottom: 2px solid #bbb;
+  border-radius: 0 0 15px 0;
+}
+ul#admin_bar li {
+  display: inline-table;
+  padding: 0 5px;
+  margin: 0;
+}
+ul#admin_bar li a {
+  color: #666;
+  padding: 10px 5px;
+  margin: 0;
+}
+ul#admin_bar li a:hover {
+  color: #000;
+  /*	text-shadow:0px 0px 30px #4F0;*/
+}
+div#message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  text-align: left;
+  color: #BBB;
+  font-size: 0.8em;
+}
+
+div#home_content {
+  width: 75%;
+  margin: 30px auto;
+}
+div#item_editor_container {
+  display: none;
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  top: 60px;
+  bottom: 50px;
+  padding: 0;
+  border: 1px solid #888;
+  background: url('/img/w85.png');
+  text-align: center;
+  overflow: auto;
+}
+div#item_editor {
+  padding: 10px;
+  overflow: auto;
+}
+iframe#picture_frame {
+  border: none;
+  overflow: hidden;
+  height: 450px;
+  width: 100%;
+}
+div#item_editor table {
+  width: 100%;
+}
+div#item_editor table td {
+  border: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+div#item_editor table tr.title {
+  font-size: 1.3em;
+}
+div#item_list {
+  /*	display:none;*/
+  text-align: right;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+div#item_list img.png_alpha {
+  cursor: pointer;
+}
+div#item_list input {
+  font-weight: bold;
+}
+div#item_list form {
+  text-align: right;
+  padding: 0 30px 30px 0;
+  background: url('/img/login_rb.png') right bottom no-repeat;
+  font-size: 0.8em;
+  font-family: 'impact';
+}
+div#full_warning {
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  bottom: 100px;
+  left: 100px;
+  background: #DDD;
+}
+div#user_log {
+  position: fixed;
+  max-height: 30%;
+  min-width: 200px;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  background: url('/img/white.png');
+  /*	border-radius:20px 0px 0px 0px;*/
+  border-left: 1px solid #888;
+  border-top: 1px solid #888;
+}
+div#add_user {
+  padding: 5px;
+  text-align: center;
+}
+div#add_user h2 {
+  cursor: pointer;
+}
+div#add_user form {
+  /*
+	display:none;
+*/
+}
+div#add_user form label {
+  width: 250px;
+  padding: 15px;
+  display: inline-table;
+  background: #DDD;
+  border: 1px solid #888;
+  margin: 2px;
+  /*	border-radius:5px;
+	border-radius:5px;*/
+}
+div#add_user form label:hover {
+  background: #EEE;
+  border: 1px solid #666;
+}
+div#add_user form label input {
+  width: 100%;
+  text-align: center;
+}
+div#error_action {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /*	border-top:1px solid #888;
+	border-left:1px solid #444;
+	background:#DDD;*/
+  padding: 0;
+}
+div#error_action u {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+div#error_action li {
+  display: inline;
+  padding: 5px;
+}
+div#error_action a {
+  background: #CCC;
+  padding: 5px;
+}
+#admin_item_select {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  background: #DDD;
+  border-left: 1px solid #222;
+  border-top: 1px solid #222;
+  cursor: pointer;
+}
+#loadmore {
+  padding-top: 4em;
+}

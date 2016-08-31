@@ -1,0 +1,461 @@
+body{
+	background:#FFF;
+	text-align:center;
+	margin:0px;padding:0px;
+	font-family:"Impact","Arial Black",Helvetica,sans-serif;
+	width:1024px;
+/*	display:none;*/
+}
+
+a:link, a:visited{color:#008;text-decoration:none}
+a:hover{color:#00F;text-decoration:underline}
+a:active{color:#8F0;text-decoration:none}
+div,form{margin:0px;padding:0px;}
+label{cursor:default;padding:0px 5px 0px 5px;margin-left:5px;}
+label:hover{color:#004;}
+
+hr{
+	border:1px outset #444;
+}
+
+div.user{
+	display:inline-table;
+	background:url(img/login_lt.png) left top no-repeat;
+	margin:0px;
+	min-width:20px;
+	text-align:left;
+}
+div.user span{
+	padding:30px;
+	display:inline-table;
+	background: url(img/login_rb.png) right bottom no-repeat;
+	min-width:20px;
+	text-align:left;
+}
+div.item{
+	display:inline-table;
+	background:url(img/login_lt.png) left top no-repeat;
+	padding:21px 31px 1px 31px;
+	margin:0px;
+	min-width:150px;
+	min-height:200px;
+	color:#222;
+}/*
+div.item:hover{
+	color:#000;
+}*/
+div.item div.side_item {
+	float:right;
+	font-size:15px;
+	color:#888;
+	padding:5px;
+}
+#contact_content{
+	margin:30px;
+}
+img{
+	border:none;
+}
+span.clearance{
+	color:#08B;
+	font-size:1.2em;
+}
+div.error{
+	display:inline-table;
+	padding:40px;
+	min-width:200px;
+	text-align:left;
+	background:url(img/login_lt.png) left top no-repeat;
+}
+.col_left{
+	background:#FF0;
+	width:50%;
+	text-align:right;
+}
+.col_right{
+	background:#F0F;
+	text-align:left;
+	width:50%;
+}
+strong{
+	color:#F20;
+	text-shadow:1px 1px 2px #000;
+}
+table.list{
+	text-align:center;
+	margin:20px auto 20px auto;
+	width:95%;
+}
+table.list td{
+	border:2px ridge #888;
+	padding:1px 2px 1px 2px;
+	margin:0px;
+	background:#EEE;
+}
+table#users-list tr:hover td{
+	cursor:pointer;
+	background:#BF8;
+	border:2px solid #0B0;
+}
+table.list td.hidden span{
+	visibility:hidden;
+}
+table.list tr:hover td.hidden span{
+	visibility:visible;
+}
+/* ERROR */
+table tr.admin td{
+	background:#600;
+	color:#FFF;
+}
+table tr.admin td a{color:#FFF;}
+table tr.account td{
+	background:#F80;
+	color:#000;
+}
+table tr.password td{
+	background:#FD0;
+	color:#000;
+}
+table tr.provider td{
+	background:#FF8;
+	color:#000;
+}
+table tr.url td{
+	background:#F40;
+	color:#FFF;
+}
+div#header{
+	width:100%;
+	height:200px;
+	overflow:hidden;
+	background: url("img/logo2010.png") center 0px;
+	cursor:pointer;
+/*	display:none;*/
+}
+div#login{
+	width:50%;
+	min-width:700px;
+	margin:30px auto 0px auto;
+	background:url(img/login_lt.png) left top no-repeat;
+	text-align:center;
+	position:fixed;
+	top:30%;
+	left:50px;
+	right:50px;
+}
+div#login form{
+	padding:80px;
+	background:url(img/login_rb.png) right bottom no-repeat;
+}
+div#login label{
+	display:inline-table;
+	padding:10px;
+}
+div#login_text{
+	text-align:center;
+	position:fixed;
+	bottom:0px;
+	left:50px;
+	right:50px;
+}
+div#search{
+	display:none;
+	background:url(img/white_shade.png) left top repeat-x;
+	position:fixed;
+	top:0px;
+	right:0px;
+	font-size:1em;
+}
+div#search form{
+	background:url(img/login_rb.png) right bottom no-repeat;
+	padding:20px 30px 35px 10px;
+}
+ul#admin_bar{
+	padding:0px;
+	margin:0px;
+	position:fixed;
+	left:0px;
+	top:0px;
+	padding:10px;
+	background:url('img/white.png');
+	border:none;
+	border-right:1px solid #888;
+	border-bottom:1px solid #888;
+	display:none;
+}
+ul#admin_bar li{
+	display:inline-table;
+	padding:0px 5px 0px 5px;
+	margin:0px;
+	display:none;
+}
+ul#admin_bar li a{
+	color:#666;
+	padding:10px 5px 10px 5px;
+	margin:0px;
+	display:none;
+}
+ul#admin_bar li a:hover{
+	color:#000;
+	display:none;
+/*	text-shadow:0px 0px 30px #4F0;*/
+}
+div#message{
+	position:absolute;
+	top:0px;
+	left:0px;
+	padding:5px;
+	text-align:left;
+	color:#BBB;
+	font-size:0.8em;
+}
+div#sidenav{
+	display:inline-table;
+	float:left;
+	margin:20px 5px 30px 5px;
+	padding:0px;
+	background:url(img/login_lt.png) left top no-repeat;
+	font-family: 'Luckiest Guy', arial, serif;
+	font-size:20px;
+	display:none;
+}
+div#sidenav ul{
+	display:none;
+	padding:30px 0px 30px 30px;
+	margin:0px;
+	background:url(img/login_rb.png) right bottom no-repeat;
+	text-align:left;
+}
+div#sidenav li{
+	list-style-type:none;
+	padding:0px 0px 0px 0px;
+	margin:1px;
+	color:#000;
+}
+div#sidenav a{
+	font-size:1.1em;
+	color:#000;
+	padding:2px 10px 2px 10px;
+	text-decoration:none;
+}
+div#sidenav a:hover, div#sidenav a:focus{
+	padding:2px 2px 2px 18px;
+	background:url(img/nav_arrow.png) left center no-repeat;
+	color:#080;
+}
+div#sidenav a span, div#sidenav a span{
+	visibility:hidden;
+	position:absolute;
+	padding-left:15px;
+	color:#000;
+	padding:0px;
+	margin-left:3px;
+}
+div#sidenav a:hover span, div#sidenav a:focus span{
+	visibility:inherit;
+}
+div#sidenav a#current{
+	display:none;
+	padding:2px 2px 2px 18px;
+	background:url(img/nav_arrow.png) left center no-repeat;
+	text-transform:uppercase;
+	text-decoration:underline;
+}
+div#sidenav a#current span{
+	visibility:inherit;
+	color:inherit;
+}
+div#home_content{
+	width:75%;
+	margin:30px auto 30px auto;
+}
+div#item_editor_container{
+	display:none;
+	position:fixed;
+	left:1%;
+	right:1%;
+	top:1%;
+	padding:0px;
+	border:1px solid #888;
+	background:url(img/w85.png);
+	text-align:center;
+}
+div#item_editor{
+	display:none;
+	padding:10px;
+	overflow:auto;
+}
+iframe#picture_frame{
+	border:none;
+	overflow:hidden;
+	height:450px;
+	width:100%;
+}
+div#item_editor table{
+	width:100%;
+}
+div#item_editor table td{
+	border:none;
+	margin:0px;
+	padding:0px;
+	vertical-align:top;
+}
+div#item_editor table tr.title{
+	font-size:1.3em;
+}
+div#item_list{
+/*	display:none;*/
+	text-align:right;
+	margin-top:20px;
+	text-align:center;
+	letter-spacing:1px;
+}
+div#item_list img.png_alpha{
+	cursor:pointer;
+}
+div#item_list input{
+	font-weight:bold;
+}
+div#item_list form{
+	text-align:right;
+	padding:0px 30px 30px 0px;
+	background:url(img/login_rb.png) right bottom no-repeat;
+	font-size:0.8em;
+	font-family:"impact";
+}
+div#full_warning{
+	position:fixed;
+	top:100px;
+	right:100px;
+	bottom:100px;
+	left:100px;
+	background:#DDD;
+}
+
+div#user_log {
+	position:fixed;
+	max-height:30%;
+	min-width:200px;
+	bottom:0px;
+	right:0px;
+	overflow:hidden;
+	text-align:center;
+	padding:10px;
+	background:url('img/white.png');
+/*	border-radius:20px 0px 0px 0px;*/
+	border-left:1px solid #888;
+	border-top:1px solid #888;
+	display:none;
+}
+
+div#add_user{
+	padding:5px;
+	text-align:center;
+}
+div#add_user h2{
+	cursor:pointer;
+}
+div#add_user form{
+/*
+	display:none;
+*/
+}
+div#add_user form label{
+	width:250px;
+	padding:15px;
+	display:inline-table;
+	background:#DDD;
+	border:1px solid #888;
+	margin:2px;
+/*	border-radius:5px;
+	border-radius:5px;*/
+}
+div#add_user form label:hover{
+	background:#EEE;
+	border:1px solid #666;
+}
+div#add_user form label input{
+	width:100%;
+	text-align:center;
+}
+div#error_action{
+	position:fixed;
+	bottom:0px;
+	right:0px;
+/*	border-top:1px solid #888;
+	border-left:1px solid #444;
+	background:#DDD;*/
+	padding:0px;
+	display:none;
+}
+div#error_action u{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+div#error_action li{
+	display:inline;
+	padding:5px;
+}
+div#error_action a{
+	background:#CCC;
+	padding:5px;
+}
+
+#admin_item_select {
+	position:fixed;
+	bottom:0px;
+	right:0px;
+	padding:10px;
+	background:#DDD;
+	border-left:1px solid #222;
+	border-top:1px solid #222;
+	cursor:pointer;
+	display:none;
+}
+
+/* CATEGORIES */
+div#sidenav a.percolators, h1.percolators{color:#5e5f95;}
+div#sidenav a.glass_bong, h1.glass_bong{color:#f7ef31;}
+div#sidenav a.bazooka, h1.bazooka{color:#bbdead;}
+div#sidenav a.ash-catcher{color:#9cb539;}
+div#sidenav a.glass_part{color:#18295a;}
+div#sidenav a.acrylique_bong{color:#5dba45;}
+div#sidenav a.amber_glass{color:#f2b03a;}
+div#sidenav a.ceramic{color:#ba2a29;}
+div#sidenav a.hookah{color:#46c6f3;}
+div#sidenav a.acrylique_pipe{color:#d6bd42;}
+div#sidenav a.dug-out{color:#9e761d;}
+div#sidenav a.metal_pipe{color:#4a6aa9;}
+div#sidenav a.resin_pipe{color:#10ab59;}
+div#sidenav a.wood_pipe{color:#94201e;}
+div#sidenav a.glass_pipe{color:#633c99;}
+div#sidenav a.spoon{color:#4cc2e8;}
+div#sidenav a.bubbler{color:#d7a3cc;}
+div#sidenav a.animal_glass{color:#639cd6;}
+div#sidenav a.polyresine_pipe{color:#2aab5c;}
+div#sidenav a.casing{color:#1d6634;}
+div#sidenav a.ashtray{color:#ffdc19;}
+div#sidenav a.lighter{color:#02739d;}
+div#sidenav a.frame{color:#43bc88;}
+div#sidenav a.flags{color:#9b512b;}
+div#sidenav a.bandana{color:#ee3d26;}
+div#sidenav a.t-shirt{color:#575252;}
+div#sidenav a.belt_buckles{color:#888;}
+div#sidenav a.dvd{color:#Fcbde7;}
+div#sidenav a.book{color:#9cbde7;}
+div#sidenav a.rolling_machine{color:#6b2264;}
+div#sidenav a.rolling_paper{color:#c74c9d;}
+div#sidenav a.miscellaneous{color:#888;}
+div#sidenav a.tips{color:#93c73d;}
+div#sidenav a.grinder{color:#9f7b2c;}
+div#sidenav a.stash{color:#f67224;}
+div#sidenav a.d-tox{color:#de1958;}
+div#sidenav a.cleaner{color:#ee3c26;}
+div#sidenav a.knives{color:#c5c1c2;}
+div#sidenav a.accessories{color:#888;}
+div#sidenav a.adult{color:#f4c0d9;}
+div#sidenav a.scales{color:#adac94;}
+div#sidenav a.powder_incence{color:#222;}
+div#sidenav a.baggies{color:#ee3c26;}
