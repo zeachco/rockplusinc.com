@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import {Mesure, Mass} from './metric';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
@@ -20,12 +19,11 @@ const Sidebar = props => (
       <Mesure value={props.depth}/><br/>
       <Mass value={props.weight}/><br/>
     </div>
-    <span data-pbsrc="http://rockplusinc.com/img/full/_6181.png">
+    // data-pbsrc="http://rockplusinc.com/img/full/_6181.png"
+    <span>
       <small>
-        <img className="png_alpha" data-thumbsrc="" src={`//rockplusinc.com/img/full/thumbs/_${props.code}.png`} id="id8972813805348174"/>
-
+        <img className="png_alpha" alt={props.code} src={`//rockplusinc.com/img/full/thumbs/_${props.code}.png`}/>
       </small>
-
     </span><br/>
     2 Per Packs<br/>
     <span className="clearance">{currency(props.price)}

@@ -1,7 +1,7 @@
 import React from 'react';
 // import store from 'core/store';
 // import bridge from 'core/bridge';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 
 class LoginPage extends React.Component {
   constructor(...props) {
@@ -16,14 +16,14 @@ class LoginPage extends React.Component {
   }
   submit(ev) {
     ev.preventDefault();
-    let username = ev.target.user.value;
-    let password = ev.target.pass.value;
+    // let username = ev.target.user.value;
+    // let password = ev.target.pass.value;
     this.setState({message: 'checking...', loading: true});
-    bridge.post('/api/v2/login', {username, password}).then(data => {
-      this.setState({message: 'connected!', loading: false});
-      store.set('auth', data);
-      browserHistory.push('/');
-    });
+    // bridge.post('/api/v2/login', {username, password}).then(data => {
+    //   this.setState({message: 'connected!', loading: false});
+    //   store.set('auth', data);
+    //   browserHistory.push('/');
+    // });
   }
   render() {
     const {message} = this.props;

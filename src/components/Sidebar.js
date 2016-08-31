@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 // import store from 'core/store';
-import {Route, browserHistory} from 'react-router';
+import {browserHistory} from 'react-router';
 
 const navigate = ev => {
   const category = ev.target.value;

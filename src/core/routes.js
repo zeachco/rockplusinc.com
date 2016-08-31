@@ -1,8 +1,7 @@
 import React from 'react';
-// import store from './store';
 import {Application} from '../components';
 import {Logout, Login, Home, NotFound, Products} from '../pages';
-import {Router, Route, browserHistory, IndexRoute, Link} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 const requireAuth = (nextState, replace) => {
   // if (!store.get().auth) {

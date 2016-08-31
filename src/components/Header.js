@@ -2,9 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import {Search} from '.';
 
-import {AdminBar} from '.';
-// import store from 'core/store';
-
 const year = new Date().getFullYear();
 const Header = () => (
   <div>
@@ -25,7 +22,7 @@ const Header = () => (
             ? 'green'
           : ''}>{` edition ${year}`}</span>
           ))}</div>
-        <img src='/img/headerLogo.png'/>
+        <img src="/img/headerLogo.png" alt="Rock Plus inc."/>
       </div>
     </Link>
   </div>

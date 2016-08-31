@@ -3,7 +3,7 @@ import {Header, Footer} from '.';
 
 const Application = props => (
   <div>
-    <RockPlusHeader/>
+    <Header/>
     <div>{props.children}</div>
     <Footer/>
   </div>

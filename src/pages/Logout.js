@@ -1,7 +1,7 @@
 import React from 'react';
 // import store from 'core/store';
 // import bridge from 'core/bridge';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 
 class LoginPage extends React.Component {
   constructor(...props) {
@@ -12,11 +12,11 @@ class LoginPage extends React.Component {
   }
   componentDidMount() {
     this.setState({loading: true});
-    bridge.delete('/api/v2/logout').then(() => {
-      store.set('auth', false);
-      this.setState({loading: false});
-      browserHistory.push('/');
-    });
+    // bridge.delete('/api/v2/logout').then(() => {
+    //   store.set('auth', false);
+    //   this.setState({loading: false});
+    //   browserHistory.push('/');
+    // });
   }
   componentWillUnmount() {
     // console.log('unmount!');
@@ -27,7 +27,7 @@ class LoginPage extends React.Component {
         <form>
           {this.state.loading
             ? (
-              <p><img src="/img/loading.gif"/>
+              <p><img src="/img/loading.gif" alt="loading..."/>
                 <i>&nbsp;Login you out...</i>
               </p>
             )

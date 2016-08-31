@@ -21,13 +21,13 @@ class ProductPage extends React.Component {
   refresh() {
     if (!this.state.loading) {
       this.setState({loading: true});
-      const path = this.props.params.category
-        ? '/category/' + this.props.params.category
-        : '/search/' + this.props.params.search;
-      bridge.get('/api/v2/items' + path).then(data => {
-        this.setState({'items': data, loading: false});
-        store.set('items', data);
-      });
+      // const path = this.props.params.category
+      //   ? '/category/' + this.props.params.category
+      //   : '/search/' + this.props.params.search;
+      // bridge.get('/api/v2/items' + path).then(data => {
+      //   this.setState({'items': data, loading: false});
+      //   store.set('items', data);
+      // });
     }
   }
   render() {
