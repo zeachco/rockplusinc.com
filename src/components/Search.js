@@ -1,7 +1,7 @@
 import React from 'react';
 import {browserHistory} from 'react-router';
 
-class Search extends React.Component {
+export class Search extends React.Component {
   constructor(...props) {
     super(...props);
     this.word = '';

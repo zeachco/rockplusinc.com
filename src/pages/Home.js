@@ -2,9 +2,9 @@ import React from 'react';
 import {Sidebar} from '../components';
 
 const year = new Date().getFullYear();
-const HomePage = props => (
+export const Home = props => (
   <div>
-    <Sidebar {...props}/>
+    <Sidebar {...props} auth={{username:'bob'}} categories={[]}/>
     <div id="home_content">
       <h1>WE ARE PROUD TO INTRODUCE YOU TO OUR NEW {year} CATALOG</h1>
       <p>ROCK
@@ -30,5 +30,3 @@ const HomePage = props => (
     </div>
   </div>
 );
-
-export default HomePage;

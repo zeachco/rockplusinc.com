@@ -1,11 +1,11 @@
 import React from 'react';
 import {Header, Footer} from '.';
 
-const Application = props => (
+export const Application = props => (
   <div>
     <Header/>
     <div>{props.children}</div>
-    <Footer/>
+    {/*<Footer/>*/}
   </div>
 );
 

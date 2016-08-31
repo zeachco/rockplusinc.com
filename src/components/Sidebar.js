@@ -8,8 +8,8 @@ const navigate = ev => {
   browserHistory.push('/category/' + category);
 }
 
-const Sidebar = props => {
-  const state = this.props;
+export const Sidebar = props => {
+  const state = props;
   const current = props.params && props.params.category;
   if (window.innerWidth > 800) {
     return (
@@ -44,8 +44,8 @@ const Sidebar = props => {
             name: 'Home'
           },
           ...state.categories
-          ].map(cat => (
-            <option style={cat.style} key={cat._id} value={cat.link}>{cat.name}</option>
+        ].map(cat => (
+          <option style={cat.style} key={cat._id} value={cat.link}>{cat.name}</option>
         ))}
       </select>
     </div>
