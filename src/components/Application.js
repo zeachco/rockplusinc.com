@@ -5,7 +5,7 @@ export const Application = props => (
   <div>
     <Header/>
     <div>{props.children}</div>
-    {/*<Footer/>*/}
+    <Footer/>
   </div>
 );
 
