@@ -1,24 +1,40 @@
 import React from 'react';
 import axios from 'axios';
-// import store from 'core/store';
-// import {browserHistory} from 'react-router';
+import store from '../store';
+import {browserHistory} from 'react-router';
 
 class LoginPage extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {};
   }
-  componentDidMount() {
-    axios.delete('/api/logout');
-  }
+  // componentDidMount() {
+  //   axios.delete('/api/logout');
+  // }
   submit(ev) {
     ev.preventDefault();
     let username = ev.target.user.value;
     let password = ev.target.pass.value;
     this.setState({message: 'checking...', loading: true});
+    store.dispatch({
+      type: 'LOGIN_REQUEST',
+      payload: {
+        username,
+        password
+      }
+    });
     axios.post('/api/v2/login', {username, password}).then(data => {
       this.setState({message: 'connected!', loading: false});
+      store.dispatch({
+        type: 'LOGIN_REQUEST_DONE',
+        payload: {
+          username,
+          password
+        }
+      });
       browserHistory.push('/');
+    }).catch(data => {
+      store.dispatch({type: 'LOGIN_REQUEST_FAIL', payload: data});
     });
   }
   render() {

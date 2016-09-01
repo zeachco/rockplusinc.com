@@ -1,25 +1,28 @@
 import React from 'react';
 import {Application} from '../components';
 import {Logout, Login, Home, NotFound, Products} from '../pages';
-import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+// import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import store from '../store';
 import {connect} from 'react-redux';
 
+const requireAuth = (nextState, replace) => {
+  const {isAuth} = store.getState().session;
+  if (!isAuth) {
+    replace({
+      pathname: '/login',
+      state: {
+        nextPathname: nextState.location.pathname
+      }
+    });
+  }
+};
+
 const Routes = props => {
-  const {session} = props;
-  const requireAuth = (nextState, replace) => {
-    if (!session.isAuth) {
-      replace({
-        pathname: '/login',
-        state: {
-          nextPathname: nextState.location.pathname
-        }
-      });
-    }
-  };
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Application}>
-        <IndexRoute component={Home} onEnter={requireAuth.bind(props)}/>
+        <IndexRoute component={Home} onEnter={requireAuth}/>
         <Route path="search/:search" component={Products} onEnter={requireAuth}/>
         <Route path="category/:category" component={Products} onEnter={requireAuth}/>
         <Route path="login" component={Login}/>

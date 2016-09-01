@@ -25,20 +25,21 @@ const session = (state = defaultState, action) => {
         isAuth: false,
         isLoading: false
       };
-    case 'redux-form/CHANGE':
-      if (action.form === 'profile') {
-        state = Object.assign({}, state);
-        state[action.field] = action.value;
-      }
-      return state;
-    case 'PROFILE_UPDATE_START':
-      return Object.assign({}, state, {
-        isSaving: true
-      });
-    case 'PROFILE_UPDATE_DONE':
-      return Object.assign({}, state, action.payload, {
-        isSaving: false
-      });
+    case 'LOGIN_REQUEST':
+      return {
+        isAuth: false,
+        isLoading: true
+      };
+    case 'LOGIN_REQUEST_DONE':
+      return {
+        isAuth: true,
+        isLoading: false
+      };
+    case 'LOGIN_REQUEST_FAIL':
+      return {
+        isAuth: false,
+        isLoading: false
+      };
     default:
       return state;
   }
