@@ -1,6 +1,5 @@
 import React from 'react';
-
-// import store from 'core/store';
+import store from '../store';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
 
@@ -12,15 +11,15 @@ export class Logout extends React.Component {
     };
   }
   componentDidMount() {
-    // console.log('mount!');
+    console.log('mount!');
     this.setState({loading: true});
     axios.delete('/api/v2/logout').then(() => {
-      this.setState({loading: false});
+      store.dispatch({type: 'LOGIN_REQUEST_FAIL'});
       browserHistory.push('/');
     });
   }
   componentWillUnmount() {
-    // console.log('unmount!');
+    console.log('unmount!');
   }
   render() {
     return (
