@@ -1,8 +1,7 @@
 import React from 'react';
-// import bridge from 'core/bridge';
 import {Sidebar, Item} from '../components';
 import {connect} from 'react-redux';
-// import store from 'core/store';
+import {fetchCategory, searchItems} from '../store/actions';
 
 class Products extends React.Component {
   constructor(...props) {
@@ -20,18 +19,14 @@ class Products extends React.Component {
     }
   }
   refresh() {
-    if (!this.state.loading) {
-      this.setState({loading: true});
-      // const path = this.props.params.category
-      //   ? '/category/' + this.props.params.category
-      //   : '/search/' + this.props.params.search;
-      // bridge.get('/api/v2/items' + path).then(data => {
-      //   this.setState({'items': data, loading: false});
-      //   store.set('items', data);
-      // });
+    if (this.props.params.category) {
+      fetchCategory(this.props.params.category);
+    } else {
+      searchItems(this.props.params.search);
     }
   }
   render() {
+    const {items} = this.props;
     return (
       <div>
         <Sidebar {...this.props}/>
@@ -40,14 +35,18 @@ class Products extends React.Component {
             ? .5
             : 1
         }}>
-          {this.state.items.map(i => (<Item key={i._id} {...i}/>))}
+          {items.map(i => (<Item key={i._id} {...i}/>))}
         </div>
       </div>
     );
   }
 }
 
-const ConectedProducts = connect()(Products);
+const mapStatetoProps = (store, ownProps) => ({items: store.items});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({});
+
+const ConectedProducts = connect(mapStatetoProps, mapDispatchToProps)(Products);
 
 export {ConectedProducts as Products};
 export default ConectedProducts;

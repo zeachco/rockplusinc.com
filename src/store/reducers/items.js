@@ -1,8 +1,8 @@
 const defaultState = [];
 const session = (state = defaultState, action) => {
   switch (action.type) {
-    case 'SEARCH_ITEMS_DONE':
-      return action.payload;
+    case 'LOAD_ITEMS_DONE':
+      return action.payload.data || [];
     default:
       return state;
   }
