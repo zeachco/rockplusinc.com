@@ -1,10 +1,8 @@
 import React from 'react';
 import {Application} from '../components';
 import {Logout, Login, Home, NotFound, Products} from '../pages';
-// import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import store from '../store';
-import {connect} from 'react-redux';
 
 const requireAuth = (nextState, replace) => {
   const {isAuth} = store.getState().session;
@@ -33,13 +31,5 @@ const Routes = props => {
   );
 };
 
-const mapStatetoProps = (store, ownProps) => ({isAuth: store.session.isAuth, isLoading: store.session.isLoading, session: store.session});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  login: (user, pass) => dispatch({type: 'LOGIN_REQUEST'})
-});
-
-const ConnectedRoutes = connect(mapStatetoProps, mapDispatchToProps)(Routes)
-
-export {ConnectedRoutes as Routes};
-export default ConnectedRoutes;
+export {Routes};
+export default Routes;
