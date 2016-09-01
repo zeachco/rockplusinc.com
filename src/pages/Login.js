@@ -7,4 +7,5 @@ const LoginPage = props => (
   </div>
 );
 
+export {LoginPage as Login};
 export default LoginPage;

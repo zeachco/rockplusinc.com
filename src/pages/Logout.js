@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
 
-class LoginPage extends React.Component {
+export class Logout extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {
@@ -12,12 +12,12 @@ class LoginPage extends React.Component {
     };
   }
   componentDidMount() {
+    // console.log('mount!');
     this.setState({loading: true});
-    // bridge.delete('/api/v2/logout').then(() => {
-    //   store.set('auth', false);
-    //   this.setState({loading: false});
-    //   browserHistory.push('/');
-    // });
+    axios.delete('/api/v2/logout').then(() => {
+      this.setState({loading: false});
+      browserHistory.push('/');
+    });
   }
   componentWillUnmount() {
     // console.log('unmount!');
@@ -43,4 +43,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default Logout;

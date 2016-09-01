@@ -4,9 +4,7 @@ import {Sidebar} from '../components';
 const year = new Date().getFullYear();
 export const Home = props => (
   <div>
-    <Sidebar {...props} auth={{
-      username: 'bob'
-    }}/>
+    <Sidebar/>
     <div id="home_content">
       <h1>WE ARE PROUD TO INTRODUCE YOU TO OUR NEW {year}
         CATALOG</h1>

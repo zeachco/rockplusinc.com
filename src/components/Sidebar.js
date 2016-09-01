@@ -5,19 +5,18 @@ import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 
 const navigate = ev => {
-  const category = ev.target.value;
-  browserHistory.push('/category/' + category);
+  browserHistory.push(ev.target.value);
 }
 
 const Sidebar = props => {
   const state = props;
-  const {categories} = props;
+  const {categories, session} = props;
   const current = props.params && props.params.category;
   if (window.innerWidth > 800) {
     return (
       <div id="sidenav">
         <ul>
-          Welcome<br/> {state.auth.username}
+          Welcome<br/> {session.username}
           <hr/>
           <li>
             <Link to='/' className={!current
@@ -42,8 +41,8 @@ const Sidebar = props => {
       <select onChange={navigate} value={current || 'home'}>
         {[
           {
-            link: 'home',
-            name: 'Home'
+            value: 'home',
+            label: 'Home'
           },
           ...state.categories
         ].map(cat => (

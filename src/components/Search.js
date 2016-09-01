@@ -10,8 +10,9 @@ export class Search extends React.Component {
     };
   }
   search(e) {
-    if (e)
+    if (e) {
       e.preventDefault();
+    }
     clearTimeout(this.timer);
     this.setState({loading: false});
     if (this.word) {

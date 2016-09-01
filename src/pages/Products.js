@@ -1,9 +1,10 @@
 import React from 'react';
 // import bridge from 'core/bridge';
 import {Sidebar, Item} from '../components';
+import {connect} from 'react-redux';
 // import store from 'core/store';
 
-class ProductPage extends React.Component {
+class Products extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {
@@ -36,8 +37,8 @@ class ProductPage extends React.Component {
         <Sidebar {...this.props}/>
         <div id="item_list" style={{
           opacity: this.state.loading
-          ? .5
-          : 1
+            ? .5
+            : 1
         }}>
           {this.state.items.map(i => (<Item key={i._id} {...i}/>))}
         </div>
@@ -46,4 +47,7 @@ class ProductPage extends React.Component {
   }
 }
 
-export default ProductPage;
+const ConectedProducts = connect()(Products);
+
+export {ConectedProducts as Products};
+export default ConectedProducts;
