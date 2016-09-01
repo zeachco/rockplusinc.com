@@ -47,7 +47,7 @@ const Sidebar = props => {
           },
           ...state.categories
         ].map(cat => (
-          <option style={cat.style} key={cat._id} value={cat.link}>{cat.name}</option>
+          <option style={cat.style} key={cat.value} value={cat.value}>{cat.label}</option>
         ))}
       </select>
     </div>
