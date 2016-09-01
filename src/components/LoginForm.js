@@ -1,6 +1,6 @@
 import React from 'react';
+import axios from 'axios';
 // import store from 'core/store';
-// import bridge from 'core/bridge';
 // import {browserHistory} from 'react-router';
 
 class LoginPage extends React.Component {
@@ -9,32 +9,28 @@ class LoginPage extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    // bridge.delete('/api/v2/logout');
-  }
-  componentWillUnmount() {
-    // console.log('unmount!');
+    axios.delete('/api/logout');
   }
   submit(ev) {
     ev.preventDefault();
-    // let username = ev.target.user.value;
-    // let password = ev.target.pass.value;
+    let username = ev.target.user.value;
+    let password = ev.target.pass.value;
     this.setState({message: 'checking...', loading: true});
-    // bridge.post('/api/v2/login', {username, password}).then(data => {
-    //   this.setState({message: 'connected!', loading: false});
-    //   store.set('auth', data);
-    //   browserHistory.push('/');
-    // });
+    axios.post('/api/v2/login', {username, password}).then(data => {
+      this.setState({message: 'connected!', loading: false});
+      browserHistory.push('/');
+    });
   }
   render() {
-    const {message} = this.props;
+    // const {message} = this.props;
     return (
       <form disabled={this.state.loading} onSubmit={this.submit.bind(this)}>
-        <p>{message}</p>
+        <p>{this.state.message}</p>
         <p>
-          <label for="log_user">User :
+          <label htmlFor="log_user">User :
           </label>
           <input required size="15" name="user" type="text" autoFocus={true}/>
-          <label for="log_pass">
+          <label htmlFor="log_pass">
             Password :
           </label>
           <input size="15" required name="pass" type="password"/>
@@ -45,4 +41,6 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+const ConnectedLoginForm = LoginPage;
+export {ConnectedLoginForm as LoginForm};
+export default ConnectedLoginForm;
