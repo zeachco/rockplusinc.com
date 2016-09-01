@@ -2,14 +2,16 @@ import React from 'react';
 import {Link} from 'react-router';
 // import store from 'core/store';
 import {browserHistory} from 'react-router';
+import {connect} from 'react-redux';
 
 const navigate = ev => {
   const category = ev.target.value;
   browserHistory.push('/category/' + category);
 }
 
-export const Sidebar = props => {
+const Sidebar = props => {
   const state = props;
+  const {categories} = props;
   const current = props.params && props.params.category;
   if (window.innerWidth > 800) {
     return (
@@ -25,11 +27,11 @@ export const Sidebar = props => {
           <li>
             <Link to="/logout">logout</Link>
           </li>
-          <hr/> {state.categories.map(cat => (
-            <li key={cat._id}>
-              <Link style={cat.style} className={cat.link === current
+          <hr/> {categories.map(cat => (
+            <li key={cat.value}>
+              <Link style={cat.style} className={cat.value === current
                 ? 'current'
-                : ''} to={`/category/${cat.link}`}>{cat.name}</Link>
+                : ''} to={`/category/${cat.value}`}>{cat.label}</Link>
             </li>
           ))}
         </ul>
@@ -52,4 +54,13 @@ export const Sidebar = props => {
   }
 };
 
-export default Sidebar;
+const mapStatetoProps = (store, ownProps) => ({isAuth: store.session.isAuth, isLoading: store.session.isLoading, session: store.session, categories: store.categories});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  logout: () => dispatch({type: 'LOGOUT_REQUEST'})
+});
+
+const ConnectedSidebar = connect(mapStatetoProps, mapDispatchToProps)(Sidebar)
+
+export default ConnectedSidebar;
+export {ConnectedSidebar as Sidebar};
