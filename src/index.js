@@ -7,8 +7,9 @@ import {Provider} from 'react-redux';
 // ga.init('UA-60212730-1');
 
 import store from './store';
-// import {session} from './store/actions';
-// session.fetch();
+import {fetchCategories} from './store/actions';
+
+fetchCategories();
 
 render((
   <Provider store={store}>

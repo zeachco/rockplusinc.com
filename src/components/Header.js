@@ -3,9 +3,7 @@ import {Link} from 'react-router';
 import {Search} from '.';
 
 const year = new Date().getFullYear();
-export const Header = () => {
-console.log('header render...');
-  return(
+export const Header = () => (
   <div>
     <Search/>
     <Link to='/'>
@@ -22,6 +20,6 @@ console.log('header render...');
       </div>
     </Link>
   </div>
-)};
+);
 
 export default Header;
