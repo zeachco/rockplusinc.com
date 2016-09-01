@@ -1,7 +1,8 @@
 import React from 'react';
+
 // import store from 'core/store';
-// import bridge from 'core/bridge';
-// import {browserHistory} from 'react-router';
+import axios from 'axios';
+import {browserHistory} from 'react-router';
 
 class LoginPage extends React.Component {
   constructor(...props) {

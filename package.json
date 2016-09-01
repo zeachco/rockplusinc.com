@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "axios": "^0.14.0",
+    "flightplan": "^0.6.14",
     "node-sass": "^3.8.0",
     "quantities": "0.0.0",
     "react": "^15.3.1",
@@ -62,7 +63,8 @@
   },
   "scripts": {
     "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "deploy": "fly default"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
