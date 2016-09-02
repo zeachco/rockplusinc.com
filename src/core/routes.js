@@ -5,8 +5,8 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import store from '../store';
 
 const requireAuth = (nextState, replace) => {
-  const {isAuth} = store.getState().session;
-  if (!isAuth) {
+  const {isAuth, isLoading} = store.getState().session;
+  if (!isAuth && !isLoading) {
     replace({
       pathname: '/login',
       state: {

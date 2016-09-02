@@ -7,8 +7,10 @@ import {Provider} from 'react-redux';
 // ga.init('UA-60212730-1');
 
 import store from './store';
-import {fetchCategories} from './store/actions';
+import {fetchCategories, fetchSession} from './store/actions';
 
+console.log(fetchSession);
+fetchSession();
 fetchCategories();
 
 render((
@@ -16,3 +18,6 @@ render((
     <Routes/>
   </Provider>
 ), document.getElementById('root'));
+
+import axios from 'axios';
+window.axios = axios;

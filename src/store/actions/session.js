@@ -7,21 +7,21 @@ const {
   dispatch
 } = store;
 
-function fetch() {
-  dispatch({
-    type: 'SESSION_FETCHING',
+export function fetchSession() {
+  store.dispatch({
+    type: 'SESSION_FETCH_START',
   });
   return axios.get('/api/profile/me').then(data => {
-    dispatch({
-      type: 'SESSION_FETCHED',
+    store.dispatch({
+      type: 'SESSION_FETCH_DONE',
       payload: data
     });
   }).catch(data => {
-    dispatch({
-      type: 'SESSION_FETCHED'
+    store.dispatch({
+      type: 'SESSION_FETCH_FAIL'
     });
   });
-}
+};
 
 function login(username, password) {
   dispatch({
@@ -65,7 +65,7 @@ function profileUpdate(profile) {
 }
 
 module.exports = {
-  fetch,
+  fetchSession,
   login,
   logout,
   profileUpdate
