@@ -9,7 +9,6 @@ import {Provider} from 'react-redux';
 import store from './store';
 import {fetchCategories, fetchSession} from './store/actions';
 
-console.log(fetchSession);
 fetchSession();
 fetchCategories();
 
@@ -18,6 +17,3 @@ render((
     <Routes/>
   </Provider>
 ), document.getElementById('root'));
-
-import axios from 'axios';
-window.axios = axios;

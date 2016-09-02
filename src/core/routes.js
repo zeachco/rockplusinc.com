@@ -16,6 +16,19 @@ const requireAuth = (nextState, replace) => {
   }
 };
 
+function MustNotBeLogged(nextState, replace) {
+  console.log('test');
+  const {isAuth, isLoading} = store.getState().session;
+  if (isAuth && !isLoading) {
+    replace({
+      pathname: '/',
+      state: {
+        nextPathname: nextState.location.pathname
+      }
+    });
+  }
+}
+
 const Routes = props => {
   return (
     <Router history={browserHistory}>
@@ -23,7 +36,7 @@ const Routes = props => {
         <IndexRoute component={Home} onEnter={requireAuth}/>
         <Route path="search/:search" component={Products} onEnter={requireAuth}/>
         <Route path="category/:category" component={Products} onEnter={requireAuth}/>
-        <Route path="login" component={Login}/>
+        <Route path="login" component={Login} onEnter={MustNotBeLogged}/>
         <Route path="logout" component={Logout}/>
         <Route path="*" component={NotFound} onEnter={requireAuth}/>
       </Route>
