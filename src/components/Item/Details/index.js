@@ -11,9 +11,8 @@ const dialogStyle = {
 };
 
 class LightBox extends React.Component {
-
   constructor() {
-    super();
+    super()
     this.state = {
       loading: true
     };
@@ -25,7 +24,9 @@ class LightBox extends React.Component {
     console.log('load image...', this.props);
     let img = new Image();
     img.src = src;
-
+    this.setState({
+      loading: !img.complete
+    });
     img.addEventListener('loadprogress', function(e) {
       this.setState({
         loadPercent: e.loaded / e.total

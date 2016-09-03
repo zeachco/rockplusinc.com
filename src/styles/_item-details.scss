@@ -1,13 +1,18 @@
-// .lightboxImg {
-//   min-width: 95%;
-//   max-width: 100%;
-//   min-height: 95%;
-//   max-height: 100%;
-//   display: block;
-//   width: auto;
-//   height: auto;
-//   margin: auto;
-// }
+@keyframes modal {
+  0% {
+    transform: scale(.9, .9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.skylight-dialog {
+  animation: modal 0.2s linear;
+}
 
 .lightboxImg {
   display: block;
@@ -19,6 +24,6 @@
   transition: all 1s;
 
   &.loading {
-    -webkit-filter: blur(8px) grayscale(50%);
+    -webkit-filter: blur(6px) grayscale(50%);
   }
 }
