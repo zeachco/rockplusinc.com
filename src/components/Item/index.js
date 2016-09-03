@@ -1,6 +1,6 @@
 import React from 'react';
 import {Mesure, Mass} from './metric';
-import LightBox from './LightBox';
+import LightBox from './Details';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
