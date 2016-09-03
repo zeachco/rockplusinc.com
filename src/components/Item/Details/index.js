@@ -1,15 +1,6 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 
-const dialogStyle = {
-  color: '#000000',
-  width: '50%',
-  height: '550px',
-  marginTop: '-300px',
-  marginLeft: '-25%',
-  backgroundColor: 'rgba(255, 255, 255, 0.8)'
-};
-
 class LightBox extends React.Component {
   constructor() {
     super()
@@ -51,7 +42,7 @@ class LightBox extends React.Component {
     return (
       <div>
         <img className={imgClassName} src={thumbsSrc} alt={title} onClick={this.open.bind(this)}></img>
-        <SkyLight dialogStyles={dialogStyle} hideOnOverlayClicked ref="customDialog" title={title}>
+        <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
           <div className={classes} style={bg}></div>
         </SkyLight>
       </div>
