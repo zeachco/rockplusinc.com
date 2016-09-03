@@ -2,7 +2,6 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 
 const dialogStyle = {
-  backgroundColor: 'rgba(255,255,255,.8)',
   color: '#000000',
   width: '50%',
   height: '550px',
@@ -40,17 +39,13 @@ class LightBox extends React.Component {
   render() {
     const {thumbsSrc, src, title, imgClassName} = this.props;
     const {loading} = this.state;
-    const style = {
-      ...dialogStyle,
-      opacity: loading
-        ? 0.8
-        : 1
-    };
     return (
       <div>
         <img className={imgClassName} src={thumbsSrc} alt={title} onClick={this.open.bind(this)}></img>
-        <SkyLight dialogStyles={style} hideOnOverlayClicked ref="customDialog" title={title}>
-          <img className={'lightboxImg'} src={loading
+        <SkyLight dialogStyles={dialogStyle} hideOnOverlayClicked ref="customDialog" title={title}>
+          <img className={'lightboxImg' + (loading
+            ? ' loading'
+            : '')} src={loading
             ? thumbsSrc
             : src} alt={title}/>
         </SkyLight>

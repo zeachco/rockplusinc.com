@@ -1,8 +1,9 @@
 .lightboxImg {
   max-height: 500px;
   min-width: 95%;
-}
+  transition: all 1s;
 
-.skylight-dialog {
-  transition: opacity 1s;
+  &.loading {
+    -webkit-filter: blur(8px) grayscale(50%);
+  }
 }
