@@ -6,7 +6,8 @@ const dialogStyle = {
   width: '50%',
   height: '550px',
   marginTop: '-300px',
-  marginLeft: '-25%'
+  marginLeft: '-25%',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)'
 };
 
 class LightBox extends React.Component {
@@ -39,15 +40,19 @@ class LightBox extends React.Component {
   render() {
     const {thumbsSrc, src, title, imgClassName} = this.props;
     const {loading} = this.state;
+    const bg = {
+      'background-image': `url("${loading
+        ? thumbsSrc
+        : src}")`
+    };
+    const classes = `lightboxImg ${loading
+      ? 'loading'
+      : ''}`
     return (
       <div>
         <img className={imgClassName} src={thumbsSrc} alt={title} onClick={this.open.bind(this)}></img>
         <SkyLight dialogStyles={dialogStyle} hideOnOverlayClicked ref="customDialog" title={title}>
-          <img className={'lightboxImg' + (loading
-            ? ' loading'
-            : '')} src={loading
-            ? thumbsSrc
-            : src} alt={title}/>
+          <div className={classes} style={bg}></div>
         </SkyLight>
       </div>
     )
