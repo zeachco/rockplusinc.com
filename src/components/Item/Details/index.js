@@ -21,7 +21,6 @@ class LightBox extends React.Component {
   open() {
     this.refs.customDialog.show();
     let {src} = this.props;
-    console.log('load image...', this.props);
     let img = new Image();
     img.src = src;
     this.setState({
