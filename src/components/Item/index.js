@@ -1,6 +1,6 @@
 import React from 'react';
 import {Mesure, Mass} from './metric';
-import LightBox from './Details';
+import Details from './Details';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -23,7 +23,7 @@ export const Item = props => (
     <span>
       <small>
         {/* {<img className="png_alpha" alt={props.code} src={`//rockplusinc.com/img/full/thumbs/_${props.code}.png`}/>} */}
-        <LightBox
+        <Details
           imgClassName={"png_alpha"}
           src={`//rockplusinc.com/img/full/_${props.code}.png`}
           thumbsSrc={`//rockplusinc.com/img/full/thumbs/_${props.code}.png`}
