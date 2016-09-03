@@ -23,7 +23,7 @@ class LightBox extends React.Component {
           onClick={() => this.refs.customDialog.show()}>
         </img>
         <SkyLight dialogStyles={style} hideOnOverlayClicked ref="customDialog" title={this.props.title}>
-          <img src={this.props.src} alt={this.props.title}/>
+          <img className={'lightboxImg'} src={this.props.src} alt={this.props.title}/>
         </SkyLight>
       </div>
     )

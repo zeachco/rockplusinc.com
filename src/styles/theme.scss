@@ -259,6 +259,9 @@ div#item_list {
 div#item_list img.png_alpha {
   cursor: pointer;
 }
+div#item_list img.lightboxImg {
+  max-height: 500px;
+}
 div#item_list input {
   font-weight: bold;
 }
