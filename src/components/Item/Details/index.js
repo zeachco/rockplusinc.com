@@ -32,7 +32,7 @@ class LightBox extends React.Component {
     const {thumbsSrc, src, title, imgClassName} = this.props;
     const {loading} = this.state;
     const bg = {
-      'background-image': `url("${loading
+      'backgroundImage': `url("${loading
         ? thumbsSrc
         : src}")`
     };

@@ -1,3 +1,17 @@
+.itemLabelImg{
+  max-width: 50px;
+}
+.pre-item{
+  display: block;
+  position: relative;
+}
+img.backorder{
+  position: absolute;
+  top: 30%;
+  left: -30%;
+  width: 150%;
+}
+
 @keyframes modal {
   0% {
     transform: scale(.9, .9);
