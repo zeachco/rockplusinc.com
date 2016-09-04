@@ -1,3 +1,16 @@
+$base-line-height: 3em;
+$off-white: #222;
+$white: #fff;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes modal {
   0% {
     transform: scale(.9, .9);
@@ -22,13 +35,37 @@
     display: block;
     width: 100%;
     height: 90%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: all 1s;
+
+    .lightboxImg {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 1s;
+    }
 
     &.loading {
-      -webkit-filter: blur(6px) grayscale(50%);
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        width: $base-line-height;
+        height: $base-line-height;
+        border: 0.25rem solid $off-white;
+        border-top-color: $white;
+        animation: spin .5s infinite;
+        shadow-box: 0 0 2px white;
+        margin-top: $base-line-height / -2;
+        margin-left: $base-line-height / -2;
+      }
+
+      .lightboxImg {
+        -webkit-filter: blur(6px) grayscale(50%);
+      }
     }
   }
 }
