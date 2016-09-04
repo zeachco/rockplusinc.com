@@ -10,7 +10,6 @@ $white: #fff;
     transform: rotate(360deg);
   }
 }
-
 @keyframes modal {
   0% {
     transform: scale(.9, .9);
@@ -23,6 +22,12 @@ $white: #fff;
   }
 }
 
+.lightBoxImageSpecs {
+  display: block;
+  width: 100%;
+  height: 90%;
+}
+
 .skylight-dialog {
   animation: modal 0.2s linear;
   border-radius: 8px !important;
@@ -30,13 +35,11 @@ $white: #fff;
   min-height: 450px !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
 
-  .lightboxImg {
-    margin: 5px;
-    display: block;
-    width: 100%;
-    height: 90%;
+  .lightboxImg_container {
+    @extend .lightBoxImageSpecs;
 
     .lightboxImg {
+      @extend .lightBoxImageSpecs;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -57,7 +60,7 @@ $white: #fff;
         height: $base-line-height;
         border: 0.25rem solid $off-white;
         border-top-color: $white;
-        animation: spin .5s infinite;
+        animation: spin 0.5s infinite;
         shadow-box: 0 0 2px white;
         margin-top: $base-line-height / -2;
         margin-left: $base-line-height / -2;

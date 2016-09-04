@@ -36,7 +36,7 @@ class LightBox extends React.Component {
         ? thumbsSrc
         : src}")`
     };
-    const classes = `lightboxImg ${loading
+    const classes = `lightboxImg_container ${loading
       ? 'loading'
       : ''}`
     return (
