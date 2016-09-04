@@ -36,14 +36,16 @@ class LightBox extends React.Component {
         ? thumbsSrc
         : src}")`
     };
-    const classes = `lightboxImg ${loading
+    const classes = `lightboxImg_container ${loading
       ? 'loading'
       : ''}`
     return (
       <div>
         <img className={imgClassName} src={thumbsSrc} alt={title} onClick={this.open.bind(this)}></img>
         <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
-          <div className={classes} style={bg}></div>
+          <div className={classes}>
+            <div className="lightboxImg" style={bg}></div>
+          </div>
         </SkyLight>
       </div>
     )
