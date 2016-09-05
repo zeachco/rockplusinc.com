@@ -36,10 +36,6 @@ export const Item = props => {
         {showNew && (<img src={NewImage} className={'itemLabelImg'} alt="New product!" id={_id}/>)}
         {showNewPrice && (<img src={NewPriceImage} className={'itemLabelImg'} alt="New price!" id={_id}/>)}
         <br/>
-        <small style={{
-          color: '#ccc',
-          float: 'left'
-        }}>{price || 'no price'}</small>
         <b>{name}</b><br/>
         <div className="side_item" style={{
           float: 'right'
@@ -59,7 +55,9 @@ export const Item = props => {
         <span className={+ labels.clearance
           ? 'clearance'
           : ''}>
-          {currency(price)}$
+          {price
+            ? currency(price)
+            : 'no price'}$
         </span><br/>
       </div>
     </div>
