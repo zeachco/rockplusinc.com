@@ -8,9 +8,6 @@ class LoginPage extends React.Component {
     super(...props);
     this.state = {};
   }
-  // componentDidMount() {
-  //   axios.delete('/api/logout');
-  // }
   submit(ev) {
     ev.preventDefault();
     let username = ev.target.user.value;

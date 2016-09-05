@@ -23,7 +23,6 @@ class LightBox extends React.Component {
       });
     });
     img.addEventListener('load', () => {
-      console.log('componentDidMount', src);
       this.setState({loading: false});
     });
   }
