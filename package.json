@@ -8,7 +8,7 @@
     "prebuild": "npm run sass",
     "prestart": "npm run sass",
     "postinstall": "npm run sass",
-    "sass": "sass src/styles/theme.scss:build/style.css",
+    "sass": "sass src/styles/theme.scss:src/styles/style.css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "fly default",
