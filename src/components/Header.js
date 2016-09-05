@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {Search} from '.';
 import {connect} from 'react-redux';
+import HeaderLogo from '../img/headerLogo.png';
 
 const year = new Date().getFullYear();
 
@@ -18,7 +19,7 @@ const Header = ({isAuth}) => (
               ? 'green'
               : ''}>{` edition ${year}`}</span>
           ))}</div>
-        <img src="/img/headerLogo.png" alt="Rock Plus inc."/>
+        <img src={HeaderLogo} alt="Rock Plus inc."/>
       </div>
     </Link>
   </div>

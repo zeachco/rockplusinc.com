@@ -22,13 +22,13 @@
   float: left;
   margin: 20px 5px 30px;
   padding: 0;
-  background: url('/img/login_lt.png') left top no-repeat;
+  background: url('../img/login_lt.png') left top no-repeat;
   font-family: 'Luckiest Guy', arial, serif;
   font-size: 20px;
   ul {
     padding: 30px 0 30px 30px;
     margin: 0;
-    background: url('/img/login_rb.png') right bottom no-repeat;
+    background: url('../img/login_rb.png') right bottom no-repeat;
     text-align: left;
   }
   li {
@@ -48,7 +48,7 @@
     &:focus,
     &:hover {
       padding: 2px 2px 2px 18px;
-      background: url('/img/nav_arrow.png') left center no-repeat;
+      background: url('../img/nav_arrow.png') left center no-repeat;
       color: #080;
       span {
         visibility: inherit;

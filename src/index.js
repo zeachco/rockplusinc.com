@@ -1,4 +1,4 @@
-import './styles/theme.scss';
+import '../build/style.css';
 import React from 'react';
 import {render} from 'react-dom';
 import Routes from './core/routes';
