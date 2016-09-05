@@ -1,0 +1,14 @@
+.item {
+  .pre-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .side_item {
+    float: right;
+    font-size: 13px;
+    color: #888;
+    padding: 0;
+  }
+}

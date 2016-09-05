@@ -5,6 +5,7 @@
 @import "debug";
 @import "sidebar";
 @import "footer";
+@import "items";
 @import "item-details";
 
 body {
@@ -71,12 +72,6 @@ div.item {
 div.item:hover{
 	color:#000;
 }*/
-div.item div.side_item {
-  float: right;
-  font-size: 15px;
-  color: #888;
-  padding: 5px;
-}
 #contact_content {
   margin: 30px;
 }
