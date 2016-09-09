@@ -13,7 +13,7 @@
     "eject": "react-scripts eject",
     "deploy": "fly default"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://rockplusinc.com.dev:8080",
   "devDependencies": {
     "flightplan": "^0.6.14",
     "node-sass": "^3.9.0",

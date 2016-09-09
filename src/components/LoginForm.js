@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
       }
     });
     axios.post('/api/v2/login', {username, password}).then(data => {
-      this.setState({message: 'connected!', loading: false});
+      this.setState({message: 'Connected!', loading: false});
       store.dispatch({
         type: 'LOGIN_REQUEST_DONE',
         payload: {
@@ -32,6 +32,7 @@ class LoginPage extends React.Component {
       browserHistory.push('/');
     }).catch(data => {
       store.dispatch({type: 'LOGIN_REQUEST_FAIL', payload: data});
+      this.setState({message: 'Could not log you in!', loading: false});
     });
   }
   render() {

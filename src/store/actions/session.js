@@ -35,7 +35,12 @@ function login(username, password) {
       type: 'SESSION_FETCHED',
       payload: data
     });
-  })
+  }).catch(xhr => {
+    dispatch({
+      type: 'LOGIN_FAIL',
+      payload: xhr
+    });
+  });
 }
 
 function logout() {
