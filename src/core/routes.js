@@ -17,7 +17,6 @@ const requireAuth = (nextState, replace) => {
 };
 
 function MustNotBeLogged(nextState, replace) {
-  console.log('test');
   const {isAuth, isLoading} = store.getState().session;
   if (isAuth && !isLoading) {
     replace({

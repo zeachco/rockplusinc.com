@@ -11,7 +11,7 @@ export class Logout extends React.Component {
     };
   }
   componentDidMount() {
-    console.log('mount!');
+    // console.log('mount!');
     this.setState({loading: true});
     axios.delete('/api/v2/logout').then(() => {
       store.dispatch({type: 'LOGIN_REQUEST_FAIL'});
@@ -19,7 +19,7 @@ export class Logout extends React.Component {
     });
   }
   componentWillUnmount() {
-    console.log('unmount!');
+    // console.log('unmount!');
   }
   render() {
     return (

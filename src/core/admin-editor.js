@@ -79,7 +79,6 @@ function EditMultipleItem() {
 
 function save_item(id) {
   var flag = '';
-  console.log('test');
   var post = $("#item_edit_form").serialize().replace(/([^\\\\])'/g, "$1\\\\'");
   xhr = Ajax("a=save_item&e=0&i=" + id + "&" + post, "index.php");
   div = document.getElementById('item_' + id);

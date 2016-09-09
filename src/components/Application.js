@@ -9,8 +9,8 @@ export const Application = props => (
   </div>
 );
 
-window.onresize = function(ev) {
-  console.log(ev);
-}
+// window.onresize = function(ev) {
+//   console.log(ev);
+// }
 
 export default Application;
