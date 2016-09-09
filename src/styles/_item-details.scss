@@ -37,10 +37,14 @@ img.backorder{
 }
 
 .skylight-dialog {
+  top: 50% !important;
+  left: 50% !important;
+  margin-left: -237px !important;
   animation: modal 0.2s linear;
   border-radius: 8px !important;
   color: #666!important;
-  min-height: 450px !important;
+  max-height: 475px !important;
+  max-width: 475px !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
 
   .lightboxImg_container {
