@@ -35,6 +35,12 @@ const session = (state = defaultState, action) => {
         isAuth: false,
         isLoading: true
       };
+    case 'LOGIN_FAIL':
+      return {
+        isAuth: false,
+        isLoading: false,
+        errMsg: 'Cannot log in'
+      };
     case 'LOGIN_REQUEST_DONE':
       return {
         isAuth: true,

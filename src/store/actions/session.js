@@ -11,14 +11,15 @@ export function fetchSession() {
   store.dispatch({
     type: 'SESSION_FETCH_START',
   });
-  return axios.get('/api/profile/me').then(data => {
+  return axios.get('/api/profile/me').then(xhr => {
     store.dispatch({
       type: 'SESSION_FETCH_DONE',
-      payload: data
+      payload: xhr.data
     });
-  }).catch(data => {
+  }).catch(xhr => {
     store.dispatch({
-      type: 'SESSION_FETCH_FAIL'
+      type: 'SESSION_FETCH_FAIL',
+      payload: xhr
     });
   });
 };
@@ -35,7 +36,12 @@ function login(username, password) {
       type: 'SESSION_FETCHED',
       payload: data
     });
-  })
+  }).catch(xhr => {
+    dispatch({
+      type: 'LOGIN_FAIL',
+      payload: xhr
+    });
+  });
 }
 
 function logout() {

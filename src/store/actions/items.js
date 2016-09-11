@@ -10,7 +10,6 @@ export function fetchCategory(category) {
 }
 
 export function fetchItems(path = '') {
-  console.log(path);
   store.dispatch({
     type: 'LOAD_ITEMS_START'
   });

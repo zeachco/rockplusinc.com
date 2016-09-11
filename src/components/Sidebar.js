@@ -10,13 +10,13 @@ const navigate = ev => {
 
 const Sidebar = props => {
   const state = props;
-  const {categories, session} = props;
+  const {categories, displayName} = props;
   const current = props.params && props.params.category;
   if (window.innerWidth > 800) {
     return (
       <div id="sidenav">
         <ul>
-          Welcome<br/> {session.username}
+          Welcome<br/> {displayName}
           <hr/>
           <li>
             <Link to='/' className={!current
@@ -53,7 +53,15 @@ const Sidebar = props => {
   }
 };
 
-const mapStatetoProps = (store, ownProps) => ({isAuth: store.session.isAuth, isLoading: store.session.isLoading, session: store.session, categories: store.categories});
+const mapStatetoProps = (store, ownProps) => {
+  return ({
+    isAuth: store.session.isAuth,
+    isLoading: store.session.isLoading,
+    session: store.session,
+    categories: store.categories,
+    displayName: store.session.firstName || store.session.username
+  })
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   logout: () => dispatch({type: 'LOGOUT_REQUEST'})
@@ -61,5 +69,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 const ConnectedSidebar = connect(mapStatetoProps, mapDispatchToProps)(Sidebar)
 
-export default ConnectedSidebar;
 export {ConnectedSidebar as Sidebar};
