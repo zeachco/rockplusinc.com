@@ -1,5 +1,4 @@
 import React from 'react';
-import {Mesure, Mass} from './metric';
 import Details from './Details';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
@@ -11,11 +10,7 @@ export const Item = props => {
     labels,
     code,
     price,
-    name,
-    width,
-    height,
-    depth,
-    weight
+    name
   } = props;
 
   const showBackorder = !!(+ labels.backorder);
@@ -40,10 +35,6 @@ export const Item = props => {
         <div className="side_item" style={{
           float: 'right'
         }}>
-          <Mesure value={width}/><br/>
-          <Mesure value={height}/><br/>
-          <Mesure value={depth}/><br/>
-          <Mass value={weight}/><br/>
         </div>
         <span>
           <small>
