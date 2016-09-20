@@ -2,10 +2,10 @@
   margin: 30px auto 0;
   background: url('../img/login_lt.png') left top no-repeat;
   text-align: left;
-  position: fixed;
+  // position: fixed;
   top: 30%;
-  left: 5%;
-  right: 5%;
+  display: inline-block;
+  max-width: 600px;
 
   form {
     padding: 60px;
@@ -16,6 +16,7 @@
     display: inline-block;
     margin-bottom: 5px;
     white-space: nowrap;
+
     input {
       padding: 0.5em 1em;
       background: #eee;
@@ -26,6 +27,7 @@
   @media (max-width: 640px) {
     label {
       display: block;
+
       input {
         display: block;
       }
@@ -39,7 +41,7 @@
     background: #eee;
     border: 1px solid gray;
     border-radius: 3px;
-    float:right;
+    float: right;
 
     &:hover {
       background: #fff;
