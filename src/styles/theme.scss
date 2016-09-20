@@ -6,6 +6,7 @@
 @import "sidebar";
 @import "footer";
 @import "items";
+@import "login";
 @import "item-details";
 
 body {
@@ -148,25 +149,6 @@ table tr.provider td {
 table tr.url td {
   background: #F40;
   color: #FFF;
-}
-div#login {
-  width: 50%;
-  min-width: 700px;
-  margin: 30px auto 0;
-  background: url('../img/login_lt.png') left top no-repeat;
-  text-align: center;
-  position: fixed;
-  top: 30%;
-  left: 50px;
-  right: 50px;
-}
-div#login form {
-  padding: 80px;
-  background: url('../img/login_rb.png') right bottom no-repeat;
-}
-div#login label {
-  display: inline-table;
-  padding: 10px;
 }
 
 ul#admin_bar {

@@ -43,10 +43,5 @@ class Products extends React.Component {
 }
 
 const mapStatetoProps = (store, ownProps) => ({items: store.items});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({});
-
-const ConectedProducts = connect(mapStatetoProps, mapDispatchToProps)(Products);
-
+const ConectedProducts = connect(mapStatetoProps)(Products);
 export {ConectedProducts as Products};
-export default ConectedProducts;

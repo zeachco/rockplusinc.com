@@ -1,6 +1,7 @@
 import React from 'react';
 import store from '../store';
 import axios from 'axios';
+import LoadingImg from '../img/loading.gif';
 import {browserHistory} from 'react-router';
 
 export class Logout extends React.Component {
@@ -27,7 +28,7 @@ export class Logout extends React.Component {
         <form>
           {this.state.loading
             ? (
-              <p><img src="/img/loading.gif" alt="loading..."/>
+              <p><img src={LoadingImg} alt="loading..."/>
                 <i>&nbsp;Login you out...</i>
               </p>
             )

@@ -41,15 +41,16 @@ class LoginPage extends React.Component {
       <form disabled={this.state.loading} onSubmit={this.submit.bind(this)}>
         <p>{this.state.message}</p>
         <p>
-          <label htmlFor="log_user">User :
+          <label htmlFor="log_user">User :&nbsp;
+            <input required size="15" name="user" type="text" autoFocus={true}/>
           </label>
-          <input required size="15" name="user" type="text" autoFocus={true}/>
+
           <label htmlFor="log_pass">
-            Password :
+            Password :&nbsp;
+            <input size="15" required name="pass" type="password"/>
           </label>
-          <input size="15" required name="pass" type="password"/>
-          <input type="submit" value="Login"/>
         </p>
+        <input type="submit" value="Login"/>
       </form>
     );
   }
