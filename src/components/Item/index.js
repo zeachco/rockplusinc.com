@@ -1,17 +1,12 @@
 import React from 'react';
 import Details from './Details';
+import NoImageAvail from '../../img/nopic.png';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export const Item = props => {
 
-  const {
-    _id,
-    labels,
-    code,
-    price,
-    name
-  } = props;
+  const {_id, labels, price, name, imgThumb, imgFull} = props;
 
   const showBackorder = !!(+ labels.backorder);
   const showNewArrival = !!(+ labels.arrival) && !showBackorder;
@@ -34,21 +29,17 @@ export const Item = props => {
         <b>{name}</b><br/>
         <div className="side_item" style={{
           float: 'right'
-        }}>
-        </div>
+        }}></div>
         <span>
           <small>
-            {/* {<img className="png_alpha" alt={code} src={`//rockplusinc.com/img/full/thumbs/_${code}.png`}/>} */}
-            <Details imgClassName={"png_alpha"} src={`//rockplusinc.com/img/full/_${code}.png`} thumbsSrc={`//rockplusinc.com/img/full/thumbs/_${code}.png`} title={name}/>
+            <Details imgClassName={"png_alpha"} src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name}/>
           </small>
         </span><br/>
         2 Per Packs<br/>
         <span className={+ labels.clearance
           ? 'clearance'
           : ''}>
-          {price
-            ? currency(price)
-            : 'no price'}$
+          {!!price && currency(price) + '$'}
         </span><br/>
       </div>
     </div>
