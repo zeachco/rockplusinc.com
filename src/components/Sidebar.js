@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 
 const navigate = ev => {
-  browserHistory.push(ev.target.value);
+  browserHistory.push('/category/' + ev.target.value);
 }
 
 class Sidebar extends Component {
