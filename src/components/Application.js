@@ -4,7 +4,7 @@ import {Header, Footer} from '.';
 export const Application = props => (
   <div>
     <Header/>
-    <div>{props.children}</div>
+    <main>{props.children}</main>
     <Footer/>
   </div>
 );
