@@ -26,6 +26,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "react-skylight": "^0.4.1",
+    "react-visibility-sensor": "^3.4.0",
     "redux": "^3.6.0"
   },
   "eslintConfig": {

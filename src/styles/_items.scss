@@ -1,4 +1,8 @@
 .item {
+  img {
+    transition: opacity 2s;
+  }
+
   .pre-item {
     display: block;
     position: relative;

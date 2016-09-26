@@ -1,10 +1,13 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
+import VisibilitySensor from 'react-visibility-sensor';
+import ImgLoading from '../../../img/spinner2.gif';
 
 class LightBox extends React.Component {
   constructor() {
     super()
     this.state = {
+      isVisible: false,
       loading: true
     };
   }
@@ -24,9 +27,14 @@ class LightBox extends React.Component {
     this.setState({loading: false});
   }
 
+  onVisibleChange(isVisible) {
+    // console.log(this.props.title, isVisible);
+    this.setState({isVisible});
+  }
+
   render() {
     const {thumbsSrc, src, title, imgClassName} = this.props;
-    const {loading} = this.state;
+    const {loading, isVisible} = this.state;
     const bg = {
       'backgroundImage': `url("${loading
         ? thumbsSrc
@@ -35,15 +43,26 @@ class LightBox extends React.Component {
     const classes = `lightboxImg_container ${loading
       ? 'loading'
       : ''}`
+
     return (
-      <div>
-        <img className={imgClassName} src={thumbsSrc} alt={title} onClick={this.open.bind(this)}></img>
-        <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
-          <div className={classes}>
-            <div className="lightboxImg" style={bg}></div>
-          </div>
-        </SkyLight>
-      </div>
+      <VisibilitySensor partialVisibility={true} onChange={isVisible
+        ? () => {}
+        : this.onVisibleChange.bind(this)}>
+        <div>
+          <img className={imgClassName} style={{
+            opacity: isVisible
+              ? 1
+              : 0
+          }} src={isVisible
+            ? thumbsSrc
+            : ImgLoading} alt={title} onClick={this.open.bind(this)}></img>
+          <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
+            <div className={classes}>
+              <div className="lightboxImg" style={bg}></div>
+            </div>
+          </SkyLight>
+        </div>
+      </VisibilitySensor>
     )
   }
 }
