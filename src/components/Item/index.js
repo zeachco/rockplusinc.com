@@ -6,7 +6,7 @@ const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export const Item = props => {
 
-  const {_id, labels, price, name, size, imgThumb, imgFull} = props;
+  const {_id, labels, price, name, size, imgThumb, comment, imgFull} = props;
 
   const showBackorder = !!(+ labels.backorder);
   const showNewArrival = !!(+ labels.arrival) && !showBackorder;
@@ -27,6 +27,7 @@ export const Item = props => {
         {showNewPrice && (<img src={NewPriceImage} className={'itemLabelImg'} alt="New price!" id={_id}/>)}
         <br/>
         <b>{name}</b><br/>
+        <b>{size}</b><br/>
         <div className="side_item" style={{
           float: 'right'
         }}></div>
@@ -35,7 +36,7 @@ export const Item = props => {
             <Details imgClassName={"png_alpha"} src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name}/>
           </small>
         </span><br/>
-      {size}<br/>
+      {comment}<br/>
         <span className={+ labels.clearance
           ? 'clearance'
           : ''}>
