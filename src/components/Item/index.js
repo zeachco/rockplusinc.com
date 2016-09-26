@@ -6,7 +6,7 @@ const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export const Item = props => {
 
-  const {_id, labels, price, name, size, imgThumb, comment, imgFull} = props;
+  const {_id, labels, price, name, size, imgThumb, description, imgFull} = props;
 
   const showBackorder = !!(+ labels.backorder);
   const showNewArrival = !!(+ labels.arrival) && !showBackorder;
@@ -36,7 +36,7 @@ export const Item = props => {
             <Details imgClassName={"png_alpha"} src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name}/>
           </small>
         </span><br/>
-      {comment}<br/>
+      {description}<br/>
         <span className={+ labels.clearance
           ? 'clearance'
           : ''}>
