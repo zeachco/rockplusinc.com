@@ -9,11 +9,13 @@ import {Provider} from 'react-redux';
 import store from './store';
 import {fetchCategories, fetchSession} from './store/actions';
 
-fetchSession();
+fetchSession().then(startApp).catch(startApp);
 fetchCategories();
 
-render((
-  <Provider store={store}>
-    <Routes/>
-  </Provider>
-), document.getElementById('root'));
+function startApp() {
+  render((
+    <Provider store={store}>
+      <Routes/>
+    </Provider>
+  ), document.getElementById('root'));
+}
