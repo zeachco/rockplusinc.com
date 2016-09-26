@@ -17,14 +17,11 @@ class LightBox extends React.Component {
     this.setState({
       loading: !img.complete
     });
-    img.addEventListener('loadprogress', function(e) {
-      this.setState({
-        loadPercent: e.loaded / e.total
-      });
-    });
-    img.addEventListener('load', () => {
-      this.setState({loading: false});
-    });
+    img.addEventListener('load', this.loaded.bind(this));
+  }
+
+  loaded(e) {
+    this.setState({loading: false});
   }
 
   render() {
