@@ -1,7 +1,6 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
-import ImgLoading from '../../../img/spinner2.gif';
 
 class LightBox extends React.Component {
   constructor() {
@@ -55,7 +54,7 @@ class LightBox extends React.Component {
               : 0
           }} src={isVisible
             ? thumbsSrc
-            : ImgLoading} alt={title} onClick={this.open.bind(this)}></img>
+            : null} alt={title} onClick={this.open.bind(this)}></img>
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
             <div className={classes}>
               <div className="lightboxImg" style={bg}></div>
