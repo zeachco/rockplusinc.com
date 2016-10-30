@@ -9,7 +9,6 @@
     "prestart": "npm run sass",
     "sass": "node-sass src/styles/theme.scss src/styles/style.css",
     "test": "react-scripts test --env=jsdom --watchAll",
-    "eject": "react-scripts eject",
     "deploy": "fly default"
   },
   "proxy": "http://rockplusinc.com.dev:8080",
