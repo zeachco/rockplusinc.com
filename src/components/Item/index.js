@@ -33,7 +33,7 @@ export const Item = props => {
         }}></div>
         <span>
           <small>
-            <Details imgClassName={"png_alpha"} src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name}/>
+            <Details imgClassName={"png_alpha"} src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name} {...props}/>
           </small>
         </span><br/>
       {description}<br/>
