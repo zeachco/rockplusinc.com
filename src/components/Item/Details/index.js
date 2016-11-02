@@ -2,6 +2,8 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 
+const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
 class LightBox extends React.Component {
   constructor() {
     super()
@@ -32,7 +34,7 @@ class LightBox extends React.Component {
   }
 
   render() {
-    const {thumbsSrc, src, title, imgClassName} = this.props;
+    const {thumbsSrc, src, title, imgClassName, price, name, size, code, description} = this.props;
     const {loading, isVisible} = this.state;
     const bg = {
       'backgroundImage': `url("${loading
@@ -56,6 +58,14 @@ class LightBox extends React.Component {
             ? thumbsSrc
             : null} alt={title} onClick={this.open.bind(this)}></img>
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
+          <div className={'info'}>
+            <h3>Details</h3>
+            <p>Name: {name}</p>
+            <p>Code: {code}</p>
+            <p>Size: {size}</p>
+            <p>Price: {currency(price) + '$'}</p>
+            <p>Description: {description}</p>
+          </div>
             <div className={classes}>
               <div className="lightboxImg" style={bg}></div>
             </div>
@@ -65,7 +75,5 @@ class LightBox extends React.Component {
     )
   }
 }
-
-LightBox.displayName = 'LightBox';
 
 export default LightBox;
