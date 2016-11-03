@@ -60,11 +60,30 @@ class LightBox extends React.Component {
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
           <div className={'info'}>
             <h3>Details</h3>
-            <p>Name: {name}</p>
-            <p>Code: {code}</p>
-            <p>Size: {size}</p>
-            <p>Price: {currency(price) + '$'}</p>
-            <p>Description: {description}</p>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Name:</td>
+                  <td>{name}</td>
+                </tr>
+                <tr>
+                  <td>Code:</td>
+                  <td>{code}</td>
+                </tr>
+                <tr>
+                  <td>Size:</td>
+                  <td>{size}</td>
+                </tr>
+                <tr>
+                  <td>Price:</td>
+                  <td>{currency(price) + '$'}</td>
+                </tr>
+                <tr>
+                  <td>Description:</td>
+                  <td>{description}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
             <div className={classes}>
               <div className="lightboxImg" style={bg}></div>
