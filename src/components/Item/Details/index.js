@@ -58,7 +58,7 @@ class LightBox extends React.Component {
             ? thumbsSrc
             : null} alt={title} onClick={this.open.bind(this)}></img>
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
-          <div className={'info'}>
+          <div className="info">
             <h3>Details</h3>
             <p>Name: {name}</p>
             <p>Code: {code}</p>
