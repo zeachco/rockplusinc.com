@@ -47,9 +47,9 @@ img.backorder {
   border-radius: 8px !important;
   color: #666!important;
   max-height: $maxImgWidth !important;
-  width: $maxImgWidth !important;
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  @media all and (max-width: $maxImgWidth + 50) {
+  width: $maxImgWidth *1.25 !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  @media all and (max-width: $maxImgWidth + 265) {
     margin-left: 0 !important;
     left: 1% !important;
     width: 98% !important;
@@ -58,6 +58,7 @@ img.backorder {
 
   .lightboxImg_container {
     @extend .lightBoxImageSpecs;
+    width: 50%;
 
     .lightboxImg {
       @extend .lightBoxImageSpecs;
@@ -91,6 +92,21 @@ img.backorder {
       .lightboxImg {
         -webkit-filter: blur(6px) grayscale(50%);
       }
+    }
+  }
+  .info{
+    position: absolute;
+    right: 10px;
+    margin: 0 10px;
+    padding: 0 5px 10px 5px;
+    width: 45%;
+    text-align: left;
+    font-weight: 700;
+    color: black;
+    text-shadow: 0 0 1px white;
+
+    h3{
+      text-align: center;
     }
   }
 }
