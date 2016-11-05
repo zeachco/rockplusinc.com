@@ -3,12 +3,13 @@ import {Link} from 'react-router';
 import {Search} from '.';
 import {connect} from 'react-redux';
 import HeaderLogo from '../img/headerLogo.png';
+import Cart from './Cart';
 
 const year = new Date().getFullYear();
 
 const Header = ({isAuth}) => (
   <div>
-    {isAuth && (<Search/>)}
+    {isAuth && (<div><Search/><Cart/></div>)}
     <Link to='/'>
       <div id='header'>
         <div className='edition'>{new Array(20).fill(0).map((a, i) => (

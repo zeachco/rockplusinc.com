@@ -49,7 +49,7 @@ class LightBox extends React.Component {
       <VisibilitySensor partialVisibility={true} onChange={isVisible
         ? () => {}
         : this.onVisibleChange.bind(this)}>
-        <div>
+        <div className="item-detail">
           <img className={imgClassName} style={{
             opacity: isVisible
               ? 1

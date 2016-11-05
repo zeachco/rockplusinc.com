@@ -17,7 +17,6 @@ export class Search extends React.Component {
     this.setState({loading: false});
     if (this.word) {
       browserHistory.push('/search/' + this.word);
-      // console.log(`will search for "${this.word}"...`);
     }
   }
   onType(e) {
