@@ -13,8 +13,6 @@ img.backorder {
 }
 
 .addToCart {
-  // margin: 2px;
-  // padding: 3px 5px 0;
   position: absolute;
   bottom: 15px;
   right: 15px;
@@ -31,10 +29,6 @@ img.backorder {
     &:active {
       filter:contrast(200%) drop-shadow( 1px 1px 2px black);
     }
-  }
-
-  img {
-    max-height: 35px;
   }
 }
 
@@ -148,7 +142,9 @@ img.backorder {
     }
 
     .addToCart{
-      
+      img{
+        max-height: 40px !important;
+      }
     }
   }
 }
