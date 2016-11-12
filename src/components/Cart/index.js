@@ -17,8 +17,15 @@ export class Cart extends React.Component {
     this.refs.customDialog.show();
   }
 
-  render() {
+  sendOrder() {
+    //send order by e-mail
+    console.log('Order sent');
+    //clear cart
+    this.refs.customDialog.hide();
+  }
 
+  render() {
+    var total = 0;
     var items = [
       {
         _id : '001',
@@ -76,9 +83,9 @@ export class Cart extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Code</th> {/* code + loupe(img/link) */}
+              <th>Code</th>{/* code + loupe(img/link) */}
               <th>Price</th>
-              <th>Quantity</th> {/* Qty + [+][-] */}
+              <th>Quantity</th>{/* Qty + [+][-] */}
               <th>SubTotal</th>
               <th>Remove</th>
             </tr>
@@ -89,11 +96,17 @@ export class Cart extends React.Component {
                   <td>{i.code}</td>
                   <td>{currency(i.price) + '$'}</td>
                   <td>{i.quantity}<AnR id={i._id}/></td>
-                  <td>{currency(i.price * i.quantity) + '$'}</td> {/* subtotal */}
+                  <td>{currency(i.price * i.quantity) + '$'}</td>
                   <td><Remove id={i._id}/></td>
                 </tr>
               ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td>Total = {currency(total) + '$'}</td>
+              <td><button onClick={this.sendOrder.bind(this)}>Send order</button></td>
+            </tr>
+          </tfoot>
         </table>
         </SkyLight>
       </span>
