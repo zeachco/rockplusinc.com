@@ -14,7 +14,6 @@ export class Remove extends React.Component{
       </div>
     );
   }
-
 };
 
 export default Remove;

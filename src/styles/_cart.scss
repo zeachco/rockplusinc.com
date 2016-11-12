@@ -3,6 +3,7 @@
   top: 18px;
   right: 230px;
   width: 30px;
+
   &:hover{
     cursor: pointer;
     filter: drop-shadow(2px 2px #28c800);
@@ -23,7 +24,53 @@
   animation: modal 0.2s linear;
   border-radius: 8px !important;
   color: #666!important;
-  // max-height: $maxImgWidth !important;
-  // max-width: $maxImgWidth !important;
+  font-weight: 700;
+  color: black;
+  text-shadow: 0 0 1px white;
   background-color: rgba(255, 255, 255, 0.8) !important;
+
+  table {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+    padding-left: 10px;
+
+    thead{
+      float: left;
+      padding-right: 18px;
+      width: 97%;
+    }
+    tbody{
+      float: left;
+      overflow: auto;
+      height: 300px;
+      width: 100%;
+    }
+    tr {
+        width: 100%;
+        display: table;
+        text-align: center;
+    }
+    th{
+      font-weight: 900;
+    }
+    th, td {
+        width: 18%;
+        vertical-align: center;
+        padding: 2px;
+        margin: 0;
+        border-bottom: solid 1px #cccccc;
+    }
+    img{
+        max-height: 2em;
+        cursor: pointer;
+    }
+  }
+
+  @media all and (max-width: $maxImgWidth + 265) {
+    margin-left: 0 !important;
+    left: 1% !important;
+    width: 98% !important;
+    // height: 90% !important;
+  }
 }

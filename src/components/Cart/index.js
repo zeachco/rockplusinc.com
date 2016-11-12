@@ -80,7 +80,7 @@ export class Cart extends React.Component {
               <th>Price</th>
               <th>Quantity</th> {/* Qty + [+][-] */}
               <th>SubTotal</th>
-              <th>Remove</th> {/* [x] remove from cart */}
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -88,8 +88,8 @@ export class Cart extends React.Component {
                 <tr key={i._id}>
                   <td>{i.code}</td>
                   <td>{currency(i.price) + '$'}</td>
-                  <td>{i.quantity}<AnR /></td>
-                  <td>{currency(10) + '$'}</td> {/* subtotal */}
+                  <td>{i.quantity}<AnR id={i._id}/></td>
+                  <td>{currency(i.price * i.quantity) + '$'}</td> {/* subtotal */}
                   <td><Remove id={i._id}/></td>
                 </tr>
               ))}

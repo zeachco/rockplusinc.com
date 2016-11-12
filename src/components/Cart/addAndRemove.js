@@ -8,9 +8,9 @@ export class AnR extends React.Component{
 
   render() {
     return (
-      <div onClick={this.handleClick.bind(this)}>
-
-      </div>
+      <span onClick={this.handleClick.bind(this)}>
+        
+      </span>
     );
   }
 };
