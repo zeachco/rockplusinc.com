@@ -3,6 +3,7 @@ import SkyLight from 'react-skylight';
 import Glyph from '../../img/cart.png';
 import AnR from './addAndRemove';
 import Remove from './remove';
+import {connect} from 'react-redux';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -26,53 +27,6 @@ export class Cart extends React.Component {
 
   render() {
     var total = 0;
-    var items = [
-      {
-        _id : '001',
-        code : 'DT-06',
-        price : 60,
-        quantity : 1,
-      },
-      {
-        _id : '002',
-        code : 'Flag Nazi',
-        price : 10,
-        quantity : 100,
-      },{
-        _id : '003',
-        code : 'DT-06',
-        price : 60,
-        quantity : 1,
-      },
-      {
-        _id : '012',
-        code : 'Flag Nazi',
-        price : 10,
-        quantity : 100,
-      },{
-        _id : '021',
-        code : 'DT-06',
-        price : 60,
-        quantity : 1,
-      },
-      {
-        _id : '032',
-        code : 'Flag Nazi',
-        price : 10,
-        quantity : 100,
-      },{
-        _id : '041',
-        code : 'DT-06',
-        price : 60,
-        quantity : 1,
-      },
-      {
-        _id : '52',
-        code : 'Flag Nazi',
-        price : 10,
-        quantity : 100,
-      }
-    ];
 
     return (
       <span className='cart-modal'>
@@ -91,15 +45,17 @@ export class Cart extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {items.map(i => (
-                <tr key={i._id}>
-                  <td>{i.code}</td>
-                  <td>{currency(i.price) + '$'}</td>
-                  <td>{i.quantity}<AnR id={i._id}/></td>
-                  <td>{currency(i.price * i.quantity) + '$'}</td>
-                  <td><Remove id={i._id}/></td>
-                </tr>
-              ))}
+            {
+              this.props.cart.map(i => (
+                  <tr key={i.id}>
+                    <td>{i.code}</td>
+                    <td>{currency(i.price) + '$'}</td>
+                    <td>{i.quantity}<AnR id={i._id}/></td>
+                    <td>{currency(i.price * i.quantity) + '$'}</td>
+                    <td><Remove id={i._id}/></td>
+                  </tr>
+                ))
+            }
           </tbody>
           <tfoot>
             <tr>
@@ -114,4 +70,10 @@ export class Cart extends React.Component {
   }
 };
 
-export default Cart;
+var mapStateToProps = (store) => {
+  return{
+    cart: store.cart
+  };
+};
+
+export default connect(mapStateToProps)(Cart);

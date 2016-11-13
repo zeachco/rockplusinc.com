@@ -1,19 +1,14 @@
-const defaultState = {
-  items: {},
-  isLoading: true
-};
-
-const cart = (state = defaultState, action) => {
+const cart = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_CART_START':
+
+    case 'ADD_CART':
       console.log('attempting item to cart', action.payload);
-      return state;
-    case 'ADD_CART_DONE':
-      console.log('added item to cart', action.payload);
-      return state;
-    case 'ADD_CART_FAIL':
-      console.log('failed to add item to cart', action.payload);
-      return state;
+      return state.concat(action.payload);
+
+    case 'REMOVE_CART':
+      console.log('attempting remove item from cart', action.payloa);
+      return state.filter((item) => item.id !== action.payload);
+
     default:
       return state;
   }

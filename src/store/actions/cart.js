@@ -1,40 +1,15 @@
-import axios from 'axios';
-import store from '..';
+// import store from '..';
 
-export function addToCart(itemId) {
-  store.dispatch({
-    type: 'ADD_CART_START'
-  });
-  axios.post('/api/cart' + itemId)
-    .then(xhr => {
-      store.dispatch({
-        type: 'ADD_CART_DONE',
-        payload: xhr.data
-      });
-    })
-    .catch(xhr => {
-      store.dispatch({
-        type: 'ADD_CART_FAIL',
-        payload: xhr
-      });
-    });
+export const addToCart = (item) => {
+  return {
+    type: 'ADD_CART',
+    payload: item
+  }
 };
 
-export function removeFromCart(itemId) {
-  store.dispatch({
-    type: 'REMOVE_CART_START'
-  });
-  axios.delete('/api/cart' + itemId)
-    .then(xhr => {
-      store.dispatch({
-        type: 'REMOVE_CART_DONE',
-        payload: xhr.data // will return count for that object
-      });
-    })
-    .catch(xhr => {
-      store.dispatch({
-        type: 'REMOVE_CART_FAIL',
-        payload: xhr
-      });
-    });
+export const removeFromCart = (item) => {
+  return {
+    type: 'REMOVE_CART',
+    payload: item
+  }
 };

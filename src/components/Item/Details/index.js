@@ -87,7 +87,7 @@ class LightBox extends React.Component {
                   </tr>
                 </tbody>
               </table>
-              <AddToCart/>
+              <AddToCart {...this.props}/>
             </center>
           </div>
           <div className={classes}>

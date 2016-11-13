@@ -1,19 +1,32 @@
 import React from 'react';
-import icon from '../../img/trash.png'
+import icon from '../../img/trash.png';
+import {connect} from 'react-redux';
+// import {removeFromCart} from '../../store/actions';
 
 export class Remove extends React.Component{
 
   handleClick(){
+
     console.log("item removed");
   }
 
   render() {
+
+    const {id} = this.props;
+
     return (
-      <div onClick={this.handleClick.bind(this)}>
+      <div id={id} onClick={this.handleClick.bind(this)}>
         <img src={icon} alt="delete"/>
       </div>
     );
   }
 };
 
-export default Remove;
+var mapStateToProps = (store) => {
+  return{
+    cart: store.cart
+  };
+};
+
+
+export default connect(mapStateToProps)(Remove);

@@ -1,9 +1,15 @@
 import React from 'react';
 import Glyph from '../../../img/cart.png';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addToCart} from '../../../store/actions';
 
-class AddToCart extends React.Component {
+export class AddToCart extends React.Component {
 
   handleClick() {
+    const {_id, code, price} = this.props;
+    const item = {id: _id, code: code, price: price, quantity: 1};
+    this.props.addToCart(item);
     console.log('Added to Cart');
   }
 
@@ -17,4 +23,14 @@ class AddToCart extends React.Component {
   }
 };
 
-export default AddToCart;
+var mapStateToProps = (store) => {
+  return{
+    cart: store.cart
+  };
+};
+
+var matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({addToCart: addToCart}, dispatch)
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(AddToCart);
