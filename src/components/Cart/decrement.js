@@ -9,7 +9,7 @@ export class Decrement extends React.Component{
   handleClick(){
     if(this.props.quantity > 1){
       this.props.updateItemQuantity({
-        code: this.props.code,
+        name: this.props.name,
         quantity: this.props.quantity - 1
       })
     }

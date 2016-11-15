@@ -8,7 +8,7 @@ export class Increment extends React.Component{
 
   handleClick(){
     this.props.updateItemQuantity({
-      code: this.props.code,
+      name: this.props.name,
       quantity: this.props.quantity + 1
     })
   }

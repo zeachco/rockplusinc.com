@@ -7,8 +7,8 @@ import {addToCart} from '../../../store/actions';
 export class AddToCart extends React.Component {
 
   handleClick() {
-    const {_id, code, price} = this.props;
-    const item = {id: _id, code: code, price: price};
+    const {_id, name, code, price, description} = this.props;
+    const item = {id: _id, name: name, code: code, price: price, description:description};
     this.props.addToCart(item);
   }
 

@@ -1,5 +1,3 @@
-// import store from '..';
-
 export const addToCart = (item) => {
   return {
     type: 'ADD_CART',
@@ -18,5 +16,11 @@ export const updateItemQuantity = (item) => {
   return {
     type: 'UDP_CART_QTY',
     payload: item
+  }
+};
+
+export const clearCart = () => {
+  return {
+    type: 'CLEAR_CART'
   }
 };

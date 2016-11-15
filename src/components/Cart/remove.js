@@ -7,7 +7,7 @@ import {removeFromCart} from '../../store/actions';
 export class Remove extends React.Component{
 
   handleClick(){
-    this.props.removeFromCart(this.props.code);
+    this.props.removeFromCart(this.props.name);
   }
 
   render() {

@@ -5,6 +5,8 @@ import Increment from './increment';
 import Decrement from './decrement';
 import Remove from './remove';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {clearCart} from '../../store/actions';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -20,8 +22,16 @@ export class Cart extends React.Component {
 
   sendOrder() {
     //send order by e-mail
-    console.info('Order sent');
-    //clear cart
+    console.info('Order should be sent by the API.');
+    console.info('Order: ', this.props.cart.map((i) => {
+      return {
+          name: i.name || 'N/A',
+          code: i.code || 'N/A',
+          description: i.description || 'N/A',
+          quantity: i.quantity
+        }
+    }));
+    this.props.clearCart();
     this.refs.customDialog.hide();
   }
 
@@ -37,7 +47,8 @@ export class Cart extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Code</th>{/* code + loupe(img/link) */}
+              <th>Name</th>
+              <th>Description</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>SubTotal</th>
@@ -47,17 +58,18 @@ export class Cart extends React.Component {
           <tbody>
             {
               this.props.cart.map((i) => {
-                const {id, code, price, quantity} = i;
+                const {id, name, price, quantity, description} = i;
                 total += (price * quantity)
                 return (
                   <tr key={id}>
-                    <td>{code}</td>
+                    <td>{name || '-'}</td>
+                    <td>{description || '-'}</td>
                     <td>{currency(price) + '$'}</td>
                     <td className="addAndRemove">
-                      <Increment code={code} quantity={quantity}/> {quantity} <Decrement code={code} quantity={quantity}/>
+                      <Increment name={name} quantity={quantity}/> {quantity} <Decrement name={name} quantity={quantity}/>
                     </td>
                     <td>{currency(price * quantity) + '$'}</td>
-                    <td><Remove code={code}/></td>
+                    <td><Remove name={name}/></td>
                   </tr>
                 )
               })
@@ -82,4 +94,8 @@ var mapStateToProps = (store) => {
   };
 };
 
-export default connect(mapStateToProps)(Cart);
+var matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({clearCart: clearCart}, dispatch)
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(Cart);
