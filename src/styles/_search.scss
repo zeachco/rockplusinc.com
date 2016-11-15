@@ -8,6 +8,8 @@ $loading-offset: $search-width - $search-pad*2;
   right: 0;
   font-size: 1em;
   color: black;
+  z-index: 1;
+
   input {
     padding: $search-pad;
     width: $search-width;
