@@ -59,7 +59,7 @@ export class Cart extends React.Component {
             {
               this.props.cart.map((i) => {
                 const {id, name, price, quantity, description} = i;
-                total += (price * quantity)
+                total += (((price > 0) ? price : 0) * quantity)
                 return (
                   <tr key={id}>
                     <td>{name || '-'}</td>
