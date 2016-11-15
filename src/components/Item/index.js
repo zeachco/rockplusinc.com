@@ -42,7 +42,7 @@ export const Item = props => {
           ? 'clearance'
           : ''}>
           {!!price && !showBackorder && (
-            <div>{currency(price) + '$'}<AddToCart {...props}/></div>
+            <div>{currency((price > 0) ? price : 0) + '$'}<AddToCart {...props}/></div>
           )}
         </span><br/>
       </div>

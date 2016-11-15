@@ -79,7 +79,7 @@ class LightBox extends React.Component {
                   </tr>
                   <tr>
                     <td>Price:</td>
-                    <td>{currency(price) + '$'}</td>
+                    <td>{currency((price > 0) ? price : 0) + '$'}</td>
                   </tr>
                   <tr>
                     <td>Description:</td>

@@ -64,11 +64,11 @@ export class Cart extends React.Component {
                   <tr key={id}>
                     <td>{name || '-'}</td>
                     <td>{description || '-'}</td>
-                    <td>{currency(price) + '$'}</td>
+                    <td>{currency((price > 0) ? price : 0) + '$'}</td>
                     <td className="addAndRemove">
                       <Increment name={name} quantity={quantity}/> {quantity} <Decrement name={name} quantity={quantity}/>
                     </td>
-                    <td>{currency(price * quantity) + '$'}</td>
+                    <td>{currency(((price > 0) ? price : 0) * quantity) + '$'}</td>
                     <td><Remove name={name}/></td>
                   </tr>
                 )
