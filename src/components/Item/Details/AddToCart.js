@@ -8,9 +8,8 @@ export class AddToCart extends React.Component {
 
   handleClick() {
     const {_id, code, price} = this.props;
-    const item = {id: _id, code: code, price: price, quantity: 1};
+    const item = {id: _id, code: code, price: price};
     this.props.addToCart(item);
-    console.log('Added to Cart');
   }
 
   render() {

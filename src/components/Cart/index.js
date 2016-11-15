@@ -1,7 +1,8 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 import Glyph from '../../img/cart.png';
-import AnR from './addAndRemove';
+import Increment from './increment';
+import Decrement from './decrement';
 import Remove from './remove';
 import {connect} from 'react-redux';
 
@@ -14,13 +15,12 @@ export class Cart extends React.Component {
   }
 
   handleClick() {
-    console.log('Look at Cart');
     this.refs.customDialog.show();
   }
 
   sendOrder() {
     //send order by e-mail
-    console.log('Order sent');
+    console.info('Order sent');
     //clear cart
     this.refs.customDialog.hide();
   }
@@ -39,22 +39,28 @@ export class Cart extends React.Component {
             <tr>
               <th>Code</th>{/* code + loupe(img/link) */}
               <th>Price</th>
-              <th>Quantity</th>{/* Qty + [+][-] */}
+              <th>Quantity</th>
               <th>SubTotal</th>
               <th>Remove</th>
             </tr>
           </thead>
           <tbody>
             {
-              this.props.cart.map(i => (
-                  <tr key={i.id}>
-                    <td>{i.code}</td>
-                    <td>{currency(i.price) + '$'}</td>
-                    <td>{i.quantity}<AnR id={i._id}/></td>
-                    <td>{currency(i.price * i.quantity) + '$'}</td>
-                    <td><Remove id={i._id}/></td>
+              this.props.cart.map((i) => {
+                const {id, code, price, quantity} = i;
+                total += (price * quantity)
+                return (
+                  <tr key={id}>
+                    <td>{code}</td>
+                    <td>{currency(price) + '$'}</td>
+                    <td className="addAndRemove">
+                      <Increment code={code} quantity={quantity}/> {quantity} <Decrement code={code} quantity={quantity}/>
+                    </td>
+                    <td>{currency(price * quantity) + '$'}</td>
+                    <td><Remove code={code}/></td>
                   </tr>
-                ))
+                )
+              })
             }
           </tbody>
           <tfoot>

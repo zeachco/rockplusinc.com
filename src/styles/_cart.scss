@@ -49,6 +49,19 @@
       overflow: auto;
       height: 250px;
       width: 100%;
+
+      img{
+          max-height: 2em;
+          cursor: pointer;
+      }
+      .addAndRemove{
+        img{
+          vertical-align: middle;
+          max-height: 1.3em;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
     }
     tfoot{
       td{
@@ -79,10 +92,6 @@
         padding: 2px;
         margin: 0;
     }
-    img{
-        max-height: 2em;
-        cursor: pointer;
-    }
   }
 
   @media all and (max-width: $maxImgWidth + 265) {
@@ -90,5 +99,14 @@
     left: 1% !important;
     width: 98% !important;
     font-size: .8em;
+
+    table tbody .addAndRemove{
+      img{
+        vertical-align: middle;
+        max-height: 1em;
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+    }
   }
 }

@@ -13,3 +13,10 @@ export const removeFromCart = (item) => {
     payload: item
   }
 };
+
+export const updateItemQuantity = (item) => {
+  return {
+    type: 'UDP_CART_QTY',
+    payload: item
+  }
+};
