@@ -7,10 +7,12 @@ import {updateItemQuantity} from '../../store/actions';
 export class Decrement extends React.Component{
 
   handleClick(){
-    if(this.props.quantity > 1){
+    var {id, name, quantity} = this.props.item;
+    if(quantity > 1){
       this.props.updateItemQuantity({
-        name: this.props.name,
-        quantity: this.props.quantity - 1
+        id: id,
+        name: name,
+        quantity: quantity - 1
       })
     }
   }

@@ -7,9 +7,11 @@ import {updateItemQuantity} from '../../store/actions';
 export class Increment extends React.Component{
 
   handleClick(){
+    var {id, name, quantity} = this.props.item;
     this.props.updateItemQuantity({
-      name: this.props.name,
-      quantity: this.props.quantity + 1
+      id: id,
+      name: name,
+      quantity: quantity + 1
     })
   }
 

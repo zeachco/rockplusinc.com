@@ -13,7 +13,7 @@ export class AddToCart extends React.Component {
   }
 
   render() {
-    var item = this.props.cart.find((item) => item.name === this.props.name)
+    var item = this.props.cart.find((item) => item.id === this.props._id)
 
     return (
       <div className='addToCart' onClick={this.handleClick.bind(this)}>

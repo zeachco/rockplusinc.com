@@ -66,7 +66,7 @@ export class Cart extends React.Component {
                     <td>{description || '-'}</td>
                     <td>{currency((price > 0) ? price : 0) + '$'}</td>
                     <td className="addAndRemove">
-                      <Increment name={name} quantity={quantity}/> {quantity} <Decrement name={name} quantity={quantity}/>
+                      <Increment item={i}/> {quantity} <Decrement item={i}/>
                     </td>
                     <td>{currency(((price > 0) ? price : 0) * quantity) + '$'}</td>
                     <td><Remove name={name}/></td>

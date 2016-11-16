@@ -13,7 +13,7 @@ const cart = (state = [], action) => {
       return state.filter((item) => item.name !== action.payload);
 
     case 'UDP_CART_QTY':
-      index = state.findIndex((item) => {return item.name === action.payload.name});
+      index = state.findIndex((item) => {return item.id === action.payload.id});
       state[index].quantity = action.payload.quantity;
       return [...state];
 
