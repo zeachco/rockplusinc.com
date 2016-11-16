@@ -6,7 +6,7 @@ import Decrement from './decrement';
 import Remove from './remove';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {clearCart} from '../../store/actions';
+import { clearCart, sendCart } from '../../store/actions';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -22,14 +22,13 @@ export class Cart extends React.Component {
 
   sendOrder() {
     //send order by e-mail
-    console.info('Order should be sent by the API.');
-    console.info('Order: ', this.props.cart.map((i) => {
+    sendCart(this.props.cart.map((i) => {
       return {
-          name: i.name || 'N/A',
-          code: i.code || 'N/A',
-          description: i.description || 'N/A',
-          quantity: i.quantity
-        }
+        name: i.name || 'N/A',
+        code: i.code || 'N/A',
+        description: i.description || 'N/A',
+        quantity: i.quantity
+      }
     }));
     this.props.clearCart();
     this.refs.customDialog.hide();
