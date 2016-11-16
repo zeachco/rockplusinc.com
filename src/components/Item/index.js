@@ -1,6 +1,7 @@
 import React from 'react';
 import Details from './Details';
 import NoImageAvail from '../../img/nopic.png';
+import AddToCart from './Details/AddToCart';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -40,7 +41,9 @@ export const Item = props => {
         <span className={+ labels.clearance
           ? 'clearance'
           : ''}>
-          {!!price && currency(price) + '$'}
+          {!!price && !showBackorder && (
+            <div>{currency((price > 0) ? price : 0) + '$'}<AddToCart {...props}/></div>
+          )}
         </span><br/>
       </div>
     </div>

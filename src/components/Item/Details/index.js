@@ -1,6 +1,7 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
+import AddToCart from './AddToCart';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -49,7 +50,7 @@ class LightBox extends React.Component {
       <VisibilitySensor partialVisibility={true} onChange={isVisible
         ? () => {}
         : this.onVisibleChange.bind(this)}>
-        <div>
+        <div className="item-detail">
           <img className={imgClassName} style={{
             opacity: isVisible
               ? 1
@@ -78,7 +79,7 @@ class LightBox extends React.Component {
                   </tr>
                   <tr>
                     <td>Price:</td>
-                    <td>{currency(price) + '$'}</td>
+                    <td>{currency((price > 0) ? price : 0) + '$'}</td>
                   </tr>
                   <tr>
                     <td>Description:</td>
@@ -86,6 +87,7 @@ class LightBox extends React.Component {
                   </tr>
                 </tbody>
               </table>
+              <AddToCart {...this.props}/>
             </center>
           </div>
           <div className={classes}>
