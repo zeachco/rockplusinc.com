@@ -13,10 +13,12 @@ export class AddToCart extends React.Component {
   }
 
   render() {
+    var item = this.props.cart.find((item) => item.name === this.props.name)
+
     return (
       <div className='addToCart' onClick={this.handleClick.bind(this)}>
-        {this.props.children}
         <img src={Glyph} alt='glyph-cart'/>
+        {(item) ? <span>{item.quantity}</span> : ''}
       </div>
     )
   }
