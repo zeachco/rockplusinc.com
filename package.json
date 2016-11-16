@@ -11,7 +11,7 @@
     "test": "npm run build ; # react-scripts test --env=jsdom --watchAll",
     "deploy": "fly default"
   },
-  "proxy": "http://159.203.2.182:8080",
+  "proxy": "http://rockplusinc.com.localtest.me:8080",
   "devDependencies": {
     "babel-polyfill": "^6.16.0",
     "flightplan": "^0.6.14",
