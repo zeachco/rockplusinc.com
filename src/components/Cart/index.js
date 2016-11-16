@@ -35,7 +35,7 @@ export class Cart extends React.Component {
   }
 
   render() {
-    var total = 0;
+    var total = 0, totalQty = 0;
 
     return (
       <span className='cart-modal'>
@@ -59,6 +59,7 @@ export class Cart extends React.Component {
               this.props.cart.map((i) => {
                 const {id, name, price, quantity, description} = i;
                 total += (((price > 0) ? price : 0) * quantity)
+                totalQty += i.quantity;
                 return (
                   <tr key={id}>
                     <td>{name || '-'}</td>
@@ -77,6 +78,7 @@ export class Cart extends React.Component {
           <tfoot>
             <tr>
               <td>Total = {currency(total) + '$'}</td>
+              <td>for  {totalQty} product(s)</td>
               <td><button onClick={this.sendOrder.bind(this)}>Send order</button></td>
             </tr>
           </tfoot>
