@@ -10,7 +10,6 @@ export class Increment extends React.Component{
     var {id, name, quantity} = this.props.item;
     this.props.updateItemQuantity({
       id: id,
-      name: name,
       quantity: quantity + 1
     })
   }
