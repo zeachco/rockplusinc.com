@@ -1,9 +1,9 @@
+import '!style!css!sass!./styles/theme.scss';
 import 'babel-polyfill';
-import './styles/style.css';
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import Routes from './core/routes';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 // import ga from '../../shared/js/analytics';
 // ga.init('UA-60212730-1');
 
