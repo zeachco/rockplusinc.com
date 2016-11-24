@@ -1,6 +1,5 @@
 $maxImgWidth: 475px;
 $halfMaxImagWidth: $maxImgWidth/2;
-
 .itemLabelImg {
   max-width: 50px;
 }
@@ -12,12 +11,12 @@ img.backorder {
   height: 100px;
 }
 
-.counter{
+.counter {
   position: absolute;
   bottom: 70px;
   right: 15px;
-  
-  span{
+  cursor: pointer;
+  span {
     padding: 5px;
     border: solid 1px #222;
     border-radius: 5px;
@@ -29,18 +28,15 @@ img.backorder {
   position: absolute;
   bottom: 10px;
   right: 15px;
-
   img {
     cursor: pointer;
     max-height: 1.5em !important;
     filter: drop-shadow( 0 0 1px black);
-
     &:hover {
       filter: drop-shadow( 1px 1px 1px black);
     }
-
     &:active {
-      filter:contrast(200%) drop-shadow( 1px 1px 2px black);
+      filter: contrast(200%) drop-shadow( 1px 1px 2px black);
     }
   }
 }
@@ -49,17 +45,16 @@ img.backorder {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes modal {
   0% {
     transform: scale(.9, .8);
     opacity: 0;
   }
-
   100% {
     transform: scale(1, 1);
     opacity: 1;
@@ -89,15 +84,12 @@ img.backorder {
     width: 98% !important;
     height: 90% !important;
   }
-
-  .skylight-close-button{
+  .skylight-close-button {
     color: #ccc;
   }
-
   .lightboxImg_container {
     @extend .lightBoxImageSpecs;
     width: 50%;
-
     .lightboxImg {
       @extend .lightBoxImageSpecs;
       background-size: contain;
@@ -108,7 +100,6 @@ img.backorder {
     $base-line-height: 4em;
     $off-white: #222;
     $white: #fff;
-
     &.loading {
       &:after {
         content: '';
@@ -126,13 +117,12 @@ img.backorder {
         margin-top: $base-line-height / -2;
         margin-left: $base-line-height / -2;
       }
-
       .lightboxImg {
         -webkit-filter: blur(6px) grayscale(50%);
       }
     }
   }
-  .info{
+  .info {
     position: absolute;
     right: 10px;
     margin: 0 10px;
@@ -142,24 +132,20 @@ img.backorder {
     font-weight: 700;
     color: black;
     text-shadow: 0 0 1px white;
-
-    table{
+    table {
       border-spacing: 0;
     }
-
-    td{
-      vertical-align:top;
+    td {
+      vertical-align: top;
       padding: 10px;
       margin: 0;
       border-bottom: solid 1px #cccccc;
     }
-
-    h3{
+    h3 {
       text-align: center;
     }
-
-    .addToCart{
-      img{
+    .addToCart {
+      img {
         max-height: 40px !important;
       }
     }
