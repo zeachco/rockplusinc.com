@@ -11,7 +11,6 @@ export class Decrement extends React.Component{
     if(quantity > 1){
       this.props.updateItemQuantity({
         id: id,
-        name: name,
         quantity: quantity - 1
       })
     }
