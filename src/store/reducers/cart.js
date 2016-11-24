@@ -10,7 +10,7 @@ const cart = (state = [], action) => {
       return state.concat(Object.assign({}, action.payload, {quantity: 1}));
 
     case 'REMOVE_CART':
-      return state.filter((item) => item.name !== action.payload);
+      return state.filter((item) => item.id !== action.payload);
 
     case 'UDP_CART_QTY':
       index = state.findIndex((item) => {return item.id === action.payload.id});
