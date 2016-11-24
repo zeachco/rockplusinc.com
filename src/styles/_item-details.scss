@@ -12,6 +12,7 @@ img.backorder {
 }
 
 .counter {
+  user-select: none;
   position: absolute;
   bottom: 70px;
   right: 15px;

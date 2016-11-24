@@ -6,7 +6,8 @@ import {updateItemQuantity, removeFromCart} from '../../../store/actions';
 
 export class Counter extends React.Component {
 
-  handleClick() {
+  handleClick(e) {
+    e.preventDefault();
     var item = this.props.cart.find((item) => item.id === this.props._id)
     if (item) {
         var {id, quantity} = item;
@@ -24,7 +25,7 @@ export class Counter extends React.Component {
 
   render() {
     var item = this.props.cart.find((item) => item.id === this.props._id)
-    
+
     return (
       <div className='counter' onClick={this.handleClick.bind(this)}>
         {(item) ? <span>{item.quantity}</span> : ''}
