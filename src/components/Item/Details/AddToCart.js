@@ -13,12 +13,9 @@ export class AddToCart extends React.Component {
   }
 
   render() {
-    var item = this.props.cart.find((item) => item.id === this.props._id)
-
     return (
       <div className='addToCart' onClick={this.handleClick.bind(this)}>
         <img src={Glyph} alt='glyph-cart'/>
-        {(item) ? <span>{item.quantity}</span> : ''}
       </div>
     )
   }

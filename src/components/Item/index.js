@@ -2,6 +2,7 @@ import React from 'react';
 import Details from './Details';
 import NoImageAvail from '../../img/nopic.png';
 import AddToCart from './Details/AddToCart';
+import Counter from './Details/counter';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -42,7 +43,7 @@ export const Item = props => {
           ? 'clearance'
           : ''}>
           {!!price && !showBackorder && (
-            <div>{currency((price > 0) ? price : 0) + '$'}<AddToCart {...props}/></div>
+            <div>{currency((price > 0) ? price : 0) + '$'}<AddToCart {...props}/><Counter {...props}/></div>
           )}
         </span><br/>
       </div>

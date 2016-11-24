@@ -2,6 +2,7 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import AddToCart from './AddToCart';
+import Counter from './counter';
 
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
@@ -88,6 +89,7 @@ class LightBox extends React.Component {
                 </tbody>
               </table>
               <AddToCart {...this.props}/>
+              <Counter {...this.props}/>
             </center>
           </div>
           <div className={classes}>
