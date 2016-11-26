@@ -10,10 +10,11 @@ export const Item = props => {
 
   const {_id, labels, price, name, shortDescription, imgThumb, description, imgFull} = props;
 
-  const showBackorder = !!(+ labels.backorder);
-  const showNewArrival = !!(+ labels.arrival) && !showBackorder;
-  const showNew = !!(+ labels.new) && !showBackorder;
-  const showNewPrice = !!(+ labels.price) && !showBackorder;
+  const showBackorder = !!(labels.indexOf('backorder') !== -1);
+  const showNewArrival = !!(labels.indexOf('arrival') !== -1) && !showBackorder;
+  const showNew = !!(labels.indexOf('new') !== -1) && !showBackorder;
+  const showNewPrice = !!(labels.indexOf('price') !== -1) && !showBackorder;
+  const showClearance = !!(labels.indexOf('clearance') !== -1) && !showBackorder;
 
   const NewArrivalImage = require(`../../img/newarrival/new-arrival-${Math.ceil(Math.random() * 4)}.gif`);
   const NewImage = require(`../../img/new/new${Math.ceil(Math.random() * 9)}.gif`);
@@ -39,7 +40,7 @@ export const Item = props => {
           </small>
         </span><br/>
       {description}<br/>
-        <span className={+ labels.clearance
+        <span className={showClearance
           ? 'clearance'
           : ''}>
           {!!price && !showBackorder && (
