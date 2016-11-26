@@ -1,11 +1,22 @@
-const defaultState = [];
-const session = (state = defaultState, action) => {
+const defaultState = {
+  data: [],
+  isLoading: true
+};
+const itemReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case 'LOAD_ITEMS_START':
+      return {
+        isLoading: true,
+        data: [...state.data]
+      };
     case 'LOAD_ITEMS_DONE':
-      return action.payload.data || [];
+      return {
+        isLoading: false,
+        data: action.payload.data || []
+      };
     default:
       return state;
   }
 };
 
-export default session;
+export default itemReducer;

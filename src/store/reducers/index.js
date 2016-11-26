@@ -8,6 +8,6 @@ import cartReducer from './cart';
 export default combineReducers({
   categories: categoriesReducer,
   session: sessionReducer,
-  items: itemReducer,
+  itemReducer,
   cart: cartReducer
 });
