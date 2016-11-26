@@ -49,6 +49,15 @@ class Sidebar extends Component {
             <li>
               <Link to="/logout">logout</Link>
             </li>
+            <li>
+              <Link style={{color: 'red'}} to="/category/new">New Products</Link>
+            </li>
+            <li>
+              <Link style={{color: 'orange'}} to="/category/arrival">New Arrivals</Link>
+            </li>
+            <li>
+              <Link style={{color: 'teal'}} to="/category/clearance">Clearance</Link>
+            </li>
             <hr/> {categories.map(cat => (
               <li key={cat.value}>
                 <Link style={cat.style} className={cat.value === current
