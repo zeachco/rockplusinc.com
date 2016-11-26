@@ -31,7 +31,7 @@ class Products extends React.Component {
       <div>
         <Sidebar {...this.props}/>
         <div id="item_list" style={{
-          transform: isLoading ? 'translateY(100%)': 'none'
+          opacity: isLoading ? 0.1 : 1
         }}>
           {items.map(i => (<Item key={i._id} {...i}/>))}
         </div>
