@@ -15,6 +15,7 @@ class Sidebar extends Component {
       mobile: window.innerWidth <= 800
     };
     this.resize = this._resize.bind(this);
+    this.renderCategory = this.renderCategory.bind(this);
   }
 
   _resize(ev) {
@@ -29,6 +30,19 @@ class Sidebar extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
+  }
+
+  renderCategory(cat) {
+    const current = this.props.params && this.props.params.category;
+    let classes = 'category__'+cat.value;
+    if (cat.value === current) {
+      classes += ' current';
+    }
+    return (
+      <li key={cat.value}>
+        <Link style={cat.style} className={classes} to={`/category/${cat.value}`}>{cat.label}</Link>
+      </li>
+    );
   }
 
   render() {
@@ -58,13 +72,7 @@ class Sidebar extends Component {
             <li>
               <Link style={{color: 'teal'}} to="/category/clearance">Clearance</Link>
             </li>
-            <hr/> {categories.map(cat => (
-              <li key={cat.value}>
-                <Link style={cat.style} className={cat.value === current
-                  ? 'current'
-                  : ''} to={`/category/${cat.value}`}>{cat.label}</Link>
-              </li>
-            ))}
+            <hr/> {categories.map(this.renderCategory)}
           </ul>
         </div>
       );
