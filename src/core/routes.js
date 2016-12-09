@@ -4,6 +4,10 @@ import {Logout, Login, Home, NotFound, Products} from '../pages';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import store from '../store';
 
+browserHistory.listen(location => {
+  window.scrollTo(0, 0);
+});
+
 const requireAuth = (nextState, replace) => {
   const {isAuth, isLoading} = store.getState().session;
   if (!isAuth && !isLoading) {
