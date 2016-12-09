@@ -36,7 +36,7 @@ class LightBox extends React.Component {
   }
 
   render() {
-    const {thumbsSrc, src, title, imgClassName, price, name, shortDescription, code, description} = this.props;
+    const {thumbsSrc, src, title, imgClassName, price, name, shortDescription, description} = this.props;
     const {loading, isVisible} = this.state;
     const bg = {
       'backgroundImage': `url("${loading
@@ -69,10 +69,6 @@ class LightBox extends React.Component {
                   <tr>
                     <td>Name:</td>
                     <td>{name}</td>
-                  </tr>
-                  <tr>
-                    <td>Code:</td>
-                    <td>{code}</td>
                   </tr>
                   {shortDescription && (<tr>
                     <td>Size:</td>
