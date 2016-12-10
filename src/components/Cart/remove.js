@@ -12,9 +12,9 @@ export class Remove extends React.Component{
 
   render() {
     return (
-      <div onClick={this.handleClick.bind(this)}>
+      <span onClick={this.handleClick.bind(this)}>
         <img src={icon} alt="delete"/>
-      </div>
+      </span>
     );
   }
 };

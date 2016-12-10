@@ -30,7 +30,6 @@ $header-nav-height: 2.5em;
       color: rgba(16,128,0,.6);
     }
   }
-  margin-top: 2em;
 }
 
 .header-navigation {
@@ -44,6 +43,7 @@ $header-nav-height: 2.5em;
   right: 0;
   z-index: 7;
   padding: .25em;
+  transition: background .5s;
 
   &.fixed {
     background: rgba(255, 255, 255, .9);

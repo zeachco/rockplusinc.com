@@ -11,97 +11,93 @@ import { clearCart, sendCart } from '../../store/actions';
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export class Cart extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+	constructor() {
+		super();
+		this.state = {};
+		this.handleClick = this.handleClick.bind(this);
+		this.sendOrder = this.sendOrder.bind(this);
+		this.updateNotes = this.updateNotes.bind(this);
+		this.printRow = this.printRow.bind(this);
+	}
 
-  handleClick() {
-    this.refs.customDialog.show();
-  }
+	handleClick() {
+		this.refs.customDialog.show();
+	}
 
-  sendOrder() {
-    //send order by e-mail
-    const preparedItems = this.props.cart.map((i) => {
-      return {
-        name: i.name || 'N/A',
-        code: i.code || 'N/A',
-        description: i.description || 'N/A',
-        quantity: i.quantity
-      }
-    });
+	updateNotes(ev) {
+		this.setState({
+			notes: ev.target.value
+		});
+	}
 
-    sendCart({
-      items: preparedItems,
-      notes: 'test de message'
-    });
-    this.props.clearCart();
-    this.refs.customDialog.hide();
-  }
+	sendOrder() {
+		//send order by e-mail
+		const preparedItems = this.props.cart.map((i) => {
+			return {
+				name: i.name || 'N/A',
+				code: i.code || 'N/A',
+				description: i.description || 'N/A',
+				quantity: i.quantity
+			}
+		});
 
-  render() {
-    var total = 0, totalQty = 0;
+		sendCart({
+			items: preparedItems,
+			notes: this.state.notes
+		});
+		this.props.clearCart();
+		this.refs.customDialog.hide();
+	}
 
-    return (
-      <span className='cart-modal'>
-        <div className='cart' onClick={this.handleClick.bind(this)}>
-          <img src={Glyph} alt='glyph-cart'/>
-        </div>
-        <SkyLight hideOnOverlayClicked ref="customDialog" title='Cart'>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>SubTotal</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.cart.map((i) => {
-                const {id, name, price, quantity, description} = i;
-                total += (((price > 0) ? price : 0) * quantity)
-                totalQty += i.quantity;
-                return (
-                  <tr key={id}>
-                    <td>{name || '-'}</td>
-                    <td>{description || '-'}</td>
-                    <td>{currency((price > 0) ? price : 0) + '$'}</td>
-                    <td className="addAndRemove">
-                      <Increment item={i}/> {quantity} <Decrement item={i}/>
-                    </td>
-                    <td>{currency(((price > 0) ? price : 0) * quantity) + '$'}</td>
-                    <td><Remove id={id}/></td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Total = {currency(total) + '$'}</td>
-              <td>for  {totalQty} product(s)</td>
-              <td><button onClick={this.sendOrder.bind(this)}>Send order</button></td>
-            </tr>
-          </tfoot>
-        </table>
-        </SkyLight>
-      </span>
-    );
-  }
+	printRow(i, index) {
+		const {id, name, price, quantity, description} = i;
+
+		this.total += (((price > 0) ? price : 0) * quantity)
+    this.totalQty += i.quantity;
+
+		return (<div key={index} className="row">
+			{name || '-'}&nbsp;{description || '-'}&nbsp;{currency((price > 0) ? price : 0) + '$'}&nbsp;
+			<span className="addAndRemove">
+				<Increment item={i}/>&nbsp;{quantity}&nbsp;<Decrement item={i}/>
+			</span>
+			{currency(((price > 0) ? price : 0) * quantity) + '$'}&nbsp;<Remove id={id} />
+		</div>);
+	}
+
+	render() {
+		this.total = 0;
+		this.totalQty = 0;
+
+		return (
+			<span className='cart-modal'>
+				<div className='cart' onClick={this.handleClick}>
+					Checkout&nbsp;<img src={Glyph} alt='glyph-cart'/>
+				</div>
+				<SkyLight hideOnOverlayClicked ref="customDialog" title='Checkout'>
+					<div className="scrolling-content">
+						{this.props.cart.map(this.printRow)}
+					</div>
+					<div className="row">
+						<textarea rows="6" onChange={this.updateNotes}
+							placeholder="Notes"></textarea>
+					</div>
+					<div className="row">
+						Total = {currency(this.total) + '$'} for  {this.totalQty} product(s) <button onClick={this.sendOrder}>Send order</button>
+					</div>
+				</SkyLight>
+			</span>
+		);
+	}
 };
 
 var mapStateToProps = (store) => {
-  return{
-    cart: store.cart
-  };
+	return{
+		cart: store.cart
+	};
 };
 
 var matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({clearCart: clearCart}, dispatch)
+	return bindActionCreators({clearCart: clearCart}, dispatch)
 };
 
 const ConnectedCart = connect(mapStateToProps, matchDispatchToProps)(Cart);
