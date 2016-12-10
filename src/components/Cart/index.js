@@ -99,4 +99,5 @@ var matchDispatchToProps = (dispatch) => {
   return bindActionCreators({clearCart: clearCart}, dispatch)
 };
 
-export default connect(mapStateToProps, matchDispatchToProps)(Cart);
+const ConnectedCart = connect(mapStateToProps, matchDispatchToProps)(Cart);
+export {ConnectedCart as Cart};

@@ -2,17 +2,14 @@ $search-width: 160px;
 $search-pad: 6px;
 $loading-offset: $search-width - $search-pad*2;
 #search {
-  background: url('../img/white_shade.png') left top repeat-x;
-  position: fixed;
-  top: 0;
-  right: 0;
   font-size: 1em;
   color: black;
-  z-index: 1;
 
   input {
     padding: $search-pad;
     width: $search-width;
+    margin: 5px;
+/*     flex:  */
     border: 2px solid #eee;
     outline: none;
     border-radius: 3px;
@@ -26,9 +23,5 @@ $loading-offset: $search-width - $search-pad*2;
     &.loading {
       background: white url('../img/loading.gif') $loading-offset center no-repeat;
     }
-  }
-  form {
-    background: url('../img/login_rb.png') right bottom no-repeat;
-    padding: 1em 3em 2em 0;
   }
 }
