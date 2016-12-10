@@ -22,14 +22,19 @@ export class Cart extends React.Component {
 
   sendOrder() {
     //send order by e-mail
-    sendCart(this.props.cart.map((i) => {
+    const preparedItems = this.props.cart.map((i) => {
       return {
         name: i.name || 'N/A',
         code: i.code || 'N/A',
         description: i.description || 'N/A',
         quantity: i.quantity
       }
-    }));
+    });
+
+    sendCart({
+      items: preparedItems,
+      notes: 'test de message'
+    });
     this.props.clearCart();
     this.refs.customDialog.hide();
   }
