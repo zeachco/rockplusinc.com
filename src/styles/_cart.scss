@@ -44,8 +44,7 @@
 		border: 1px pink;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
-		align-items: flex-end;
+		justify-content: flex-end;
 		border-top: 2px solid rgba(100, 100, 100, .3);
 		margin: {
 			left: 1em;
@@ -55,6 +54,10 @@
 		}
 		.addAndRemove {
 			white-space: nowrap;
+		}
+
+		.small-col {
+			min-width: 20%;
 		}
 		img {
 			vertical-align: middle;

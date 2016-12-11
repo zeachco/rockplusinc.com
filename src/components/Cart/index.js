@@ -56,11 +56,19 @@ export class Cart extends React.Component {
     this.totalQty += i.quantity;
 
 		return (<div key={index} className="row">
-			{name || '-'}&nbsp;{description || '-'}&nbsp;{currency((price > 0) ? price : 0) + '$'}&nbsp;
-			<span className="addAndRemove">
+			<span className="small-col">
+				{name || '-'} {description || '-'}
+			</span>
+			<span className="small-col">
+				{currency((price > 0) ? price : 0) + '$'}
+			</span>
+			<span className="addAndRemove small-col">
 				<Increment item={i}/>&nbsp;{quantity}&nbsp;<Decrement item={i}/>
 			</span>
-			{currency(((price > 0) ? price : 0) * quantity) + '$'}&nbsp;<Remove id={id} />
+			<span className="small-col">
+				{currency(((price > 0) ? price : 0) * quantity) + '$'}
+			</span>
+			<Remove id={id} />
 		</div>);
 	}
 
