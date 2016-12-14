@@ -89,8 +89,9 @@ export class Cart extends React.Component {
 						<textarea rows="6" onChange={this.updateNotes}
 							placeholder="Notes"></textarea>
 					</div>
-					<div className="row">
-						Total = {currency(this.total) + '$'} for  {this.totalQty} product(s) <button onClick={this.sendOrder}>Send order</button>
+					<div className="row summary">
+						Total = {currency(this.total) + '$'} for  {this.totalQty} product(s)
+						<button className="btn-cart" onClick={this.sendOrder}>Send order</button>
 					</div>
 				</SkyLight>
 			</span>

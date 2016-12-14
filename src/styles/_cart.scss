@@ -67,6 +67,22 @@
 			cursor: pointer;
 		}
 	}
+	.summary {
+		border-top: none;
+		line-height: 2em;
+		font-size: 1em;
+		.btn-cart {
+			margin: {
+				left: 1em;
+			}
+			padding: {
+				left: 1em;
+				right: 1em;
+				top: .25em;
+				bottom: .25em;
+			}
+		}
+	}
 	textarea {
 		width: 100%;
 		box-sizing: border-box;
