@@ -7,7 +7,7 @@ import Counter from './Details/counter';
 const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export const Item = props => {
-  const {_id, labels, price, name, shortDescription, imgThumb, description, imgFull} = props;
+  const {_id, labels, price, name, shortDescription, imgThumb, imgFull} = props;
 
   const showBackorder = !!(labels.indexOf('backorder') !== -1);
   const showNewArrival = !!(labels.indexOf('arrival') !== -1) && !showBackorder;

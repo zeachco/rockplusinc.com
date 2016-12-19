@@ -24,6 +24,18 @@ export const Home = props => (
         you'll find our competitive pricing policy ensures<br/>
         our clients come first.
       </p>
+      <footer>
+        <p>
+          <a className="button-link" href="mailto:info@rockplusinc.com">info@rockplusinc.com</a><br/>
+          <a className="button-link" href="tel:450-651-6366">phone: 450-651-6366</a><br/>
+          <a className="button-link" href="tel:450-651-3695">fax: 450-651-3695</a><br/>
+          <a className="button-link" href="tel:1-866-651-6366">international: 1-866-651-6366</a>
+        </p>
+        <p>
+          1700 Ch. Chambly, Longueuil
+          Qc, Canada, J4J 3X5
+        </p>
+      </footer>
     </div>
   </div>
 );
