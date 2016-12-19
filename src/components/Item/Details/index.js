@@ -79,8 +79,8 @@ class LightBox extends React.Component {
                     <td>{currency((price > 0) ? price : 0) + '$'}</td>
                   </tr>
                 </tbody>
-                </table>
-              {description}
+              </table>
+              <div className="item_description" dangerouslySetInnerHTML={{__html: description.replace(/\n/g, '<br/>')}}></div>
               <AddToCart {...this.props}/>
               <Counter {...this.props}/>
             </center>
