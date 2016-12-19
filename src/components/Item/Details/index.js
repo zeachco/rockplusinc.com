@@ -78,12 +78,9 @@ class LightBox extends React.Component {
                     <td>Price:</td>
                     <td>{currency((price > 0) ? price : 0) + '$'}</td>
                   </tr>
-                  {description && (<tr>
-                    <td>Description:</td>
-                    <td>{description}</td>
-                  </tr>)}
                 </tbody>
-              </table>
+                </table>
+              {description}
               <AddToCart {...this.props}/>
               <Counter {...this.props}/>
             </center>

@@ -69,22 +69,31 @@ img.backorder {
 }
 
 .item-detail .skylight-dialog {
-  padding: 0 !important;
-  top: 50% !important;
-  left: 50% !important;
-  margin-left: -$halfMaxImagWidth !important;
+  // padding: 0 !important;
+  // top: 50% !important;
+  // left: 50% !important;
+  left: 5% !important;
+  top: 5% !important;
+  right: 5% !important;
+  bottom: 5% !important;
+  width: auto !important;
+  height: auto !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  overflow: auto;
+  // margin-left: -$halfMaxImagWidth !important;
   animation: modal 0.2s linear;
   border-radius: 8px !important;
   color: #666!important;
-  max-height: $maxImgWidth !important;
-  width: $maxImgWidth *1.25 !important;
+  // max-height: $maxImgWidth !important;
+  // width: $maxImgWidth *1.25 !important;
   background-color: rgba(255, 255, 255, 0.9) !important;
-  @media all and (max-width: $maxImgWidth + 265) {
-    margin-left: 0 !important;
-    left: 1% !important;
-    width: 98% !important;
-    height: 90% !important;
-  }
+  // @media all and (max-width: $maxImgWidth + 265) {
+  //   margin-left: 0 !important;
+  //   left: 1% !important;
+  //   width: 98% !important;
+  //   height: 90% !important;
+  // }
   .skylight-close-button {
     color: #ccc;
   }

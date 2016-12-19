@@ -38,7 +38,6 @@ export const Item = props => {
             <Details imgClassName="png_alpha" src={imgFull || NoImageAvail} thumbsSrc={imgThumb || NoImageAvail} title={name} {...props}/>
           </small>
         </span><br/>
-      {description}<br/>
         <span className={showClearance
           ? 'clearance'
           : ''}>
