@@ -56,8 +56,8 @@ export class Cart extends React.Component {
     this.totalQty += i.quantity;
 
 		return (<div key={index} className="row">
-			<span className="small-col">
-				{name || '-'} {description || '-'}
+			<span className="small-col" title={description}>
+				{name || '-'}
 			</span>
 			<span className="small-col">
 				{currency((price > 0) ? price : 0) + '$'}
