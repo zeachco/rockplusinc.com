@@ -4,7 +4,9 @@ import VisibilitySensor from 'react-visibility-sensor';
 import AddToCart from './AddToCart';
 import Counter from './counter';
 
-const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+const currency = n => n
+  .toFixed(2)
+  .replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 class LightBox extends React.Component {
   constructor() {
@@ -16,7 +18,10 @@ class LightBox extends React.Component {
   }
 
   open() {
-    this.refs.customDialog.show();
+    this
+      .refs
+      .customDialog
+      .show();
     let {src} = this.props;
     let img = new Image();
     img.src = src;
@@ -31,12 +36,20 @@ class LightBox extends React.Component {
   }
 
   onVisibleChange(isVisible) {
-    // console.log(this.props.title, isVisible);
     this.setState({isVisible});
   }
 
   render() {
-    const {thumbsSrc, src, title, imgClassName, price, name, shortDescription, description} = this.props;
+    const {
+      thumbsSrc,
+      src,
+      title,
+      imgClassName,
+      price,
+      name,
+      shortDescription,
+      description
+    } = this.props;
     const {loading, isVisible} = this.state;
     const bg = {
       'backgroundImage': `url("${loading
@@ -47,50 +60,70 @@ class LightBox extends React.Component {
       ? 'loading'
       : ''}`
 
+    const listingSrcImg = isVisible
+      ? thumbsSrc
+      : null
+
     return (
-      <VisibilitySensor partialVisibility={true} onChange={isVisible
+      <VisibilitySensor
+        partialVisibility={true}
+        onChange={isVisible
         ? () => {}
-        : this.onVisibleChange.bind(this)}>
+        : this
+          .onVisibleChange
+          .bind(this)}>
         <div className="item-detail">
-          <img className={imgClassName} style={{
+          <img
+            className={imgClassName}
+            style={{
             opacity: isVisible
               ? 1
               : 0
-          }} src={isVisible
-            ? thumbsSrc
-            : null} alt={title} onClick={this.open.bind(this)}></img>
+          }}
+            src={listingSrcImg}
+            alt={title}
+            onClick={this
+            .open
+            .bind(this)}></img>
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
-
-          <div className="info">
-            <h3>Details</h3>
-            <center>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Name:</td>
-                    <td>{name}</td>
-                  </tr>
-                  {shortDescription && (<tr>
-                    <td>Size:</td>
-                    <td>{shortDescription}</td>
-                  </tr>)}
-                  <tr>
-                    <td>Price:</td>
-                    <td>{currency((price > 0) ? price : 0) + '$'}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="item_description" dangerouslySetInnerHTML={{__html: description.replace(/\n/g, '<br/>')}}></div>
-              <AddToCart {...this.props}/>
-              <Counter {...this.props}/>
-            </center>
-          </div>
-          <div className={classes}>
-            <div className="lightboxImg" style={bg}></div>
-          </div>
-        </SkyLight>
-      </div>
-    </VisibilitySensor>
+            <div className="info">
+              <h3>Details</h3>
+              <center>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Name:</td>
+                      <td>{name}</td>
+                    </tr>
+                    {shortDescription && (
+                      <tr>
+                        <td>Size:</td>
+                        <td>{shortDescription}</td>
+                      </tr>
+                    )}
+                    <tr>
+                      <td>Price:</td>
+                      <td>{currency((price > 0)
+                          ? price
+                          : 0) + '$'}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  className="item_description"
+                  dangerouslySetInnerHTML={{
+                  __html: description.replace(/\n/g, '<br/>')
+                }}></div>
+                <AddToCart {...this.props}/>
+                <Counter {...this.props}/>
+              </center>
+            </div>
+            <div className={classes}>
+              <div className="lightboxImg" style={bg}></div>
+            </div>
+          </SkyLight>
+        </div>
+      </VisibilitySensor>
     )
   }
 }
