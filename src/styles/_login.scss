@@ -4,19 +4,16 @@
   text-align: left;
   top: 30%;
   display: inline-block;
-
   .button-link {
     display: inline-block;
     color: #222;
     margin: 0 .5em;
     padding: 0;
   }
-
   form {
     padding: 60px;
     background: url('../img/login_rb.png') right bottom no-repeat;
   }
-
   label {
     display: inline-block;
     padding: {
@@ -24,15 +21,16 @@
       right: 0;
       top: 0;
       bottom: 0;
-    };
+    }
+    ;
     margin: {
       left: 0;
       right: 0;
       top: 0;
       bottom: 5px;
-    };
+    }
+    ;
     white-space: nowrap;
-
     input {
       padding: 0.5em 1em;
       background: #eee;
@@ -48,7 +46,6 @@
       }
     }
   }
-
   [type="submit"] {
     display: inline-block;
     margin: auto;
@@ -57,18 +54,19 @@
     border: 1px solid gray;
     border-radius: 3px;
     float: right;
-
     &:hover {
       background: #fff;
     }
   }
-
   footer {
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
     left: 0;
     right: 0;
+    @media screen and ( min-height: 768px) {
+      position: fixed;
+      bottom: 0;
+    }
     font-size: .9em;
     p {
       margin: 1em;
