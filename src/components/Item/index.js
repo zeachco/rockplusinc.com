@@ -3,20 +3,19 @@ import Details from './Details';
 import NoImageAvail from '../../img/nopic.png';
 import AddToCart from './Details/AddToCart';
 import Counter from './Details/counter';
-
-const currency = n => n
-  .toFixed(2)
-  .replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+import {formula, currency} from '../../core/utils';
 
 export const Item = props => {
   const {
     _id,
     labels,
-    price,
+    getPrice,
     name,
     shortDescription,
+    options = [],
     files
   } = props;
+  const price = getPrice().value;
 
   const showBackorder = !!(labels.indexOf('backorder') !== -1);
   const showNewArrival = !!(labels.indexOf('arrival') !== -1) && !showBackorder;
@@ -68,7 +67,7 @@ export const Item = props => {
                 ? price
                 : 0) + '$'}<AddToCart {...props}/><Counter {...props}/></div>
           )}
-        </span><br/>
+        </span><br />
       </div>
     </div>
   )

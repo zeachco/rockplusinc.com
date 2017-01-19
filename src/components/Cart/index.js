@@ -7,8 +7,7 @@ import Remove from './remove';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { clearCart, sendCart } from '../../store/actions';
-
-const currency = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+import {currency} from '../../core/utils'
 
 export class Cart extends React.Component {
 	constructor() {

@@ -12,7 +12,7 @@ const itemReducer = (state = defaultState, action) => {
     case 'LOAD_ITEMS_DONE':
       return {
         isLoading: false,
-        data: action.payload.data || []
+        data: action.payload || []
       };
     default:
       return state;
