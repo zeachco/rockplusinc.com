@@ -42,12 +42,13 @@ class LightBox extends React.Component {
       src,
       title,
       imgClassName,
-      price,
+      getPrice,
       name,
       shortDescription,
       description
     } = this.props;
     const {loading, isVisible} = this.state;
+    const price = getPrice().value;
     const bg = {
       'backgroundImage': `url("${loading
         ? thumbsSrc
