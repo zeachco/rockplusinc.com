@@ -43,6 +43,7 @@ class LightBox extends React.Component {
       title,
       imgClassName,
       getPrice,
+      options,
       name,
       shortDescription,
       description
@@ -112,6 +113,18 @@ class LightBox extends React.Component {
                   dangerouslySetInnerHTML={{
                   __html: description.replace(/\n/g, '<br/>')
                 }}></div>
+                {options.map(og => (
+                  <div className="item-option-select" key={og.code}>
+                    <label>{og.code}</label>
+                    <select>
+                      {og
+                        .options
+                        .map(o => (
+                          <option value={o.value} key={og.code}>{o.code}</option>
+                        ))}
+                    </select>
+                  </div>
+                ))}
                 <AddToCart {...this.props}/>
                 <Counter {...this.props}/>
               </center>

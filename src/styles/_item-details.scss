@@ -4,6 +4,30 @@ $halfMaxImagWidth: $maxImgWidth/2;
   max-width: 50px;
 }
 
+.item-option-select {
+  text-align: left;
+  margin: 15px 10px;
+  padding: 0;
+  border: 1px solid #ddd;
+  background: #ddd;
+  display: inline-block;
+  border-radius: 5px;
+  label {
+    float: left;
+    padding: 10px 5px;
+  }
+  select {
+    display: inline-block;
+    margin-left: .7em;
+    padding: 12px 15px;
+    background: #eee;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    min-width: 50px;
+  }
+}
+
 img.backorder {
   position: absolute;
   top: 30%;
