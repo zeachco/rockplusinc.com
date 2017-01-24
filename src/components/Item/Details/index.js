@@ -4,8 +4,9 @@ import VisibilitySensor from 'react-visibility-sensor';
 import AddToCart from './AddToCart';
 import Counter from './counter';
 import {currency} from '../../../core/utils'
+import cx from 'classnames';
 
-class LightBox extends React.Component {
+class ItemDetails extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -37,18 +38,16 @@ class LightBox extends React.Component {
   }
 
   render() {
+    const {imgClassName, item, thumbsSrc, src} = this.props;
     const {
-      thumbsSrc,
-      src,
       title,
-      imgClassName,
       getPrice,
       selectOption,
       options,
       name,
       shortDescription,
       description
-    } = this.props;
+    } = item;
     const {loading, isVisible} = this.state;
     const price = getPrice().value;
     const bg = {
@@ -56,9 +55,9 @@ class LightBox extends React.Component {
         ? thumbsSrc
         : src}")`
     };
-    const classes = `lightboxImg_container ${loading
-      ? 'loading'
-      : ''}`
+    const classes = cx('lightboxImg_container', {
+      loading: !!loading
+    });
 
     const listingSrcImg = isVisible
       ? thumbsSrc
@@ -117,7 +116,8 @@ class LightBox extends React.Component {
                 {options.map(og => (
                   <div className="item-option-select" key={og.code}>
                     <label>{og.code}</label>
-                    <select onChange={e => {
+                    <select
+                      onChange={e => {
                       e.preventDefault();
                       selectOption(og.code, e.target.value);
                       this.setState({dynamicPrice: getPrice()});
@@ -130,7 +130,7 @@ class LightBox extends React.Component {
                     </select>
                   </div>
                 ))}
-                <AddToCart {...this.props}/>
+                <AddToCart item={this.props.item}/>
                 <Counter {...this.props}/>
               </center>
             </div>
@@ -144,4 +144,4 @@ class LightBox extends React.Component {
   }
 }
 
-export default LightBox;
+export default ItemDetails;

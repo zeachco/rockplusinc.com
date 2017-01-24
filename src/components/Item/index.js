@@ -3,7 +3,7 @@ import Details from './Details';
 import NoImageAvail from '../../img/nopic.png';
 import AddToCart from './Details/AddToCart';
 import Counter from './Details/counter';
-import {formula, currency} from '../../core/utils';
+import {currency} from '../../core/utils';
 
 export const Item = props => {
   const {
@@ -12,7 +12,6 @@ export const Item = props => {
     getPrice,
     name,
     shortDescription,
-    options = [],
     files
   } = props;
   const price = getPrice().value;
@@ -56,7 +55,7 @@ export const Item = props => {
               src={imgFull}
               thumbsSrc={imgThumb}
               title={name}
-              {...props}/>
+              item={props}/>
           </small>
         </span><br/>
         <span className={showClearance
@@ -67,7 +66,7 @@ export const Item = props => {
                 ? price
                 : 0) + '$'}<AddToCart {...props}/><Counter {...props}/></div>
           )}
-        </span><br />
+        </span><br/>
       </div>
     </div>
   )
