@@ -43,6 +43,7 @@ class LightBox extends React.Component {
       title,
       imgClassName,
       getPrice,
+      selectOption,
       options,
       name,
       shortDescription,
@@ -116,11 +117,15 @@ class LightBox extends React.Component {
                 {options.map(og => (
                   <div className="item-option-select" key={og.code}>
                     <label>{og.code}</label>
-                    <select>
+                    <select onChange={e => {
+                      e.preventDefault();
+                      selectOption(og.code, e.target.value);
+                      this.setState({dynamicPrice: getPrice()});
+                    }}>
                       {og
                         .options
-                        .map(o => (
-                          <option value={o.value} key={og.code}>{o.code}</option>
+                        .map((o, index) => (
+                          <option value={index} key={o.code}>{o.code}</option>
                         ))}
                     </select>
                   </div>
