@@ -11,5 +11,5 @@ export default combineReducers({
   session: sessionReducer,
   itemReducer,
   cart: cartReducer,
-  geometry:  geometryReducer
+  geometry: geometryReducer
 });

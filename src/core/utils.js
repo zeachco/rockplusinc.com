@@ -35,10 +35,3 @@ export function bind(ctx, ...methods) {
     ctx[m] = ctx[m].bind(ctx);
   });
 }
-
-export function currency(n = 0) {
-  if (isNaN(n)) {
-    return '???';
-  }
-  return (+n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-};

@@ -1,21 +1,64 @@
-const cart = (state = [], action) => {
-  switch (action.type) {
+const isSame = (itemA, itemB) => (itemA && itemB && itemA.getCartId() === itemB.getCartId());
+const Item = require('n3000/shared/models/item');
 
+const DefaultState = {
+  visible: true, // should be false
+  notes: '',
+  total: 0,
+  items: []
+};
+
+const copyItemList = items => items.map(item => {
+  const newItem = new Item(item.toJSON());
+  Object.assign(newItem, {
+    quantity: item.quantity,
+    selectedOptions: item.selectedOptions
+  });
+  return newItem;
+})
+
+const cart = (state = DefaultState, {
+  type,
+  payload
+}) => {
+  switch (type) {
     case 'ADD_CART':
-      let index = state.findIndex((item) => {return item.id === action.payload.id});
-      if(index >= 0){
-        state[index].quantity += 1;
-        return [...state];
+      {
+        const newState = Object.assign({}, state);
+        const addition = new Item(payload);
+        newState.total = 0;
+        let found = false;
+        newState.items.forEach(item => {
+          if (isSame(item, addition)) {
+            item.increment();
+            found = true;
+          }
+          newState.total += item.getPrice();
+        });
+        if (!found) {
+          newState.items.push(addition);
+          newState.total += addition.getPrice();
+        }
+        return newState;
       }
-      return state.concat(Object.assign({}, action.payload, {quantity: 1}));
 
     case 'REMOVE_CART':
-      return state.filter((item) => item.id !== action.payload);
+      const removeAll = new Item(payload);
+      return state.filter(item => !isSame(item, removeAll));
 
     case 'UDP_CART_QTY':
-      index = state.findIndex((item) => {return item.id === action.payload.id});
-      state[index].quantity = action.payload.quantity;
-      return [...state];
+      {
+        const newState = Object.assign({}, state);
+        const addition = new Item(payload);
+        newState.total = 0;
+        newState.items.forEach(item => {
+          if (isSame(item, addition)) {
+            item.increment();
+          }
+          newState.total += item.getPrice();
+        });
+        return newState;
+      }
 
     case 'CLEAR_CART':
       return [];

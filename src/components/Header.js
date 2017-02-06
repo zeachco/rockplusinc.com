@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import HeaderLogoImage from '../img/headerLogo.png';
 
 const year = new Date().getFullYear();
@@ -16,7 +16,7 @@ export const Header = () => (
               ? 'green'
               : ''}>{` edition ${year}`}</span>
           ))}</div>
-        <img src={HeaderLogoImage} alt="Rock Plus inc."/>
+        <img src={'/'+HeaderLogoImage} alt="Rock Plus inc."/>
       </div>
     </Link>
   </div>

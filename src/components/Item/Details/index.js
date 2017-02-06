@@ -2,9 +2,8 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import AddToCart from './AddToCart';
-import Counter from './counter';
-import {currency} from '../../../core/utils'
 import cx from 'classnames';
+import { Price } from 'components';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -41,15 +40,13 @@ class ItemDetails extends React.Component {
     const {imgClassName, item, thumbsSrc, src} = this.props;
     const {
       title,
-      getPrice,
-      selectOption,
       options,
       name,
       shortDescription,
       description
-    } = item;
+    } = item.data;
     const {loading, isVisible} = this.state;
-    const price = getPrice().value;
+    const price = item.getPrice();
     const bg = {
       'backgroundImage': `url("${loading
         ? thumbsSrc
@@ -102,9 +99,7 @@ class ItemDetails extends React.Component {
                     )}
                     <tr>
                       <td>Price:</td>
-                      <td>{currency((price > 0)
-                          ? price
-                          : 0) + '$'}</td>
+                      <td><Price value={price} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -119,19 +114,17 @@ class ItemDetails extends React.Component {
                     <select
                       onChange={e => {
                       e.preventDefault();
-                      selectOption(og.code, e.target.value);
-                      this.setState({dynamicPrice: getPrice()});
+                      item.selectOption(og.code, e.target.value);
+                      this.setState({dynamicPrice: item.getPrice()});
                     }}>
                       {og
                         .options
                         .map((o, index) => (
-                          <option value={index} key={o.code}>{o.code}</option>
+                          <option value={o.code} key={o.code}>{o.code}</option>
                         ))}
                     </select>
                   </div>
                 ))}
-                <AddToCart item={this.props.item}/>
-                <Counter {...this.props}/>
               </center>
             </div>
             <div className={classes}>

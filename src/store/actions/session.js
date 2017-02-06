@@ -70,7 +70,7 @@ function profileUpdate(profile) {
     });
 }
 
-module.exports = {
+export default {
   fetchSession,
   login,
   logout,

@@ -3,45 +3,40 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {updateItemQuantity, removeFromCart} from '../../../store/actions';
 
-
 export class Counter extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    var item = this.props.cart.find((item) => item.id === this.props._id)
+    const {item} = this.props;
     if (item) {
-        var {id, quantity} = item;
-        if(quantity > 1){
-        this.props.updateItemQuantity({
-            id: id,
-            quantity: quantity - 1
-        })
-        }
-        else if (quantity <= 1){
-            this.props.removeFromCart(id);
-        }
+      if (quantity > 1)
+        updateItemQuantity(item, quantity - 1)
+      else if (quantity <= 1)
+        removeFromCart(item);
+      }
     }
-  }
 
   render() {
-    var item = this.props.cart.find((item) => item.id === this.props._id)
+    const item = this
+      .props
+      .cart
+      .item
+      .find((item) => item.id === this.props._id)
 
     return (
-      <div className='counter' onClick={this.handleClick.bind(this)}>
-        {(item) ? <span>{item.quantity}</span> : ''}
+      <div
+        className='counter'
+        onClick={this
+        .handleClick
+        .bind(this)}>
+        {(item)
+          ? <span>{item.quantity}</span>
+          : ''}
       </div>
     )
   }
 };
 
-var mapStateToProps = (store) => {
-  return{
-    cart: store.cart
-  };
-};
+var mapStateToProps = store => ({cart: store.cart});
 
-var matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({updateItemQuantity: updateItemQuantity, removeFromCart: removeFromCart}, dispatch)
-};
-
-export default connect(mapStateToProps, matchDispatchToProps)(Counter);
+export default connect(mapStateToProps)(Counter);

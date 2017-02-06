@@ -1,35 +1,32 @@
 import React from 'react';
 import Details from './Details';
-import NoImageAvail from '../../img/nopic.png';
+import NoImageAvail from 'img/nopic.png';
 import AddToCart from './Details/AddToCart';
-import Counter from './Details/counter';
-import {currency} from '../../core/utils';
+import {Price} from 'components';
+// import Counter from './Details/counter';
 
-export const Item = props => {
+export const Item = ({item}) => {
   const {
     _id,
     labels,
-    getPrice,
     name,
     shortDescription,
     files
-  } = props;
-  const price = getPrice().value;
+  } = item.data || item;
+  const price = item.getPrice();
 
-  const showBackorder = !!(labels.indexOf('backorder') !== -1);
-  const showNewArrival = !!(labels.indexOf('arrival') !== -1) && !showBackorder;
-  const showNew = !!(labels.indexOf('new') !== -1) && !showBackorder;
-  const showNewPrice = !!(labels.indexOf('price') !== -1) && !showBackorder;
-  const showClearance = !!(labels.indexOf('clearance') !== -1) && !showBackorder;
+  const showBackorder = item.flag('backorder');
+  const showNewArrival =  item.flag('arrival') && !showBackorder;
+  const showNew = item.flag('new') && !showBackorder;
+  const showNewPrice = item.flag('price') && !showBackorder;
+  const showClearance = item.flag('clearance') && !showBackorder;
 
-  const NewArrivalImage = require(`../../img/newarrival/new-arrival-${Math.ceil(Math.random() * 4)}.gif`);
-  const NewImage = require(`../../img/new/new${Math.ceil(Math.random() * 9)}.gif`);
-  const NewPriceImage = require(`../../img/newprice/new-price-${Math.ceil(Math.random() * 4)}.gif`);
-  const BackorderImage = require('../../img/backorder/bo2.png');
+  const NewArrivalImage = require(`img/newarrival/new-arrival-${Math.ceil(Math.random() * 4)}.gif`);
+  const NewImage = require(`img/new/new${Math.ceil(Math.random() * 9)}.gif`);
+  const NewPriceImage = require(`img/newprice/new-price-${Math.ceil(Math.random() * 4)}.gif`);
+  const BackorderImage = require('img/backorder/bo2.png');
   const imgFull = files[0] || NoImageAvail;
-  const imgThumb = files[0]
-    ? imgFull + '/thumb'
-    : NoImageAvail;
+  const imgThumb = files[0] ? imgFull + '/thumb' : NoImageAvail;
 
   return (
     <div className="item">
@@ -45,9 +42,7 @@ export const Item = props => {
         <br/>
         <b>{name}</b><br/>
         <b>{shortDescription}</b><br/>
-        <div className="side_item" style={{
-          float: 'right'
-        }}></div>
+        <div className="side_item" style={{ float: 'right' }}></div>
         <span>
           <small>
             <Details
@@ -55,21 +50,24 @@ export const Item = props => {
               src={imgFull}
               thumbsSrc={imgThumb}
               title={name}
-              item={props}/>
+              item={item}/>
           </small>
         </span><br/>
         <span className={showClearance
           ? 'clearance'
           : ''}>
           {!!price && !showBackorder && (
-            <div>{currency((price > 0)
-                ? price
-                : 0) + '$'}<AddToCart {...props}/><Counter {...props}/></div>
+            <div><Price value={price} /></div>
           )}
         </span><br/>
       </div>
     </div>
   )
+};
+
+const {object} = React.PropTypes;
+Item.propTypes = {
+  item: object
 };
 
 export default Item;

@@ -10,15 +10,9 @@ const initialState = {
 export const geometryReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'WINDOW_SCROLL':
-      return {
-        ...state,
-        ...action.payload
-      };
+      return Object.assign({}, state, action.payload);
     case 'WINDOW_RESIZE':
-      return {
-        ...state,
-        ...action.payload
-      };
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }

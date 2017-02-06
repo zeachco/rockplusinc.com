@@ -3,12 +3,12 @@ import {Link} from 'react-router';
 import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 
-const navigate = ev => {
-	browserHistory.push('/category/' + ev.target.value);
-}
-
 const Sidebar = ({categories, displayName, isMobile, params}) => {
 	const current = params && params.category;
+
+	const navigate = ev => {
+		browserHistory.push('/category/' + ev.target.value + '2');
+	}
 
 	const renderCategory = cat => {
 		let classes = 'category__' + cat.value;

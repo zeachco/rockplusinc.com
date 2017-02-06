@@ -3,7 +3,7 @@ import store from '..';
 window.addEventListener('scroll', dispatchScroll);
 window.addEventListener('resize', dispatchResize);
 
-function dispatchScroll() {
+export function dispatchScroll() {
   store.dispatch({
     type: 'WINDOW_SCROLL',
     payload: {
@@ -13,7 +13,7 @@ function dispatchScroll() {
   });
 }
 
-function dispatchResize() {
+export function dispatchResize() {
   store.dispatch({
     type: 'WINDOW_RESIZE',
     payload: {

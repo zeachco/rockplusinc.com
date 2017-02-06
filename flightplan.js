@@ -1,4 +1,5 @@
-var plan = require('flightplan');
+const plan = require('flightplan');
+const uuid = require('uuid');
 
 plan.target('default', [{
   // host: '139.59.26.160',
@@ -7,26 +8,25 @@ plan.target('default', [{
   agent: process.env.SSH_AUTH_SOCK
 }]);
 
-const uuid = require('uuid');
 const tmpDir = uuid.v1();
 
 // run commands on localhost
-plan.local(function(local) {
+plan.local((local) => {
   local.log('Copy files to remote hosts');
-  local.exec(`npm run build`);
-  var filesToCopy = local.exec('find build/*', {
+  local.exec('npm run build');
+  const filesToCopy = local.exec('find dist/*', {
     silent: true
   });
   // rsync files to all the target's remote hosts
-  local.transfer(filesToCopy, '/tmp/' + tmpDir);
+  local.transfer(filesToCopy, `/tmp/${tmpDir}`);
 });
 
 // run commands on the target's remote hosts
-plan.remote(function(remote) {
+plan.remote((remote) => {
   const serverDir = '/var/www/rockplusinc.com';
   remote.exec(`rm -rf ${serverDir}`);
   remote.exec(`mkdir -p ${serverDir}`);
-  remote.exec(`cp -R /tmp/${tmpDir}/build/* ${serverDir}`);
-  remote.rm('-rf /tmp/' + tmpDir);
+  remote.exec(`cp -R /tmp/${tmpDir}/dist/* ${serverDir}`);
+  remote.rm(`-rf /tmp/${tmpDir}`);
   remote.exec('find /var/www/rockplusinc.com');
 });

@@ -30,20 +30,23 @@ class Products extends React.Component {
     return (
       <div>
         <Sidebar {...this.props}/>
-        <div id="item_list" style={{
-          opacity: isLoading ? 0.1 : 1
+        <div
+          id="item_list"
+          style={{
+          opacity: isLoading
+            ? 0.1
+            : 1
         }}>
-          {items.map(i => (<Item key={i._id} {...i}/>))}
+          {items.map(i => {
+            return (<Item key={i.getCartId()} item={i}/>)
+          })}
         </div>
       </div>
     );
   }
 }
 
-const mapStatetoProps = store => ({
-  items: store.itemReducer.data,
-  isLoading: store.itemReducer.isLoading
-});
+const mapStatetoProps = store => ({items: store.itemReducer.data, isLoading: store.itemReducer.isLoading});
 
 const ConectedProducts = connect(mapStatetoProps)(Products);
 export {ConectedProducts as Products};

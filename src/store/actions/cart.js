@@ -1,26 +1,28 @@
 import axios from 'axios';
 import store from '..';
 
-export const addToCart = item => ({
-  type: 'ADD_CART',
-  payload: {...item}
-});
+export function addToCart(item) {
+  store.dispatch({
+    type: 'ADD_CART',
+    payload: item
+  });
+}
 
-export const removeFromCart = item => ({
-  type: 'REMOVE_CART',
-  payload: {...item}
-});
+export const cartIncreaseQuantity = cartId => ({  type: 'CART_ITEM_INCREMENT',  cartId });
+export const cartDecreaseQuantity = cartId => ({  type: 'CART_ITEM_INCREMENT',  cartId });
+export const cartRemoveItem = cartId =>({  type: 'REMOVE_CART',  cartId });
 
-export const updateItemQuantity = item => ({
-  type: 'UDP_CART_QTY',
-  payload: { ...item }
-});
-
-export const clearCart = () => {
+export function updateItemQuantity(item, quantity) {
+  item.increment(quantity);
   return {
-    type: 'CLEAR_CART'
-  }
-};
+    type: 'UDP_CART_QTY',
+    payload: item
+  };
+}
+
+export const clearCart = () => ({
+  type: 'CLEAR_CART'
+});
 
 export const sendCart = data => {
   store.dispatch({
