@@ -1,5 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import autoBind from 'auto-bind';
 
 export class Search extends React.Component {
   constructor(...props) {
@@ -8,7 +9,7 @@ export class Search extends React.Component {
     this.state = {
       loading: false
     };
-    ['search', 'onType'].forEach(m => this[m] = this[m].bind(this));
+    autoBind(this);
   }
   componentWillUnmount() {
     clearTimeout(this.timer);
