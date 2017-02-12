@@ -4,6 +4,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 import AddToCart from './AddToCart';
 import cx from 'classnames';
 import { Price } from 'components';
+import autoBind from 'auto-bind';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class ItemDetails extends React.Component {
       isVisible: false,
       loading: true
     };
+    autoBind(this);
   }
 
   open() {
@@ -25,15 +27,15 @@ class ItemDetails extends React.Component {
     this.setState({
       loading: !img.complete
     });
-    img.addEventListener('load', this.loaded.bind(this));
+    img.addEventListener('load', this.loaded);
   }
 
   loaded(e) {
-    this.setState({loading: false});
+    this.setState({ loading: false });
   }
 
-  onVisibleChange(isVisible) {
-    this.setState({isVisible});
+  onVisibleChange( isVisible ) {
+    this.setState({ isVisible });
   }
 
   render() {
@@ -42,13 +44,14 @@ class ItemDetails extends React.Component {
       title,
       options,
       name,
+      code,
       shortDescription,
       description
     } = item.data;
     const {loading, isVisible} = this.state;
     const price = item.getPrice();
     const bg = {
-      'backgroundImage': `url("${loading
+      backgroundImage: `url("${loading
         ? thumbsSrc
         : src}")`
     };
@@ -56,31 +59,22 @@ class ItemDetails extends React.Component {
       loading: !!loading
     });
 
-    const listingSrcImg = isVisible
-      ? thumbsSrc
-      : null
+    const listingSrcImg = isVisible ? thumbsSrc : null;
 
     return (
       <VisibilitySensor
-        partialVisibility={true}
+        partialVisibility
         onChange={isVisible
         ? () => {}
-        : this
-          .onVisibleChange
-          .bind(this)}>
+        : this.onVisibleChange}>
         <div className="item-detail">
           <img
             className={imgClassName}
-            style={{
-            opacity: isVisible
-              ? 1
-              : 0
-          }}
+            style={{ opacity: isVisible ? 1 : 0 }}
             src={listingSrcImg}
             alt={title}
-            onClick={this
-            .open
-            .bind(this)}></img>
+            onClick={this.open}
+          />
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
             <div className="info">
               <h3>Details</h3>
@@ -91,6 +85,10 @@ class ItemDetails extends React.Component {
                       <td>Name:</td>
                       <td>{name}</td>
                     </tr>
+                    {name !== code && (<tr>
+                      <td>Code:</td>
+                      <td>{code}</td>
+                    </tr>)}
                     {shortDescription && (
                       <tr>
                         <td>Size:</td>
@@ -105,9 +103,7 @@ class ItemDetails extends React.Component {
                 </table>
                 <div
                   className="item_description"
-                  dangerouslySetInnerHTML={{
-                  __html: description.replace(/\n/g, '<br/>')
-                }}></div>
+                  dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, '<br/>') }}></div>
                 {options.map(og => (
                   <div className="item-option-select" key={og.code}>
                     <label>{og.code}</label>
@@ -120,7 +116,7 @@ class ItemDetails extends React.Component {
                       {og
                         .options
                         .map((o, index) => (
-                          <option value={o.code} key={o.code}>{o.code}</option>
+                          <option value={o.code} key={`${index}_${o.code}`}>{o.code}</option>
                         ))}
                     </select>
                   </div>
