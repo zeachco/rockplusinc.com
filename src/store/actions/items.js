@@ -1,6 +1,6 @@
+import Item from 'cms-core/src/models/item';
 import axios from 'axios';
 import store from '..';
-import Item from 'n3000/shared/models/item';
 
 export function searchItems(text) {
   fetchItems('/search/' + text);

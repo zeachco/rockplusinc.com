@@ -1,5 +1,5 @@
 const isSame = (itemA, itemB) => (itemA && itemB && itemA.getCartId() === itemB.getCartId());
-const Item = require('n3000/shared/models/item');
+const Item = require('cms-core/src/models/item');
 
 const DefaultState = {
   visible: true, // should be false

@@ -1,5 +1,5 @@
 import React from 'react';
-import { currency } from 'n3000/shared';
+import { currency } from 'cms-core/src/utils';
 
 export const Price = ({ value }) => (
   <span>

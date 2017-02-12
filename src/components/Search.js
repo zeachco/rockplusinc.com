@@ -1,5 +1,5 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
 export class Search extends React.Component {
   constructor(...props) {
@@ -8,16 +8,10 @@ export class Search extends React.Component {
     this.state = {
       loading: false
     };
+    ['search', 'onType'].forEach(m => this[m] = this[m].bind(this));
   }
-  search(e) {
-    if (e) {
-      e.preventDefault();
-    }
+  componentWillUnmount() {
     clearTimeout(this.timer);
-    this.setState({loading: false});
-    if (this.word) {
-      browserHistory.push('/search/' + this.word);
-    }
   }
   onType(e) {
     e.preventDefault();
@@ -25,22 +19,25 @@ export class Search extends React.Component {
     if (this.word) {
       this.setState({loading: true});
       clearTimeout(this.timer);
-      this.timer = setTimeout(this.search.bind(this), 1750);
+      this.timer = setTimeout(this.search, 1750);
     } else {
       this.setState({loading: false});
     }
   }
-  componentWillUnmount() {
+  search(e) {
+    if (e) {
+      e.preventDefault();
+    }
     clearTimeout(this.timer);
+    this.setState({ loading: false });
+    if (this.word) browserHistory.push(`/search/${this.word}`);
   }
   render() {
-    const classes = this.state.loading
-      ? 'loading'
-      : '';
+    const classes = this.state.loading ? 'loading' : '';
     return (
       <div id="search">
-        <form onSubmit={this.search.bind(this)}>
-          <input className={classes} onChange={this.onType.bind(this)} type="text" autoFocus={true} autoComplete={false} name="search" placeholder="search items..."/>
+        <form onSubmit={this.search} >
+          <input className={classes} onChange={this.onType} type="text" autoComplete={false} name="search" placeholder="search items..." />
         </form>
       </div>
     );
