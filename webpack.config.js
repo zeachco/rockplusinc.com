@@ -76,7 +76,7 @@ module.exports = function(env) {
         use: ['style-loader', 'css-loader']
       }, {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!n3000)/,
+        exclude: /node_modules\/(?!cms\-core|auto\-bind)/,
         loader: 'babel-loader',
         query: {
           presets: [
