@@ -2,9 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 
 const sourcePath = path.join(__dirname, './src');
-const staticsPath = path.join(__dirname, './dist');
+const staticsPath = path.join(__dirname, './static');
+const outputPath = path.join(__dirname, './dist');
 
-module.exports = function(env) {
+module.exports = (env) => {
   const nodeEnv = env && env.prod ? 'production' : 'development';
   const isProd = nodeEnv === 'production';
   const plugins = [
@@ -58,7 +59,7 @@ module.exports = function(env) {
       vendor: ['react']
     },
     output: {
-      path: staticsPath,
+      path: outputPath,
       filename: '[name].bundle.js'
     },
     module: {
@@ -96,7 +97,8 @@ module.exports = function(env) {
       extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx', '.scss', '.css'],
       modules: [
         path.resolve(__dirname, 'node_modules'),
-        sourcePath
+        sourcePath,
+        staticsPath
       ]
     },
     plugins,
@@ -111,7 +113,7 @@ module.exports = function(env) {
       }
     },
     devServer: {
-      contentBase: './src',
+      contentBase: staticsPath,
       historyApiFallback: true,
       port: 3000,
       compress: isProd,
