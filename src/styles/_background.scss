@@ -7,7 +7,7 @@
   }
 }
 body {
-  background: transparent url('/img/bulles.png') 150px 0;
+  background: transparent url(../img/bulles.png) 150px 0;
   @media (min-width: 900px) {
     animation: backgroundScroll 90s linear reverse infinite;
   }
