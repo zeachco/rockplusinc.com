@@ -1,7 +1,15 @@
 {
+  "plugins": ["es6-promise", "transform-object-assign"],
   "presets": [
     "es2015",
     "react",
-    "stage-0"
+    ["env", {
+      "targets": {
+        "Edge": "latest",
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }]
   ]
 }
