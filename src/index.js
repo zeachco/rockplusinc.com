@@ -13,6 +13,8 @@ import 'index.html';
 fetchSession().then(startApp).catch(startApp);
 fetchCategories();
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 function startApp() {
   render((
     <Provider store={store}>
