@@ -1,6 +1,6 @@
 const initialState = {
-  scrollX: window.scrollX,
-  scrollY: window.scrollY,
+  scrollX: window.scrollX || window.scrollLeft || Infinity,
+  scrollY: window.scrollY || window.scrollTop || Infinity,
   innerHeight: window.innerHeight,
   innerWidth: window.innerWidth,
   outerHeight: window.outerHeight,

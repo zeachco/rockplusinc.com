@@ -7,8 +7,8 @@ export function dispatchScroll() {
   store.dispatch({
     type: 'WINDOW_SCROLL',
     payload: {
-      scrollX: window.scrollX,
-      scrollY: window.scrollY
+      scrollX: window.scrollX || window.scrollLeft,
+      scrollY: window.scrollY || window.scrollTop
     }
   });
 }
