@@ -1,0 +1,15 @@
+.icon_thickness,
+.icon_icepincher,
+.icon_pearl {
+  content: ' ';
+  width: 2.5em;
+  height: 2.5em;
+  display: block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.icon_thickness { background-image: url(../img/icons/thickness.png); }
+.icon_icepincher { background-image: url(../img/icons/icepincher.png); }
+.icon_pearl { background-image: url(../img/icons/pearl.png); }
