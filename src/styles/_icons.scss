@@ -1,9 +1,12 @@
 .icon_thickness,
 .icon_icepincher,
-.icon_pearl {
+.icon_pearl,
+.icon_diameter,
+.icon_height,
+.icon_sandblast {
   content: ' ';
-  width: 2.5em;
-  height: 2.5em;
+  width: 3em;
+  height: 3em;
   display: inline-block;
   background-size: contain;
   background-position: center center;
@@ -13,3 +16,6 @@
 .icon_thickness { background-image: url(../img/icons/thickness.png); }
 .icon_icepincher { background-image: url(../img/icons/icepincher.png); }
 .icon_pearl { background-image: url(../img/icons/pearl.png); }
+.icon_diameter { background-image: url(../img/icons/diameter.png); }
+.icon_height { background-image: url(../img/icons/height.png); }
+.icon_sandblast { background-image: url(../img/icons/sandblast.png); }
