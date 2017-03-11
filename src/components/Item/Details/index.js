@@ -49,7 +49,7 @@ class ItemDetails extends React.Component {
       description
     } = item.data;
     const {loading, isVisible} = this.state;
-    const price = item.getPrice();
+    const price = item.get('price');
     const bg = {
       backgroundImage: `url("${loading
         ? thumbsSrc
@@ -103,7 +103,8 @@ class ItemDetails extends React.Component {
                 </table>
                 <div
                   className="item_description"
-                  dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, '<br/>') }}></div>
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
                 {options.map(og => (
                   <div className="item-option-select" key={og.code}>
                     <label>{og.code}</label>

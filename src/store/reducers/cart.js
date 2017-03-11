@@ -33,7 +33,7 @@ const cart = (state = DefaultState, {
             item.increment();
             found = true;
           }
-          newState.total += item.getPrice();
+          newState.total += item.get('price');
         });
         if (!found) {
           newState.items.push(addition);
