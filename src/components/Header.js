@@ -16,7 +16,7 @@ export const Header = () => (
               ? 'green'
               : ''}>{` edition ${year}`}</span>
           ))}</div>
-        <img className="rockplus-header-logo" src={`/${HeaderLogoImage}`} alt="Rock Plus inc." />
+        <img className="rockplus-header-logo" src={HeaderLogoImage} alt="Rock Plus inc." />
       </div>
     </Link>
   </div>
