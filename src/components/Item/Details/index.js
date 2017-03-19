@@ -1,7 +1,6 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
-import AddToCart from './AddToCart';
 import cx from 'classnames';
 import { Price } from 'components';
 import autoBind from 'auto-bind';
@@ -39,7 +38,7 @@ class ItemDetails extends React.Component {
   }
 
   render() {
-    const {imgClassName, item, thumbsSrc, src} = this.props;
+    const { imgClassName, item, thumbsSrc, src } = this.props;
     const {
       title,
       options,
@@ -48,7 +47,7 @@ class ItemDetails extends React.Component {
       shortDescription,
       description
     } = item.data;
-    const {loading, isVisible} = this.state;
+    const { loading, isVisible } = this.state;
     const price = item.get('price');
     const bg = {
       backgroundImage: `url("${loading
@@ -66,7 +65,8 @@ class ItemDetails extends React.Component {
         partialVisibility
         onChange={isVisible
         ? () => {}
-        : this.onVisibleChange}>
+        : this.onVisibleChange}
+      >
         <div className="item-detail">
           <img
             className={imgClassName}
@@ -76,61 +76,63 @@ class ItemDetails extends React.Component {
             onClick={this.open}
           />
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
-            <div className="info">
-              <h3>Details</h3>
-              <center>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>Name:</td>
-                      <td>{name}</td>
-                    </tr>
-                    {name !== code && (<tr>
-                      <td>Code:</td>
-                      <td>{code}</td>
-                    </tr>)}
-                    {shortDescription && (
+            <div>
+              <div className="col-half">
+                <div className={classes}>
+                  <div className="lightboxImg" style={bg} />
+                </div>
+              </div>
+              <div className="col-half">
+                <h3>Details</h3>
+                <center>
+                  <table>
+                    <tbody>
                       <tr>
-                        <td>Size:</td>
-                        <td>{shortDescription}</td>
+                        <td>Name:</td>
+                        <td>{name}</td>
                       </tr>
-                    )}
-                    <tr>
-                      <td>Price:</td>
-                      <td><Price value={price} /></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div
-                  className="item_description"
-                  dangerouslySetInnerHTML={{ __html: description }}
-                />
-                {options.map(og => (
-                  <div className="item-option-select" key={og.code}>
-                    <label>{og.code}</label>
-                    <select
-                      onChange={e => {
-                      e.preventDefault();
-                      item.selectOption(og.code, e.target.value);
-                      this.setState({dynamicPrice: item.getPrice()});
-                    }}>
-                      {og
-                        .options
-                        .map((o, index) => (
+                      {name !== code && (<tr>
+                        <td>Code:</td>
+                        <td>{code}</td>
+                      </tr>)}
+                      {shortDescription && (
+                        <tr>
+                          <td>Size:</td>
+                          <td>{shortDescription}</td>
+                        </tr>
+                      )}
+                      <tr>
+                        <td>Price:</td>
+                        <td><Price value={price} /></td>
+                      </tr>
+                      <tr>
+                        <td colSpan={2} className="item_description" dangerouslySetInnerHTML={{ __html: description }} />
+                      </tr>
+                    </tbody>
+                  </table>
+                  {options.map(og => (
+                    <div className="item-option-select" key={og.code}>
+                      <label>{og.code}</label>
+                      <select
+                        onChange={(e) => {
+                          e.preventDefault();
+                          item.selectOption(og.code, e.target.value);
+                          this.setState({dynamicPrice: item.getPrice()});
+                        }}
+                      >
+                        {og.options.map((o, index) => (
                           <option value={o.code} key={`${index}_${o.code}`}>{o.code}</option>
                         ))}
-                    </select>
-                  </div>
-                ))}
-              </center>
-            </div>
-            <div className={classes}>
-              <div className="lightboxImg" style={bg}></div>
+                      </select>
+                    </div>
+                  ))}
+                </center>
+              </div>
             </div>
           </SkyLight>
         </div>
       </VisibilitySensor>
-    )
+    );
   }
 }
 
