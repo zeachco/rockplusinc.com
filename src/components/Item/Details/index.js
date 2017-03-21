@@ -47,8 +47,7 @@ class ItemDetails extends React.Component {
       shortDescription,
       description
     } = item.data;
-    const { loading, isVisible } = this.state;
-    const price = item.get('price');
+    const { loading, isVisible, dynamicPrice = item.getPrice() } = this.state;
     const bg = {
       backgroundImage: `url("${loading
         ? thumbsSrc
@@ -103,7 +102,7 @@ class ItemDetails extends React.Component {
                       )}
                       <tr>
                         <td>Price:</td>
-                        <td><Price value={price} /></td>
+                        <td><Price value={dynamicPrice} /></td>
                       </tr>
                       <tr>
                         <td colSpan={2} className="item_description" dangerouslySetInnerHTML={{ __html: description }} />
@@ -117,7 +116,7 @@ class ItemDetails extends React.Component {
                         onChange={(e) => {
                           e.preventDefault();
                           item.selectOption(og.code, e.target.value);
-                          this.setState({dynamicPrice: item.getPrice()});
+                          this.setState({ dynamicPrice: item.getPrice() });
                         }}
                       >
                         {og.options.map((o, index) => (
