@@ -7,7 +7,7 @@ module.exports = argConfig => wps(Object.assign({
   proxy: {
     '/api/': {
       target: {
-        host: 'rockplus.com',
+        host: 'rockplus.com.dev',
         protocol: 'http',
         port: 8080
       },
