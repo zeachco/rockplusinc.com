@@ -149,17 +149,18 @@ img.backorder {
         border: 0.2rem solid $off-white;
         border-top-color: $white;
         animation: spin 0.8s infinite;
-        shadow-box: 0 0 2px white;
+        box-shadow: 0 0 2px white;
         margin-top: $base-line-height / -2;
         margin-left: $base-line-height / -2;
       }
       .lightboxImg {
-        -webkit-filter: blur(6px) grayscale(50%);
+        filter: blur(6px) grayscale(50%);
       }
     }
   }
   table {
     border-spacing: 0;
+    font-weight: 700;
   }
   td {
     vertical-align: top;
