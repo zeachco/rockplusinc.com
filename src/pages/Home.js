@@ -4,13 +4,10 @@ import {Sidebar} from '../components';
 const year = new Date().getFullYear();
 export const Home = props => (
   <div>
-    <Sidebar/>
+    <Sidebar />
     <div id="home_content">
-      <h1>WE ARE PROUD TO INTRODUCE YOU TO OUR NEW {year}
-        CATALOG</h1>
-      <p>ROCK
-        <font color="#080">PLUS</font>
-        INC. is Canada's number one supplier of quality smoking ustensils.<br/>
+      <h1>WE ARE PROUD TO INTRODUCE YOU TO OUR NEW {year}&nbsp;CATALOG</h1>
+      <p>ROCK&nbsp;<font color="#080">PLUS</font>&nbsp;INC. is Canada&apos;s number one supplier of quality smoking ustensils.<br/>
         We have the biggest selection of smoking accessories in Canada.<br/>
         All our products on this site are 100% legal in Canada.<br/>
         Our experience guaranties competitive prices in an extensive range of unsurpassed quality products.
