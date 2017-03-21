@@ -3,7 +3,7 @@ const wps = require('webpack-production-setup');
 module.exports = argConfig => wps(Object.assign({
   // host: 'rockplus.com',
   hot: true,
-  eslint: false,
+  eslint: true,
   proxy: {
     '/api/': {
       target: {

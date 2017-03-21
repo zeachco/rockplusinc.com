@@ -13,7 +13,7 @@ export const Item = ({item}) => {
     shortDescription,
     files
   } = item.data || item;
-  const price = item.get('price');
+  const price = item.getPrice();
 
   const showBackorder = item.flag('backorder');
   const showNewArrival =  item.flag('arrival') && !showBackorder;

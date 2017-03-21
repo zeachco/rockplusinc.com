@@ -1,5 +1,5 @@
-extends:
-  eslint-config-airbnb
+# extends:
+#   eslint-config-airbnb
 
 parser:
   babel-eslint
@@ -20,6 +20,7 @@ env:
   browser: true
 
 rules:
+  semi: off # TODO warn
   func-style: 0
   func-names: 0
   comma-dangle: 0
@@ -32,3 +33,4 @@ rules:
   import/prefer-default-export: 0
   react/jsx-filename-extension: 0
   react/forbid-prop-types: 0
+  react/sort-comp: warn # TODO error

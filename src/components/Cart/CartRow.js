@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 // import SkyLight from 'react-skylight';
 // import Glyph from 'img/cart.png';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { Price } from 'components';
 import { cartIncreaseQuantity, cartDecreaseQuantity, cartRemoveItem } from 'store/actions';
 

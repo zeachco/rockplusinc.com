@@ -2,7 +2,7 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import cx from 'classnames';
-import { Price } from 'components';
+import { Price } from 'cms-core/src/components/Price/Price';
 import autoBind from 'auto-bind';
 
 class ItemDetails extends React.Component {
@@ -20,8 +20,8 @@ class ItemDetails extends React.Component {
       .refs
       .customDialog
       .show();
-    let {src} = this.props;
-    let img = new Image();
+    const { src } = this.props;
+    const img = new Image();
     img.src = src;
     this.setState({
       loading: !img.complete
@@ -134,5 +134,9 @@ class ItemDetails extends React.Component {
     );
   }
 }
+
+ItemDetails.propTypes = {
+  src: React.PropTypes.string.isRequired
+};
 
 export default ItemDetails;
