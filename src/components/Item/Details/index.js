@@ -3,7 +3,7 @@ import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import cx from 'classnames';
 import { Price } from 'cms-core/src/components/Price/Price';
-import autoBind from 'auto-bind';
+import autoBind from 'auto-bind-es5';
 
 class ItemDetails extends React.Component {
   constructor() {

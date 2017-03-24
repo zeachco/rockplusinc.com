@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import autoBind from 'auto-bind';
+import autoBind from 'auto-bind-es5';
 
 export class Search extends React.Component {
   constructor(...props) {

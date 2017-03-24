@@ -42,13 +42,15 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
-    "webpack-production-setup": "^2.0.0"
+    "webpack-production-setup": "^3.0.0"
   },
   "dependencies": {
-    "auto-bind": "^1.1.0",
+    "auto-bind-es5": "^1.1.0",
     "axios": "^0.15.3",
     "babel-runtime": "^6.23.0",
-    "cms-core": "^0.1.2",
+    "cms-core": "^0.1.5",
+    "install": "^0.8.7",
+    "npm": "^4.4.1",
     "react": "15.4.2",
     "react-autobind": "^1.0.6",
     "react-dom": "15.4.2",
