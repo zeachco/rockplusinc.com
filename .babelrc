@@ -1,16 +1,4 @@
 {
-  "plugins": ["es6-promise", "transform-object-assign"],
-  "presets": [
-    "es2015",
-    "react",
-    ["env", {
-      "targets": {
-        "Edge": "latest",
-        "IE": "10",
-        "browsers": [
-          "last 2 versions"
-        ]
-      }
-    }]
-  ]
+  "presets": ["es2017", "react", "es2015", "stage-0"],
+  "plugins": ["transform-runtime", "transform-decorators-legacy", "transform-class-properties"]
 }

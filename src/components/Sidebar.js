@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 
-const Sidebar = ({categories, displayName, isMobile, params}) => {
+const Sidebar = ({ categories, displayName, isMobile, params }) => {
   const current = params && params.category;
 
   const navigate = (ev) => {
@@ -11,10 +11,9 @@ const Sidebar = ({categories, displayName, isMobile, params}) => {
   };
 
   const renderCategory = cat => {
-    let classes = `category__${cat.value}`;
-    if (cat.value === current) {
-      classes += ' current';
-    }
+    const classes = cx(`category__${cat.value}`, {
+      current: cat.value === current
+    });
     return (
       <li key={cat.value}>
         <Link style={cat.style} className={classes} to={`/category/${cat.value}`}>{cat.label}</Link>
@@ -67,14 +66,21 @@ const Sidebar = ({categories, displayName, isMobile, params}) => {
           },
           ...categories
         ].map(cat => (
-          <option style={cat.style} key={cat.value} value={cat.value}>{cat.label}</option>
+          <option style={cat.style} key={`category_${cat.value}`} value={cat.value}>{cat.label}</option>
         ))}
       </select>
     </div>
   }
 }
 
-const mapStatetoProps = (store, ownProps) => {
+Sidebar.propTypes = {
+  categories: PropTypes.array.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  displayName: PropTypes.string.isRequired,
+  params: PropTypes.object.isRequired
+}
+
+const mapStatetoProps = store => {
   return ({
     isAuth: store.session.isAuth,
     isLoading: store.session.isLoading,
@@ -85,6 +91,4 @@ const mapStatetoProps = (store, ownProps) => {
   })
 };
 
-const ConnectedSidebar = connect(mapStatetoProps)(Sidebar)
-
-export {ConnectedSidebar as Sidebar};
+module.exports = connect(mapStatetoProps)(Sidebar);

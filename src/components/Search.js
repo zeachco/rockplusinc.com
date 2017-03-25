@@ -2,7 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import autoBind from 'auto-bind-es5';
 
-export class Search extends React.Component {
+class Search extends React.Component {
   constructor(...props) {
     super(...props);
     this.word = '';
@@ -45,4 +45,4 @@ export class Search extends React.Component {
   }
 }
 
-export default Search;
+module.exports = Search;

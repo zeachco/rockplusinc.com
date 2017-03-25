@@ -13,12 +13,12 @@ const session = (state = defaultState, action) => {
     case 'SESSION_FETCH_DONE':
       return Object.assign({
         isLoading: false,
-        isAuth: !!action.payload,
+        isAuth: !!action.payload
       }, action.payload);
     case 'SESSION_FETCH_FAIL':
       return {
         isLoading: false,
-        isAuth: false,
+        isAuth: false
       };
     case 'DISCONNECT_START':
       return Object.assign({
@@ -56,4 +56,4 @@ const session = (state = defaultState, action) => {
   }
 };
 
-export default session;
+module.exports = session;

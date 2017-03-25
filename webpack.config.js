@@ -1,8 +1,6 @@
 const wps = require('webpack-production-setup');
 
 module.exports = argConfig => wps(Object.assign({
-  hot: true,
-  eslint: true,
   favicon: 'src/favicon.png',
   proxy: {
     '/api/': {

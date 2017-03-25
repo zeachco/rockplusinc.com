@@ -1,3 +1,5 @@
+import Item from 'cms-core/src/models/item';
+
 const defaultState = {
   data: [],
   isLoading: true
@@ -12,11 +14,11 @@ const itemReducer = (state = defaultState, action) => {
     case 'LOAD_ITEMS_DONE':
       return {
         isLoading: false,
-        data: action.payload || []
+        data: (action.payload || []).map(i => new Item(i))
       };
     default:
       return state;
   }
 };
 
-export default itemReducer;
+module.exports = itemReducer;

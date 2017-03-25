@@ -1,8 +1,8 @@
 import React from 'react';
-import {Sidebar} from '../components';
+import Sidebar from '../components/Sidebar';
 
 const year = new Date().getFullYear();
-export const Home = props => (
+const Home = () => (
   <div>
     <Sidebar />
     <div id="home_content">
@@ -36,3 +36,5 @@ export const Home = props => (
     </div>
   </div>
 );
+
+module.exports = Home;

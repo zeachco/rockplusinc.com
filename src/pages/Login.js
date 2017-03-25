@@ -1,7 +1,7 @@
 import React from 'react';
-import {LoginForm} from '../components';
+import LoginForm from '../components/LoginForm';
 
-const LoginPage = props => (
+const Login = () => (
   <div id="login">
     <LoginForm/>
     <footer>
@@ -22,5 +22,4 @@ const LoginPage = props => (
   </div>
 );
 
-export {LoginPage as Login};
-export default LoginPage;
+module.exports = Login;

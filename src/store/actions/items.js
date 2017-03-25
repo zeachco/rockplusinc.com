@@ -1,23 +1,28 @@
-import Item from 'cms-core/src/models/item';
 import axios from 'axios';
 import store from '..';
 
-export function searchItems(text) {
-  fetchItems('/search/' + text);
-}
-
-export function fetchCategory(category) {
-  fetchItems('/category/' + category);
-}
-
-export function fetchItems(path = '') {
+function fetchItems(path = '') {
   store.dispatch({
     type: 'LOAD_ITEMS_START'
   });
   axios.get('/api/items' + path).then(xhr => {
     store.dispatch({
       type: 'LOAD_ITEMS_DONE',
-      payload: xhr.data.map(i=> new Item(i))
+      payload: xhr.data
     });
   })
 }
+
+function searchItems(text) {
+  fetchItems('/search/' + text);
+}
+
+function fetchCategory(category) {
+  fetchItems('/category/' + category);
+}
+
+module.exports = {
+  searchItems,
+  fetchCategory,
+  fetchItems
+};

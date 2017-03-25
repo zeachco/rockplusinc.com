@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {updateItemQuantity, removeFromCart} from '../../../store/actions';
+import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { updateItemQuantity, removeFromCart } from '../../../store/actions/cart';
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
@@ -37,6 +37,6 @@ export class Counter extends React.Component {
   }
 };
 
-var mapStateToProps = store => ({cart: store.cart});
+const mapStateToProps = store => ({cart: store.cart});
 
-export default connect(mapStateToProps)(Counter);
+module.exports = connect(mapStateToProps)(Counter);

@@ -1,5 +1,5 @@
 const defaultState = [];
-export const categories = (state = defaultState, action) => {
+const categories = (state = defaultState, action) => {
   switch (action.type) {
     case 'FETCH_CATEGORIES_DONE':
       return action.payload;
@@ -8,4 +8,4 @@ export const categories = (state = defaultState, action) => {
   }
 };
 
-export default categories;
+module.exports = categories;

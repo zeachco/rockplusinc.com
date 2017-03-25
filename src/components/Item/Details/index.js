@@ -2,8 +2,9 @@ import React from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import cx from 'classnames';
-import { Price } from 'cms-core/src/components/Price/Price';
 import autoBind from 'auto-bind-es5';
+
+const Price = require('cms-core/src/components/Price/Price');
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -29,7 +30,7 @@ class ItemDetails extends React.Component {
     img.addEventListener('load', this.loaded);
   }
 
-  loaded(e) {
+  loaded() {
     this.setState({ loading: false });
   }
 
@@ -136,7 +137,10 @@ class ItemDetails extends React.Component {
 }
 
 ItemDetails.propTypes = {
-  src: React.PropTypes.string.isRequired
+  src: React.PropTypes.string.isRequired,
+  imgClassName: React.PropTypes.string.isRequired,
+  thumbsSrc: React.PropTypes.string.isRequired,
+  item: React.PropTypes.object.isRequired
 };
 
-export default ItemDetails;
+module.exports = ItemDetails;

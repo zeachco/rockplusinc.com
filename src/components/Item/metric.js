@@ -2,7 +2,7 @@
 import React from 'react';
 import Quantity from 'quantities';
 
-export const Mesure = props => {
+const Mesure = props => {
   if (!props.value) {
     return null;
   }
@@ -18,7 +18,7 @@ export const Mesure = props => {
   );
 };
 
-export const Mass = props => {
+const Mass = props => {
   if (!props.value) {
     return null;
   }
@@ -32,4 +32,9 @@ export const Mass = props => {
       {metric.value.toFixed(1) + ' ' + metric.units}
     </span>
   );
+};
+
+module.exports = {
+  Mesure,
+  Mass
 };

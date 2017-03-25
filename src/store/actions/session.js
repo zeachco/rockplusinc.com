@@ -7,9 +7,9 @@ const {
   dispatch
 } = store;
 
-export function fetchSession() {
+function fetchSession() {
   store.dispatch({
-    type: 'SESSION_FETCH_START',
+    type: 'SESSION_FETCH_START'
   });
   return axios.get('/api/profile/me').then(xhr => {
     store.dispatch({
@@ -22,11 +22,11 @@ export function fetchSession() {
       payload: xhr
     });
   });
-};
+}
 
 function login(username, password) {
   dispatch({
-    type: 'SESSION_FETCHING',
+    type: 'SESSION_FETCHING'
   });
   return axios.post('/api/login', {
     username,
@@ -46,11 +46,11 @@ function login(username, password) {
 
 function logout() {
   dispatch({
-    type: 'DISCONNECT_START',
+    type: 'DISCONNECT_START'
   });
   return axios.delete('/api/logout').then(() => {
     dispatch({
-      type: 'DISCONNECT_DONE',
+      type: 'DISCONNECT_DONE'
     });
     browserHistory.push('/')
   });
@@ -70,7 +70,7 @@ function profileUpdate(profile) {
     });
 }
 
-export default {
+module.exports = {
   fetchSession,
   login,
   logout,

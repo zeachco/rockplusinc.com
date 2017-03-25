@@ -1,7 +1,9 @@
 import React from 'react';
-import {Header, HeaderNavigation} from '.';
 
-export const Application = props => (
+const Header = require('./Header');
+const HeaderNavigation = require('./HeaderNavigation');
+
+const Application = props => (
   <div>
     <HeaderNavigation/>
     <Header/>
@@ -9,4 +11,4 @@ export const Application = props => (
   </div>
 );
 
-export default Application;
+module.exports = Application;

@@ -1,8 +1,9 @@
 import React from 'react';
-import {Sidebar} from '../components';
 import {Link} from 'react-router';
 
-export const NotFound = props => (
+import Sidebar from '../components/Sidebar';
+
+const NotFound = props => (
   <div>
     <Sidebar />
     <div id="home_content">
@@ -12,3 +13,5 @@ export const NotFound = props => (
     </div>
   </div>
 );
+
+module.exports = NotFound;

@@ -1,12 +1,17 @@
 import React from 'react';
-import {Application} from '../components';
-import {Logout, Login, Home, NotFound, Products} from '../pages';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import Application from '../components/Application';
+import Logout from '../pages/Logout';
+import Login from '../pages/Login';
+import Home from '../pages/Home';
+import NotFound from '../pages/NotFound';
+import Products from '../pages/Products';
 import store from '../store';
 
-browserHistory.listen(location => {
-  window.scrollTo(0, 0);
-});
+// const Application = props => <div>test<br/>{props.children}</div>
+
+browserHistory.listen(() => window.scrollTo(0, 0));
 
 const requireAuth = (nextState, replace) => {
   const {isAuth, isLoading} = store.getState().session;
@@ -32,7 +37,7 @@ function MustNotBeLogged(nextState, replace) {
   }
 }
 
-const Routes = props => {
+const Routes = () => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Application}>
@@ -47,5 +52,4 @@ const Routes = props => {
   );
 };
 
-export {Routes};
-export default Routes;
+module.exports = Routes;

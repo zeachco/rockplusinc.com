@@ -1,10 +1,11 @@
 import React from 'react';
-import store from '../store';
 import axios from 'axios';
-import LoadingImg from '../img/loading.gif';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
-export class Logout extends React.Component {
+const store = require ('../store');
+const LoadingImg = require ('../img/loading.gif');
+
+class Logout extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {
@@ -43,4 +44,4 @@ export class Logout extends React.Component {
   }
 }
 
-export default Logout;
+module.exports = Logout;

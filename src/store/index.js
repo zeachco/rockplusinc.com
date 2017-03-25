@@ -1,6 +1,16 @@
-import reducers from './reducers';
-import {createStore} from 'redux';
+import { createStore } from 'redux';
+import { combineReducers } from 'redux';
 
-const store = createStore(reducers);
+import categories from './reducers/categories';
+import session from './reducers/session';
+import itemReducer from './reducers/items';
+import geometry from './reducers/geometry';
 
-export default store;
+const store = createStore(combineReducers({
+  categories,
+  session,
+  itemReducer,
+  geometry
+}));
+
+module.exports = store;

@@ -1,7 +1,9 @@
-import React from 'react';
-import {Sidebar, Item} from '../components';
-import {connect} from 'react-redux';
-import {fetchCategory, searchItems} from '../store/actions';
+import React, { PropTypes } from 'react';
+import { connect} from 'react-redux';
+
+const Sidebar = require('../components/Sidebar');
+const Item = require('../components/Item');
+const { fetchCategory, searchItems } = require('../store/actions/items');
 
 class Products extends React.Component {
   constructor(...props) {
@@ -19,10 +21,11 @@ class Products extends React.Component {
     }
   }
   refresh() {
-    if (this.props.params.category) {
-      fetchCategory(this.props.params.category);
+    const { params } = this.props;
+    if (params.category) {
+      fetchCategory(params.category);
     } else {
-      searchItems(this.props.params.search);
+      searchItems(params.search);
     }
   }
   render() {
@@ -46,7 +49,17 @@ class Products extends React.Component {
   }
 }
 
-const mapStatetoProps = store => ({items: store.itemReducer.data, isLoading: store.itemReducer.isLoading});
+Products.propTypes = {
+  params: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
 
-const ConectedProducts = connect(mapStatetoProps)(Products);
-export {ConectedProducts as Products};
+const mapStatetoProps = store => {
+  return ({
+    items: store.itemReducer.data,
+    isLoading: store.itemReducer.isLoading
+  });
+};
+
+module.exports = connect(mapStatetoProps)(Products);

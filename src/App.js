@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import './styles/theme.scss';
-import store from './store';
-import Routes from './core/routes';
-import { fetchCategories, fetchSession } from './store/actions';
+require('./styles/theme.scss');
+require('./store/actions/geometry'); // watches for resize / scroll
+
+const store = require('./store');
+const Routes = require('./core/routes');
+
+const { fetchCategories } = require('./store/actions/categories');
+const { fetchSession } = require('./store/actions/session');
 
 const disableRightClick = ev => ev.preventDefault();
 
@@ -17,6 +21,9 @@ class App extends Component {
     fetchCategories();
     fetchSession().then(() => {
       this.setState({ loading: false });
+    }).catch(err => {
+      throw err;
+      // this.setState({ loading: false, error: xhr });
     });
     document.addEventListener('contextmenu', disableRightClick);
   }
@@ -24,9 +31,17 @@ class App extends Component {
     document.removeEventListener('contextmenu', disableRightClick);
   }
   render() {
-    if (this.state.loading) return (<div />);
+    const { loading, error} = this.state;
+    if (loading) return (<div>loading...</div>);
+    if (error) return (
+      <div>
+        <h1>500 - An error occured!</h1>
+        <p>please refresh to try again.</p>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
     return (<Provider store={store}><Routes /></Provider>);
   }
 }
 
-export default App;
+module.exports = App;

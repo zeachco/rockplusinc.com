@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
-export const MenuItem = props => {
-	const {style, to, children, selected} = props;
+const MenuItem = ({style, to, children, selected}) => {
 	const target = /[^\/]+$/.exec(to);
 	return (
 		<li>
@@ -18,3 +17,5 @@ export const MenuItem = props => {
 		</li>
 	);
 };
+
+module.exports = MenuItem;

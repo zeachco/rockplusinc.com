@@ -3,7 +3,7 @@ import axios from 'axios';
 import store from '../store';
 import {browserHistory} from 'react-router';
 
-class LoginPage extends React.Component {
+class LoginForm extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {};
@@ -20,7 +20,7 @@ class LoginPage extends React.Component {
         password
       }
     });
-    axios.post('/api/v2/login', {username, password}).then(data => {
+    axios.post('/api/v2/login', {username, password}).then(() => {
       this.setState({message: 'Connected!', loading: false});
       store.dispatch({
         type: 'LOGIN_REQUEST_DONE',
@@ -55,6 +55,4 @@ class LoginPage extends React.Component {
   }
 }
 
-const ConnectedLoginForm = LoginPage;
-export { ConnectedLoginForm as LoginForm };
-export default ConnectedLoginForm;
+module.exports = LoginForm;

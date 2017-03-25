@@ -7,7 +7,7 @@ const initialState = {
   outerWidth: window.outerWidth
 }
 
-export const geometryReducer = (state = initialState, action) => {
+const geometryReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'WINDOW_SCROLL':
       return Object.assign({}, state, action.payload);
@@ -17,3 +17,5 @@ export const geometryReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+module.exports = geometryReducer;

@@ -1,9 +1,6 @@
 import store from '..';
 
-window.addEventListener('scroll', dispatchScroll);
-window.addEventListener('resize', dispatchResize);
-
-export function dispatchScroll() {
+function dispatchScroll() {
   store.dispatch({
     type: 'WINDOW_SCROLL',
     payload: {
@@ -13,7 +10,7 @@ export function dispatchScroll() {
   });
 }
 
-export function dispatchResize() {
+function dispatchResize() {
   store.dispatch({
     type: 'WINDOW_RESIZE',
     payload: {
@@ -24,3 +21,12 @@ export function dispatchResize() {
     }
   });
 }
+
+// add event listeners
+window.addEventListener('scroll', dispatchScroll);
+window.addEventListener('resize', dispatchResize);
+
+module.exports = {
+  dispatchScroll,
+  dispatchResize
+};

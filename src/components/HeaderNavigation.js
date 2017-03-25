@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Search } from 'components';
 import cx from 'classnames';
+
+const Search = require ('./Search');
 
 const HeaderNavigation = ({ isAuth, scrollY }) => (
   <div className={cx('header-navigation', { fixed: scrollY > 3 })} >
@@ -20,6 +21,4 @@ const mapStatetoProps = store => ({
   scrollY: store.geometry.scrollY,
 });
 
-const ConnectedHeaderNavigation = connect(mapStatetoProps)(HeaderNavigation);
-
-export { ConnectedHeaderNavigation as HeaderNavigation };
+module.exports = connect(mapStatetoProps)(HeaderNavigation);
