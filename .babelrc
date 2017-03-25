@@ -6,6 +6,7 @@
     ["env", {
       "targets": {
         "Edge": "latest",
+        "IE": "10",
         "browsers": [
           "last 2 versions"
         ]
