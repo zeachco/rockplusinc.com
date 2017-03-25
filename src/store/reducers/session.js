@@ -11,20 +11,20 @@ const session = (state = defaultState, action) => {
         isLoading: true
       };
     case 'SESSION_FETCH_DONE':
-      return Object.assign({
+      return {
         isLoading: false,
-        isAuth: !!action.payload
-      }, action.payload);
+        isAuth: !!action.payload,
+        ...action.payload};
     case 'SESSION_FETCH_FAIL':
       return {
         isLoading: false,
         isAuth: false
       };
     case 'DISCONNECT_START':
-      return Object.assign({
+      return {
         isAuth: false,
-        isLoading: true
-      }, state);
+        isLoading: true,
+        ...state};
     case 'DISCONNECT_DONE':
       return {
         isAuth: false,
