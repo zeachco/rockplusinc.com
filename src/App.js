@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
 import './styles/theme.scss';
-import './index.html';
 import store from './store';
 import Routes from './core/routes';
 import { fetchCategories, fetchSession } from './store/actions';
