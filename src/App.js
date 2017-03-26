@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 
-require('./styles/theme.scss');
+import './styles/theme.scss';
 require('./store/actions/geometry'); // watches for resize / scroll
 
-const store = require('./store');
 const Routes = require('./core/routes');
 
 const { fetchCategories } = require('./store/actions/categories');
@@ -40,7 +38,7 @@ class App extends Component {
         <pre>{JSON.stringify(error, null, 2)}</pre>
       </div>
     );
-    return (<Provider store={store}><Routes /></Provider>);
+    return (<Routes />);
   }
 }
 
