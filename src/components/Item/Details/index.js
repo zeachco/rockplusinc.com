@@ -5,6 +5,7 @@ import cx from 'classnames';
 import autoBind from 'auto-bind-es5';
 
 const Price = require('cms-core/src/components/Price/Price');
+const noop = () => {};
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -63,9 +64,7 @@ class ItemDetails extends React.Component {
     return (
       <VisibilitySensor
         partialVisibility
-        onChange={isVisible
-        ? () => {}
-        : this.onVisibleChange}
+        onChange={isVisible ? noop : this.onVisibleChange}
       >
         <div className="item-detail">
           <img

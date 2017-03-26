@@ -8,7 +8,7 @@
   "devDependencies": {
     "flightplan": "^0.6.15",
     "node-sass": "^4.5.1",
-    "webpack-production-setup": "^3.4.1"
+    "webpack-production-setup": "^3.4.2"
   },
   "dependencies": {
     "auto-bind-es5": "^1.1.0",
@@ -26,8 +26,8 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "url-loader": "^0.5.8",
-    "webpack": "2.2.0-rc.4",
-    "webpack-dev-server": "2.2.0-rc.4"
+    "webpack": "^2",
+    "webpack-dev-server": "^2"
   },
   "scripts": {
     "start": "webpack-dev-server --progress",

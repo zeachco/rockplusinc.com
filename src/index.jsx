@@ -9,16 +9,18 @@ let App = require('./App');
 let store = require('./store');
 
 const Hook = () => {
-	console.clear(); /* eslint no-console: "off" */
-	App = require('./App').default;
-	store = require('./store').default;
+	console.clear(); // eslint-disable-line no-console
+	App = require('./App');
+	store = require('./store');
 	render(
-	<AppContainer>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</AppContainer>,
-	document.querySelector("#root"));}
+    <AppContainer>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AppContainer>,
+    document.querySelector("#root")
+  );
+};
 
 Hook();
 

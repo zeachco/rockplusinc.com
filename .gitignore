@@ -4,3 +4,6 @@ build
 .module-cache
 *.log*
 _nogit
+# these files are auto-generated
+.babelrc
+.eslintrc.yml
