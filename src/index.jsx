@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 
 import App from './App';
 
+import './core/polyfills';
+
 render((
   <AppContainer>
     <App />
