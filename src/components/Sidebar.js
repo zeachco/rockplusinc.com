@@ -77,7 +77,7 @@ Sidebar.propTypes = {
   categories: PropTypes.array.isRequired,
   isMobile: PropTypes.bool.isRequired,
   displayName: PropTypes.string.isRequired,
-  params: PropTypes.object.isRequired
+  params: PropTypes.object
 }
 
 const mapStatetoProps = store => {

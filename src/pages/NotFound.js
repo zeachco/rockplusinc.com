@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import Sidebar from '../components/Sidebar';
 
@@ -13,5 +13,9 @@ const NotFound = props => (
     </div>
   </div>
 );
+
+NotFound.propTypes = {
+  params: PropTypes.object
+};
 
 module.exports = NotFound;

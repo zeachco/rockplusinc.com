@@ -26,6 +26,6 @@ if (typeof window.Object.assign !== 'function') {
 try {
   window.Object.assign({}, {});
 } catch (e) {
-  alert('your browser is not supported, please upgrate to a more secure browser');
+  alert('your browser is not supported, please upgrate to a more secure browser'); // eslint-disable-line no-alert
   window.location.href = 'https://browser-update.org';
 }

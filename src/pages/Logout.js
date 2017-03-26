@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-const store = require ('../store');
-const LoadingImg = require ('../img/loading.gif');
+const store = require('../store');
+const LoadingImg = require('../img/loading.gif');
 
 class Logout extends React.Component {
   constructor(...props) {

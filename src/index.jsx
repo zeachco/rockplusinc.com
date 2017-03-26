@@ -14,7 +14,7 @@ render((
 
 if (module && module.hot) {
   module.hot.accept('./App', () => {
-    console.clear();
+    console.clear(); // eslint-disable-line no-console
     const HotApp = require('./App').default; // eslint-disable-line global-require
     render((
       <AppContainer>
