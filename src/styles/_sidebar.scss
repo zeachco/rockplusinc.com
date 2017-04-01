@@ -1,102 +1,101 @@
 .mobile_categories {
-	margin: 1em 0;
-	display: block;
-	height: 3em;
-	text-align: center;
-	padding: 2%;
-	select {
-		background: rgba(230, 230, 230, .9);
-		padding: 0.5em 1em;
-		border: none;
-		border-radius: 5px;
-		text-shadow: 0 0 2px white;
-		box-shadow: -1px 1px 4px #666;
-		option {
-			font-weight: bolder;
-			background: white;
-		}
-	}
+    margin: 1em 0;
+    display: block;
+    height: 3em;
+    text-align: center;
+    padding: 2%;
+    select {
+        background: rgba(230, 230, 230, .9);
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 5px;
+        text-shadow: 0 0 2px white;
+        box-shadow: -1px 1px 4px #666;
+        option {
+            font-weight: bolder;
+            background: white;
+        }
+    }
 }
 
 #sidenav {
-	display: inline-table;
-	float: left;
-	margin: 20px 5px 30px;
-	padding: 0;
-	background: url('../img/login_lt.png') left top no-repeat;
-	font-family: 'Luckiest Guy', arial, serif;
-	font-size: 20px;
-	ul {
-		padding: 30px 0 30px 30px;
-		margin: 0;
-		background: url('../img/login_rb.png') right bottom no-repeat;
-		text-align: left;
-	}
-	li {
-		list-style-type: none;
-		padding: 0;
-		margin: 1px;
-		color: #000;
-	}
-	a {
-		font-size: 1.1em;
-		color: #000;
-		padding: 2px 10px;
-		text-decoration: none;
-		transition: all 0.5s cubic-bezier(0, 1.93, 0.44, 0.84);
-		text-shadow: 0 0 1px black;
-		&.current,
-		&:focus,
-		&:hover {
-			padding: 2px 2px 2px 18px;
-			background: {
-				image: url('../img/nav_arrow.png');
-				position: left center;
-				repeat: no-repeat;
-			}
-			color: #080;
-			span {
-				visibility: inherit;
-			}
-		}
-		&.current {
-			text-decoration: underline;
-			span {
-				visibility: inherit;
-				color: inherit;
-			}
-		}
-		span {
-			visibility: hidden;
-			position: absolute;
-			padding-left: 15px;
-			color: #000;
-			padding: 0;
-			margin-left: 3px;
-		}
-
-    // Exceptions...
-    &.category__vitro {
-      color: transparent !important;
-      text-shadow: none;
-      &::before {
-        background: url('../img/menu_vitro.png') left center no-repeat;
-        content: '|';
-        width: 50%;
-        line-height: 2em;
-        display: inline-block;
-      }
+    display: inline-table;
+    float: left;
+    margin: 20px 5px 30px;
+    padding: 0;
+    background: url('../img/login_lt.png') left top no-repeat;
+    font-family: 'Luckiest Guy', arial, serif;
+    font-size: 20px;
+    ul {
+        padding: 30px 0 30px 30px;
+        margin: 0;
+        background: url('../img/login_rb.png') right bottom no-repeat;
+        text-align: left;
     }
-	}
+    li {
+        list-style-type: none;
+        padding: 0;
+        margin: 1px;
+        color: #000;
+    }
+    a {
+        font-size: 1.1em;
+        color: #000;
+        padding: 2px 10px;
+        text-decoration: none;
+        transition: all 0.5s cubic-bezier(0, 1.93, 0.44, 0.84);
+        text-shadow: 0 0 1px black;
+        &.current,
+        &:focus,
+        &:hover {
+            padding: 2px 2px 2px 18px;
+            background: {
+                image: url('../img/nav_arrow.png');
+                position: left center;
+                repeat: no-repeat;
+            }
+            color: #080;
+            .menu-count {
+                visibility: inherit;
+            }
+        }
+        &.current {
+            text-decoration: underline;
+            span {
+                visibility: inherit;
+                color: inherit;
+            }
+        }
+        .menu-count {
+            visibility: hidden;
+            position: absolute;
+            padding-left: 15px;
+            color: #000;
+            padding: 0;
+            margin-left: 3px;
+        } // Exceptions...
+        &.category__vitro {
+            .menu-label { 
+                display: none;                
+            }
+            &::before {
+                width: 97px;
+                height: 18px;
+                background: url('../img/menu_vitro.png') left center no-repeat;
+                content: ' ';
+                display: inline-block;
+            }
+        }
+    }
 }
 
 
 /* SUB MENUS */
 
 div#sidenav li.subMenu {
-	display: none;
-	list-style-type: none;
-	padding: 0 0 0 1.4em;
-	color: #000;
-	font-size: 0.9em;
+    display: none;
+    list-style-type: none;
+    padding: 0 0 0 1.4em;
+    color: #000;
+    font-size: 0.9em;
 }

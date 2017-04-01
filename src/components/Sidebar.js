@@ -10,15 +10,22 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
     browserHistory.push(`/category/${ev.target.value}`);
   };
 
-  const renderCategory = cat => {
-    const classes = cx(`category__${cat.value}`, {
-      current: cat.value === current
+  const renderCategory = ({value, style, label, count}) => {
+    const classes = cx(`category__${value}`, {
+      current: value === current
     });
     return (
-      <li key={cat.value}>
-        <Link style={cat.style} className={classes} to={`/category/${cat.value}`}>{cat.label}</Link>
+      <li key={value}>
+        <Link style={style} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
       </li>
     );
+  };
+
+  renderCategory.propTypes = {
+    value: React.PropTypes.string.isRequired,
+    style: React.PropTypes.object.isRequired,
+    label: React.PropTypes.string.isRequired,
+    count: React.PropTypes.number.isRequired
   };
 
   if (!isMobile) {
@@ -66,7 +73,7 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
           },
           ...categories
         ].map(cat => (
-          <option style={cat.style} key={`category_${cat.value}`} value={cat.value}>{cat.label}</option>
+          <option style={cat.style} key={`category_${cat.value}`} value={cat.value}>{cat.label} ({cat.count})</option>
         ))}
       </select>
     </div>
