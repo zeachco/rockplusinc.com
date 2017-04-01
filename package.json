@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "build": "export NODE_ENV=production ; webpack --progress --env.prod",
+    "build": "webpack -p --progress --env.isProd",
     "deploy": "fly default"
   }
 }
