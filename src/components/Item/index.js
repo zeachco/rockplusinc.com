@@ -1,10 +1,14 @@
 import React, { PropTypes } from 'react';
+import cx from 'classnames';
 
 const Details = require('./Details');
 const NoImageAvail = require('../../img/nopic.png');
-const Price = require('cms-core/src/components/Price/Price');
+const { Price } = require('cms-core/src/components/Price/Price');
 
 const Item = ({item}) => {
+  const id = item.get('_id');
+  const name = item.get('name');
+  const shortDescription = item.get('shortDescription');
   const price = item.getPrice();
 
   const showBackorder = item.flag('backorder');
@@ -19,21 +23,20 @@ const Item = ({item}) => {
   const BackorderImage = require('img/backorder/bo2.png');
   const imgFull = item.get('files')[0] || NoImageAvail;
   const imgThumb = item.get('files')[0] ? imgFull + '/thumb' : NoImageAvail;
-
   return (
     <div className="item">
       <div className="pre-item">
-        {showBackorder && (<img className={'backorder'} src={BackorderImage} alt={'Backorder'}/>)}
+        {showBackorder && (<img className="backorder" src={BackorderImage} alt="Backorder" />)}
         {showNewArrival && (<img
           src={NewArrivalImage}
-          className={'itemLabelImg'}
+          className="itemLabelImg"
           alt="New arrival!"
-          id={item.get('_id')}/>)}
-        {showNew && (<img src={NewImage} className="itemLabelImg" alt="New product!" id={item.get('_id')}/>)}
-        {showNewPrice && (<img src={NewPriceImage} className={'itemLabelImg'} alt="New price!" id={item.get('_id')}/>)}
+          id={id}/>)}
+        {showNew && (<img src={NewImage} className="itemLabelImg" alt="New product!" id={id}/>)}
+        {showNewPrice && (<img src={NewPriceImage} className="itemLabelImg" alt="New price!" id={id}/>)}
         <br/>
         <b>{name}</b><br/>
-        <b>{item.get('shortDescription')}</b><br/>
+        <b>{shortDescription}</b><br/>
         <div className="side_item" style={{ float: 'right' }}></div>
         <span>
           <small>
@@ -45,9 +48,7 @@ const Item = ({item}) => {
               item={item}/>
           </small>
         </span><br/>
-        <span className={showClearance
-          ? 'clearance'
-          : ''}>
+        <span className={cx({clearance: showClearance})}>
           {!!price && !showBackorder && (<Price value={+price} />)}
         </span><br/>
       </div>

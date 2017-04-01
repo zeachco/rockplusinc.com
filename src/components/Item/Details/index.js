@@ -4,7 +4,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 import cx from 'classnames';
 import autoBind from 'auto-bind-es5';
 
-const Price = require('cms-core/src/components/Price/Price');
+import { Price } from  'cms-core/src/components/Price/Price';
 const noop = () => {};
 
 class ItemDetails extends React.Component {
