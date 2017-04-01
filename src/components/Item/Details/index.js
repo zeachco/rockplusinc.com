@@ -5,7 +5,7 @@ import cx from 'classnames';
 import autoBind from 'auto-bind-es5';
 
 import Price from 'cms-core/src/components/Price/Price';
-// const Price = () => <div>NOPE</div>;
+
 const noop = () => {};
 
 class ItemDetails extends React.Component {
