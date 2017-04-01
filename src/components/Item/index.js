@@ -3,7 +3,8 @@ import cx from 'classnames';
 
 const Details = require('./Details');
 const NoImageAvail = require('../../img/nopic.png');
-const { Price } = require('cms-core/src/components/Price/Price');
+// const Price = require('cms-core/src/components/Price/Price');
+const Price = () => <div>NOPE</div>;
 
 const Item = ({item}) => {
   const id = item.get('_id');

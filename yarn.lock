@@ -1333,9 +1333,9 @@ clone@^1.0.0, clone@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
 
-cms-core@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/cms-core/-/cms-core-2.0.1.tgz#ab462aa6ec148c47df5876013e4452291b3a786b"
+cms-core@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/cms-core/-/cms-core-2.2.2.tgz#51677c581040c7e003b9eecefbe2e5b1fc769581"
   dependencies:
     auto-bind-es5 "^1.1.0"
     webpack-production-setup "^4.1.0"
