@@ -14,7 +14,7 @@
     "auto-bind-es5": "^1.1.0",
     "axios": "^0.15.3",
     "classnames": "^2.2.5",
-    "cms-core": "^1.1.0",
+    "cms-core": "^2.0.1",
     "file-loader": "^0.10.1",
     "react": "15.4.2",
     "react-autobind": "^1.0.6",
