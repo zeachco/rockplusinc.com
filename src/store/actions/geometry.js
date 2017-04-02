@@ -1,11 +1,20 @@
 import store from '..';
 
+const winVal = (names, fallback) => {
+  for (var key in names) {
+    if(typeof window[names[key]] !== 'undefined') {
+      return window[names[key]];
+    }      
+  }
+  return fallback;
+}
+
 function dispatchScroll() {
   store.dispatch({
     type: 'WINDOW_SCROLL',
     payload: {
-      scrollX: window.scrollX || window.scrollLeft,
-      scrollY: window.scrollY || window.scrollTop
+      scrollX: winVal(['scrollX', 'scrollLeft', Infinity]),
+      scrollY: winVal(['scrollY', 'scrollTop', Infinity])
     }
   });
 }
@@ -25,6 +34,8 @@ function dispatchResize() {
 // add event listeners
 window.addEventListener('scroll', dispatchScroll);
 window.addEventListener('resize', dispatchResize);
+dispatchScroll();
+dispatchResize();
 
 module.exports = {
   dispatchScroll,
