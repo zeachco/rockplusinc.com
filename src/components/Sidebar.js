@@ -93,7 +93,7 @@ const mapStatetoProps = store => {
     isLoading: store.session.isLoading,
     session: store.session,
     categories: store.categories,
-    displayName: store.session.firstName || store.session.username,
+    displayName: store.session.firstName || store.session.username || '',
     isMobile: store.geometry.innerWidth <= 800
   })
 };
