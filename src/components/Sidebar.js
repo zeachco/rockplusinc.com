@@ -66,6 +66,7 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
   } else {
     return <div className="mobile_categories">
       <select onChange={navigate} value={current || 'home'}>
+        <option value="none">-- select a category --</option>
         {categories.map(cat => (
           <option style={cat.style} key={`category_${cat.value}`} value={cat.value}>{cat.label} ({cat.count})</option>
         ))}
