@@ -46,6 +46,11 @@
         text-decoration: none;
         transition: all 0.5s cubic-bezier(0, 1.93, 0.44, 0.84);
         text-shadow: 0 0 1px black;
+        &.subCategory {
+            margin-left: 1em;
+            font-size: .9em;
+            padding: 0 10px;
+        }
         &.current,
         &:focus,
         &:hover {

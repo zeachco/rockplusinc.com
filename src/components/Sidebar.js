@@ -10,13 +10,15 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
     browserHistory.push(`/category/${ev.target.value}`);
   };
 
-  const renderCategory = ({value, style, label, count}) => {
+  const renderCategory = ({value, parent, style, label, count}) => {
     const classes = cx(`category__${value}`, {
-      current: value === current
+      current: value === current,
+      subCategory: !!parent
     });
+    const subs = categories.filter(c => c.parent === value); 
     return (
       <li key={value}>
-        <Link style={style} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
+        <Link style={style} title={subs.join(', ')} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
       </li>
     );
   };
@@ -25,7 +27,8 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
     value: React.PropTypes.string.isRequired,
     style: React.PropTypes.object.isRequired,
     label: React.PropTypes.string.isRequired,
-    count: React.PropTypes.number.isRequired
+    count: React.PropTypes.number.isRequired,
+    parent: React.PropTypes.string
   };
 
   if (!isMobile) {

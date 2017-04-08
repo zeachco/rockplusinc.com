@@ -8,7 +8,7 @@ function fetchCategories() {
   return axios.get('/api/categories/rockplusinc.com').then(xhr => {
     store.dispatch({
       type: 'FETCH_CATEGORIES_DONE',
-      payload: xhr.data.filter(cat => cat.count > 0)
+      payload: xhr.data
     });
   });
 }
