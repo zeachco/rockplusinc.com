@@ -10,7 +10,7 @@ const Item = ({item}) => {
   const name = item.get('name');
   const shortDescription = item.get('shortDescription');
   const price = item.getPrice();
-
+  const code = item.get('code');
   const showBackorder = item.flag('backorder');
   const showNewArrival =  item.flag('arrival') && !showBackorder;
   const showNew = item.flag('new') && !showBackorder;
@@ -48,6 +48,7 @@ const Item = ({item}) => {
               item={item}/>
           </small>
         </span><br/>
+        <small>{code !== name ? code : ''}</small><br/>
         <span className={cx({clearance: showClearance})}>
           {!!price && !showBackorder && (<Price value={+price} />)}
         </span><br/>
