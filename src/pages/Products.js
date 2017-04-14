@@ -30,6 +30,10 @@ class Products extends React.Component {
   }
   render() {
     const {items, isLoading} = this.props;
+    let content = items.map(i => (<Item key={i.get('_id')} item={i} />));
+    if (items.length === 0) {
+      content = (<h3>No items found with search "{this.props.params.search}"</h3>);
+    }
     return (
       <div>
         <Sidebar {...this.props}/>
@@ -40,9 +44,7 @@ class Products extends React.Component {
             ? 0.1
             : 1
         }}>
-          {items.map(i => {
-            return (<Item key={i.get('_id')} item={i} />);
-          })}
+          {content}
         </div>
       </div>
     );
