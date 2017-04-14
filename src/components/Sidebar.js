@@ -15,12 +15,24 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
       current: value === current,
       subCategory: !!parent
     });
-    const subs = categories.filter(c => c.parent === value); 
-    return (
-      <li key={value}>
-        <Link style={style} title={subs.join(', ')} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
-      </li>
-    );
+    const subs = categories.filter(c => c.parent === value).map(c => c.label);
+    if(parent) {
+      const parentConfig = categories.filter(c => c.value === parent)[0];
+      style = parentConfig.style;
+    }
+    if(subs.length) {      
+      return (
+        <li key={value}>
+          <a style={style} title={subs.join(', ')} className={classes} ><span className="menu-label-parent">{label}</span></a>
+        </li>
+      );
+    } else {
+      return (
+        <li key={value}>
+          <Link style={style} title={subs.join(', ')} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
+        </li>
+      );
+    }
   };
 
   renderCategory.propTypes = {
