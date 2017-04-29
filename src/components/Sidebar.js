@@ -16,6 +16,7 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
       subCategory: !!parent
     });
     const subs = categories.filter(c => c.parent === value).map(c => c.label);
+    if(subs.length === 0 && count === 0) return null;
     if(parent) {
       const parentConfig = categories.filter(c => c.value === parent)[0];
       style = parentConfig.style;
