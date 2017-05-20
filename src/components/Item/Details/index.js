@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import SkyLight from 'react-skylight';
 import VisibilitySensor from 'react-visibility-sensor';
 import cx from 'classnames';
 import autoBind from 'auto-bind-es5';
+import {connect} from'react-redux';
 
 import Price from 'cms-core/src/components/Price/Price';
 
 const noop = () => {};
 
-class ItemDetails extends React.Component {
+class ItemDetails extends Component {
   constructor() {
     super()
     this.state = {
@@ -41,7 +42,13 @@ class ItemDetails extends React.Component {
   }
 
   render() {
-    const { imgClassName, item, thumbsSrc, src } = this.props;
+    const {
+      imgClassName,
+      item,
+      thumbsSrc,
+      src,
+      canSeePrices
+    } = this.props;
     const {
       title,
       options,
@@ -61,6 +68,13 @@ class ItemDetails extends React.Component {
     });
 
     const listingSrcImg = isVisible ? thumbsSrc : null;
+
+    const priceJsx = canSeePrices ? (
+      <tr>
+        <td>Price:</td>
+        <td><Price value={dynamicPrice} /></td>
+      </tr>
+    ) : null;
 
     return (
       <VisibilitySensor
@@ -101,10 +115,7 @@ class ItemDetails extends React.Component {
                           <td>{shortDescription}</td>
                         </tr>
                       )}
-                      <tr>
-                        <td>Price:</td>
-                        <td><Price value={dynamicPrice} /></td>
-                      </tr>
+                      { priceJsx }
                       <tr>
                         <td colSpan={2} className="item_description" dangerouslySetInnerHTML={{ __html: description }} />
                       </tr>
@@ -137,10 +148,13 @@ class ItemDetails extends React.Component {
 }
 
 ItemDetails.propTypes = {
-  src: React.PropTypes.string.isRequired,
-  imgClassName: React.PropTypes.string.isRequired,
-  thumbsSrc: React.PropTypes.string.isRequired,
-  item: React.PropTypes.object.isRequired
+  src: PropTypes.string.isRequired,
+  imgClassName: PropTypes.string.isRequired,
+  thumbsSrc: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
+  canSeePrices: PropTypes.bool.isRequired
 };
 
-module.exports = ItemDetails;
+module.exports = connect(state => ({
+  canSeePrices: state.session.meta.prices
+}))(ItemDetails);

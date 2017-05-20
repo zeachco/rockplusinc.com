@@ -44,7 +44,8 @@ const session = (state = defaultState, action) => {
     case 'LOGIN_REQUEST_DONE':
       return {
         isAuth: true,
-        isLoading: false
+        isLoading: false,
+        ...action.payload
       };
     case 'LOGIN_REQUEST_FAIL':
       return {

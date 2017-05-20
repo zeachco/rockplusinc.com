@@ -1,11 +1,14 @@
 import axios from 'axios';
 import store from '..';
-import {
-  browserHistory
-} from 'react-router';
-const {
-  dispatch
-} = store;
+import {browserHistory} from 'react-router';
+const {dispatch} = store;
+
+const defaultSession = {
+  meta: {
+    prices: true,
+    images: true
+  }
+}
 
 function fetchSession() {
   store.dispatch({
@@ -14,7 +17,7 @@ function fetchSession() {
   return axios.get('/api/profile/me').then(xhr => {
     store.dispatch({
       type: 'SESSION_FETCH_DONE',
-      payload: xhr.data
+      payload: {...defaultSession, ...xhr.data}
     });
   }).catch(xhr => {
     store.dispatch({
@@ -34,7 +37,7 @@ function login(username, password) {
   }).then(data => {
     dispatch({
       type: 'SESSION_FETCHED',
-      payload: data
+      payload: {...defaultSession, ...data}
     });
   }).catch(xhr => {
     dispatch({
@@ -65,7 +68,7 @@ function profileUpdate(profile) {
     .then(data => {
       dispatch({
         type: 'PROFILE_UPDATE_DONE',
-        payload: data
+        payload: {...defaultSession, ...data}
       });
     });
 }
