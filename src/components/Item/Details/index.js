@@ -10,11 +10,12 @@ import Price from 'cms-core/src/components/Price/Price';
 const noop = () => {};
 
 class ItemDetails extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       isVisible: false,
-      loading: true
+      loading: true,
+      mainImage: props.item.get('files')[0] || ''
     };
     autoBind(this);
   }
