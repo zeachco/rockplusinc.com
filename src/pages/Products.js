@@ -25,7 +25,7 @@ class Products extends React.Component {
     if (params.category) {
       fetchCategory(params.category);
     } else {
-      searchItems(params.search);
+      searchItems(encodeURIComponent(params.search));
     }
   }
   render() {

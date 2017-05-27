@@ -16,7 +16,7 @@ class Search extends React.Component {
   }
   onType(e) {
     e.preventDefault();
-    this.word = e.target.value;
+    this.word = encodeURIComponent(e.target.value);
     if (this.word) {
       this.setState({loading: true});
       clearTimeout(this.timer);
