@@ -40,6 +40,7 @@ $halfMaxImagWidth: $maxImgWidth/2;
 
 img.backorder {
   position: absolute;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   height: 100px;
