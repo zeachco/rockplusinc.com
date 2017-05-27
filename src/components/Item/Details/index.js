@@ -19,6 +19,12 @@ class ItemDetails extends Component {
     autoBind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      mainImage: nextProps.item.get('files')[0]
+    });
+  }
+
   open() {
     this
       .refs
@@ -49,6 +55,9 @@ class ItemDetails extends Component {
       src,
       canSeePrices
     } = this.props;
+
+    const {mainImage} = this.state;
+
     const {
       title,
       options,
@@ -57,13 +66,14 @@ class ItemDetails extends Component {
       shortDescription,
       description
     } = item.data;
-    const { loading, isVisible, dynamicPrice = item.getPrice() } = this.state;
+    const isVisible = item.isVisible();
+    const { loading, dynamicPrice = item.getPrice() } = this.state;
     const bg = {
       backgroundImage: `url("${loading
         ? thumbsSrc
-        : src}")`
+        : mainImage}")`
     };
-    const classes = cx('lightboxImg_container', {
+    const imgClasses = cx('lightboxImg_container', {
       loading: !!loading
     });
 
@@ -92,9 +102,16 @@ class ItemDetails extends Component {
           <SkyLight hideOnOverlayClicked ref="customDialog" title={title}>
             <div>
               <div className="col-half">
-                <div className={classes}>
+                <div className={imgClasses}>
                   <div className="lightboxImg" style={bg} />
                 </div>
+                {item.get('files').filter(f => mainImage !== f).map(img => (
+                  <img
+                    className="otherImages"
+                    onClick={() => this.setState({mainImage: img})}
+                    src={img}
+                  />
+                ))}
               </div>
               <div className="col-half">
                 <h3>Details</h3>

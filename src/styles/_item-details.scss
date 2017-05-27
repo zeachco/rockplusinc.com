@@ -4,6 +4,16 @@ $halfMaxImagWidth: $maxImgWidth/2;
   max-width: 50px;
 }
 
+.otherImages {
+  max-width: 80px;
+  min-width: 80px;
+  cursor: pointer;
+  opacity: .7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .item-option-select {
   text-align: left;
   margin: 15px 10px;
