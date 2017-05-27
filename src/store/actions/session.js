@@ -34,10 +34,10 @@ function login(username, password) {
   return axios.post('/api/login', {
     username,
     password
-  }).then(data => {
+  }).then(xhr => {
     dispatch({
       type: 'SESSION_FETCH_DONE',
-      payload: {...defaultSession, ...data}
+      payload: {...defaultSession, ...xhr.data}
     });
     browserHistory.push('/');
   }).catch(xhr => {
