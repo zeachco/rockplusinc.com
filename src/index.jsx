@@ -18,7 +18,7 @@ const Hook = () => {
         <App />
       </Provider>
     </AppContainer>,
-    document.querySelector("#root")
+    document.querySelector('#root')
   );
 };
 
