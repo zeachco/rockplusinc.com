@@ -52,7 +52,6 @@ class ItemDetails extends Component {
       imgClassName,
       item,
       thumbsSrc,
-      src,
       canSeePrices
     } = this.props;
 
