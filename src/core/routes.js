@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Products from '../pages/Products';
+import CartPage from '../pages/Cart';
 import store from '../store';
 
 // const Application = props => <div>test<br/>{props.children}</div>
@@ -44,6 +45,7 @@ const Routes = () => {
         <IndexRoute component={Home} onEnter={requireAuth}/>
         <Route path="search/:search" component={Products} onEnter={requireAuth}/>
         <Route path="category/:category" component={Products} onEnter={requireAuth}/>
+        <Route path="cart" component={CartPage} onEnter={requireAuth}/>
         <Route path="login" component={Login} onEnter={MustNotBeLogged}/>
         <Route path="logout" component={Logout}/>
         <Route path="*" component={NotFound} onEnter={requireAuth}/>

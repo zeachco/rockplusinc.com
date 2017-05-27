@@ -35,6 +35,7 @@ function login(username, password) {
     username,
     password
   }).then(data => {
+    debugger;
     dispatch({
       type: 'SESSION_FETCHED',
       payload: {...defaultSession, ...data}

@@ -5,12 +5,14 @@ import categories from './reducers/categories';
 import session from './reducers/session';
 import itemReducer from './reducers/items';
 import geometry from './reducers/geometry';
+import cart from './reducers/cart';
 
 const reducers = combineReducers({
   categories,
   session,
   itemReducer,
-  geometry
+  geometry,
+  cart
 });
 
 let store = null;

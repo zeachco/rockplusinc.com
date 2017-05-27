@@ -9,6 +9,12 @@
 
 .cart {
 	padding: .5em;
+	width: 100%;
+
+    @media (min-width: 801px) {
+        margin-left: 330px;
+		width: calc(100% - 330px);
+    }
 	// margin: .6em 2em 0 0;
 	// cursor: pointer;
 	// line-height: 1.6em;
