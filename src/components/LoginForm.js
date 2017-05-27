@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import store from '../store';
 import {browserHistory} from 'react-router';
+import sessionAction from '../store/actions/session';
 
 class LoginForm extends React.Component {
   constructor(...props) {
@@ -13,27 +14,7 @@ class LoginForm extends React.Component {
     let username = ev.target.user.value;
     let password = ev.target.pass.value;
     this.setState({message: 'checking...', loading: true});
-    store.dispatch({
-      type: 'LOGIN_REQUEST',
-      payload: {
-        username,
-        password
-      }
-    });
-    axios.post('/api/v2/login', {username, password}).then(() => {
-      this.setState({message: 'Connected!', loading: false});
-      store.dispatch({
-        type: 'LOGIN_REQUEST_DONE',
-        payload: {
-          username,
-          password
-        }
-      });
-      browserHistory.push('/');
-    }).catch(data => {
-      store.dispatch({type: 'LOGIN_REQUEST_FAIL', payload: data});
-      this.setState({message: 'Could not log you in!', loading: false});
-    });
+    sessionAction.login(username, password);
   }
   render() {
     // const {message} = this.props;

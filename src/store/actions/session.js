@@ -29,17 +29,17 @@ function fetchSession() {
 
 function login(username, password) {
   dispatch({
-    type: 'SESSION_FETCHING'
+    type: 'SESSION_FETCH_START'
   });
   return axios.post('/api/login', {
     username,
     password
   }).then(data => {
-    debugger;
     dispatch({
-      type: 'SESSION_FETCHED',
+      type: 'SESSION_FETCH_DONE',
       payload: {...defaultSession, ...data}
     });
+    browserHistory.push('/');
   }).catch(xhr => {
     dispatch({
       type: 'LOGIN_FAIL',

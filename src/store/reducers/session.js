@@ -1,6 +1,7 @@
 const defaultState = {
   isAuth: false,
-  isLoading: true
+  isLoading: true,
+  meta: {}
 }
 
 const session = (state = defaultState, action) => {
