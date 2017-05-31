@@ -66,7 +66,7 @@ class ItemDetails extends Component {
       shortDescription,
       description
     } = item.data;
-    const isVisible = item.isVisible();
+    const isVisible = item.get('visible');
     const { loading, dynamicPrice = item.getPrice() } = this.state;
     const bg = {
       backgroundImage: `url("${loading
