@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '..';
 import {browserHistory} from 'react-router';
+import {fetchCart} from './cart';
 const {dispatch} = store;
 
 const defaultSession = {
@@ -19,6 +20,7 @@ function fetchSession() {
       type: 'SESSION_FETCH_DONE',
       payload: {...defaultSession, ...xhr.data}
     });
+    fetchCart();
   }).catch(xhr => {
     store.dispatch({
       type: 'SESSION_FETCH_FAIL',
@@ -40,6 +42,7 @@ function login(username, password) {
       payload: {...defaultSession, ...xhr.data}
     });
     browserHistory.push('/');
+    fetchCart();
   }).catch(xhr => {
     dispatch({
       type: 'LOGIN_FAIL',
