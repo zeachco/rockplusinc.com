@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import cx from 'classnames';
 
@@ -18,7 +19,7 @@ const CartContainer = ({
 );
 
 CartContainer.propTypes = {
-    visible: React.PropTypes.bool
+    visible: PropTypes.bool
 };
 
 export default connect(state => ({

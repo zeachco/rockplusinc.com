@@ -28,7 +28,7 @@ export function fetchCart() {
 
 export function addToCart(id, quantity = 1) {
     axios.post('/api/cart', {
-        item_id: id,
+        'item_id': id,
         quantity,
         options: {}
     }).then(() => {

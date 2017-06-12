@@ -18,7 +18,7 @@ const Home = () => (
         We are 100% Canadian owned and operated.
       </p>
       <p className="big">Compare our prices,<br/>
-        you'll find our competitive pricing policy ensures<br/>
+        you&quote;ll find our competitive pricing policy ensures<br/>
         our clients come first.
       </p>
       <footer>

@@ -9,7 +9,7 @@
     "flightplan": "^0.6.15",
     "node-sass": "^4.5.1",
     "postcss-loader": "^2.0.5",
-    "webpack-production-setup": "^3.4.3"
+    "webpack-production-setup": "^5.0.0"
   },
   "dependencies": {
     "auto-bind-es5": "^1.1.0",
@@ -17,6 +17,7 @@
     "classnames": "^2.2.5",
     "cms-core": "^2.2.2",
     "file-loader": "^0.10.1",
+    "prop-types": "^15.5.10",
     "react": "15.4.2",
     "react-autobind": "^1.0.6",
     "react-dom": "15.4.2",
