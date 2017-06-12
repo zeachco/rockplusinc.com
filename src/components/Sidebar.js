@@ -30,7 +30,7 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
     } else {
       return (
         <li key={value}>
-          <Link style={style} title={subs.join(', ')} className={classes} to={`/category/${value}`}><span className="menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
+          <Link style={style} title={subs.join(', ')} className={classes} to={`/category/${value}`}><span className="sidebar-menu-label">{label}</span> <span className="menu-count">({count})</span></Link>
         </li>
       );
     }
