@@ -7,8 +7,8 @@ import CartItem from './CartItem';
 const CartList = ({
     items
 }) => (
-    <div className="box">
-        {items.map(item => <CartItem key={item.id} item={item}/>)}
+    <div>
+        {items.map(item => <CartItem key={item._id} {...item}/>)}
     </div>
 );
 
