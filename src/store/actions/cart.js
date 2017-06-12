@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '..';
 import {CART} from '../types';
 
-function fetchCart() {
+export function fetchCart() {
   store.dispatch({
     type: CART.FETCH_START
   });
@@ -43,4 +43,13 @@ function fetchCart() {
   });
 }
 
-module.exports = { fetchCart };
+export function addToCart(id, quantity = 1) {
+    axios.post('/api/cart', {
+        item_id: id,
+        quantity
+    }).then(() => {
+        fetchCart();
+    });
+}
+
+export default { fetchCart, addToCart };
