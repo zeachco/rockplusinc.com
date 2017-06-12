@@ -13,12 +13,12 @@ module.exports = (state = defaultState, {type, payload}) => {
         ...state,
         isLoading: true
       };
-    case CART.FETCH_DONE: 
+    case CART.FETCH_DONE:
       return {
         ...state,
         isLoading: false,
         cartItems: payload.items,
-        totalItems: payload.quantity.reduce((value, qty) => value + qty, 0)
+        totalItems: payload.items.reduce((value, items) => value + items.quantity, 0)
       };
     case CART.FETCH_FAIL: 
       return {
