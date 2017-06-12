@@ -3,11 +3,13 @@ import {CART} from '../types';
 const defaultState = {
   cartItems: [],
   isLoading: true,
-  totalItems: 0
+  totalItems: 0,
+  isVisible: false
 };
 
 module.exports = (state = defaultState, {type, payload}) => {
   switch (type) {
+    case CART.TOGGLE: return {...state, isVisible: !state.isVisible}
     case CART.FETCH_START: 
       return {
         ...state,

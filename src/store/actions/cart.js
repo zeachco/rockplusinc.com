@@ -2,6 +2,12 @@ import axios from 'axios';
 import store from '..';
 import {CART} from '../types';
 
+export function toggleModal() {
+    store.dispatch({
+        type: CART.TOGGLE
+    });
+}
+
 export function fetchCart() {
     store.dispatch({
         type: CART.FETCH_START
@@ -12,7 +18,7 @@ export function fetchCart() {
             payload: xhr.data
         });
     }).catch(err => {
-        console.error(err);
+        console.error(err); // eslint-disable-line no-console
         store.dispatch({
             type: CART.FETCH_FAIL,
             payload: []
