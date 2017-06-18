@@ -83,7 +83,7 @@ class ItemDetails extends Component {
     const priceJsx = canSeePrices ? (
       <tr>
         <td>Price:</td>
-        <td><Price value={dynamicPrice} /><AddToCart /></td>
+        <td><Price value={dynamicPrice} /><AddToCart item={item} /></td>
       </tr>
     ) : null;
 
