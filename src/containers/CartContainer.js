@@ -19,8 +19,8 @@ const CartContainer = ({
                 <CartList />
             </section>
             <footer className="modal-card-foot">
-                <a className="button is-success is-disabled">Send to RockPlus.inc</a>
-                <a className="button is-danger is-disabled">Empty cart</a>
+                <p>We are working to automate sending your order through an automatic process, meanwhile, you may save your items in this window</p>
+                <a className="button is-success" disabled >Send to RockPlus.inc</a>
             </footer>
         </div>
     </div>
