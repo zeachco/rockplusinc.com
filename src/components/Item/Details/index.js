@@ -7,7 +7,7 @@ import autoBind from 'auto-bind-es5';
 import {connect} from'react-redux';
 
 import Price from 'cms-core/src/components/Price/Price';
-import {addToCart} from '../../../store/actions/cart';
+import AddToCart from '../../AddToCart';
 
 const noop = () => {};
 
@@ -83,7 +83,7 @@ class ItemDetails extends Component {
     const priceJsx = canSeePrices ? (
       <tr>
         <td>Price:</td>
-        <td><Price value={dynamicPrice} /></td>
+        <td><Price value={dynamicPrice} /><AddToCart /></td>
       </tr>
     ) : null;
 
@@ -100,9 +100,6 @@ class ItemDetails extends Component {
             alt={title}
             onClick={this.open}
           />
-          <button onClick={() => {
-              addToCart(item.get('_id'))
-            }}>add to cart...</button>
           <SkyLight hideOnOverlayClicked ref={el => this.customDialog = el} title={title}>
             <div>
               <div className="col-half">

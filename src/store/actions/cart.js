@@ -27,13 +27,20 @@ export function fetchCart() {
 }
 
 export function addToCart(id, quantity = 1) {
+    store.dispatch({
+        type: CART.ADD_ITEM
+    });
     axios.post('/api/cart', {
-        'item_id': id,
+        itemId: id,
         quantity,
         options: {}
-    }).then(() => {
+    }).then(xhr => {
+        store.dispatch({
+            type: CART.FETCH_DONE,
+            payload: xhr.data
+        });
         fetchCart();
-    });
+    }).catch(err => console.error(err)); // eslint-disable-line no-console
 }
 
 export default { fetchCart, addToCart };

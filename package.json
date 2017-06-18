@@ -14,6 +14,7 @@
   "dependencies": {
     "auto-bind-es5": "^1.1.0",
     "axios": "^0.15.3",
+    "bulma": "^0.4.2",
     "classnames": "^2.2.5",
     "cms-core": "^2.2.2",
     "file-loader": "^0.10.1",
@@ -29,11 +30,11 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2",
-    "webpack-dev-server": "^2"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress",
+    "start": "webpack-dev-server --progress --hot",
     "build": "webpack -p --progress --env.isProd",
     "deploy": "fly default"
   }

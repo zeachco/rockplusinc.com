@@ -1,9 +1,8 @@
 import {CART} from '../types';
 
 const defaultState = {
-  cartItems: [],
+  cartData: null,
   isLoading: true,
-  totalItems: 0,
   isVisible: false
 };
 
@@ -19,9 +18,15 @@ module.exports = (state = defaultState, {type, payload}) => {
       return {
         ...state,
         isLoading: false,
-        cartItems: payload.items,
-        totalItems: payload.items.reduce((value, items) => value + items.quantity, 0)
+        cartData: payload,
+        isVisible: payload === null ? false : payload.items.length > 0,
+        totalItems: payload ? payload.items.reduce((qty, item) => qty + item.quantity, 0) : 0
       };
+    case CART.ADD_ITEM: 
+      return {
+        ...state,
+        isLoading: true
+      }
     case CART.FETCH_FAIL: 
       return {
         ...state,

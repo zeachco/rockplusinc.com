@@ -33,7 +33,7 @@ class Products extends React.Component {
     const {items, isLoading} = this.props;
     let content = items.map(i => (<Item key={i.get('_id')} item={i} />));
     if (items.length === 0) {
-      content = (<h3>No items found with search &quote;{this.props.params.search}&quote;</h3>);
+      content = (<h3>No items found with search "{this.props.params.search}"</h3>);
     }
     return (
       <div>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import Price from 'cms-core/src/components/Price/Price';
+import AddToCart from '../AddToCart';
+
 const Details = require('./Details');
 const NoImageAvail = require('../../img/nopic.png');
 
@@ -51,7 +53,7 @@ const Item = ({item}) => {
         </span><br/>
         <small>{code !== name ? code : ''}</small><br/>
         <span className={cx({clearance: showClearance})}>
-          {!!price && !showBackorder && (<Price value={+price} />)}
+          {!!price && !showBackorder && (<div><Price value={+price} /><AddToCart item={item} /></div>)}
         </span><br/>
       </div>
     </div>

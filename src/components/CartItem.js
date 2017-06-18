@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {addToCart} from '../store/actions/cart';
+
+const addQty = (item, qty) => ev => {
+    ev.preventDefault();
+    addToCart(item, qty);
+}
+
 const CartItem = ({
-    item
+    item,
+    quantity
 }) => (
     <div className="card">
         <header className="card-header">
@@ -20,8 +28,12 @@ const CartItem = ({
                 <div className="card-content">
                     <div className="media">
                         <div className="media-left">
-                            <figure className="image is-48x48">
-                            <img src={item.files[0]} alt={item.name} />
+                            <figure className="image is-128x128" style={{
+                                background: `url(${item.files && item.files[0]})`,
+                                backgroundSize: 'contain',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: '50% 50%'
+                            }}>
                             </figure>
                         </div>
                         <div className="media-content">
@@ -33,9 +45,9 @@ const CartItem = ({
             </div>
         </div>
         <footer className="card-footer">
-            <a className="card-footer-item">-</a>
-            <a className="card-footer-item">+</a>
-            <a className="card-footer-item">Remove</a>
+            <a className="card-footer-item" onClick={addQty(item._id, -1)}>-</a>
+            <span className="card-footer-item">{quantity}</span>
+            <a className="card-footer-item" onClick={addQty(item._id, 1)}>+</a>
         </footer>
     </div>
 );
