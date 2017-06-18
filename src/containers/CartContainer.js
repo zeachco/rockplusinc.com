@@ -20,7 +20,7 @@ const CartContainer = ({
             </section>
             <footer className="modal-card-foot">
                 <p>We are working to automate sending your order through an automatic process, meanwhile, you may save your items in this window</p>
-                <a className="button is-success" disabled >Send to RockPlus.inc</a>
+                {/*<a className="button is-success" disabled >Send to RockPlus.inc</a>*/}
             </footer>
         </div>
     </div>
