@@ -28,12 +28,11 @@ const CartItem = ({
                 <div className="card-content">
                     <div className="media">
                         <div className="media-left">
-                            <figure className="image is-128x128" style={{
-                                background: `url(${item.files && item.files[0]})`,
-                                backgroundSize: 'contain',
-                                backgroundRepeat: 'no-repeat',
-                                backgroundPosition: '50% 50%'
-                            }}>
+                            <figure className="image is-128x128">
+                                <img src={item.files && item.files[0]} alt={item.name}  style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%'
+                                }}/>
                             </figure>
                         </div>
                         <div className="media-content">
