@@ -12,7 +12,7 @@ class CartContainer extends Component {
         AutoBind(this);
     }
     render() {
-        if (this.props.visible) return <div />;
+        if (!this.props.visible) return null;
         return (
             <div className="modal is-active">
                 <div className="modal-background" onClick={toggleModal} />
