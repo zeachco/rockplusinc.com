@@ -8,6 +8,15 @@ export function toggleModal() {
     });
 }
 
+export function sendCart(message = '') {
+    store.dispatch({
+        type: CART.FETCH_START
+    });
+    axios.post('/api/cart/send', {message}).then(xhr => {
+        console.log(xhr)
+    });
+}
+
 export function fetchCart() {
     store.dispatch({
         type: CART.FETCH_START

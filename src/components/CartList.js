@@ -32,5 +32,5 @@ CartList.propTypes = {
 };
 
 export default connect(state => ({
-    items: state.cart.cartData.items
+    items: state.cart.cartData ? state.cart.cartData.items : []
 }))(CartList);

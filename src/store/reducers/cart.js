@@ -30,8 +30,8 @@ module.exports = (state = defaultState, {type, payload}) => {
     case CART.FETCH_FAIL: 
       return {
         ...state,
+        cartData: null,
         isLoading: false,
-        cartItems: [],
         totalItems: 0
       };
   }
