@@ -10,10 +10,12 @@ export function toggleModal() {
 
 export function sendCart(message = '') {
     store.dispatch({
-        type: CART.FETCH_START
+        type: CART.SENDING
     });
-    axios.post('/api/cart/send', {message}).then(xhr => {
-        console.log(xhr)
+    axios.post('/api/cart/send', {message}).then(() => {
+        store.dispatch({
+            type: CART.SENT
+        });
     });
 }
 

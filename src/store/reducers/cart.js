@@ -27,6 +27,19 @@ module.exports = (state = defaultState, {type, payload}) => {
         ...state,
         isLoading: true
       }
+    case CART.SENDING: 
+      return {
+        ...state,
+        isLoading: true
+      }
+    case CART.SENT: 
+      return {
+        ...state,
+        cartData: null,
+        isLoading: false,
+        isVisible: false,
+        totalItems: 0
+      }
     case CART.FETCH_FAIL: 
       return {
         ...state,
