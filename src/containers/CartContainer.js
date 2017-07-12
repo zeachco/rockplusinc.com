@@ -28,7 +28,7 @@ class CartContainer extends Component {
                             <p className="control">
                                 <textarea
                                     className="textarea"
-                                    placeholder="Additionnal informations..."
+                                    placeholder="Additionnal information..."
                                     ref={el => this.message = el}
                                 />
                             </p>
