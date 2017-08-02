@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import AutoBind from 'auto-bind-es5';
 
-import {toggleModal, sendCart} from '../store/actions/cart';
+import {toggleModal, sendCart, emptyCart} from '../store/actions/cart';
 import CartList from '../components/CartList';
 
 class CartContainer extends Component {
-    constructor(props) {
-        super(props);
-        AutoBind(this);
-    }
     render() {
-        if (!this.props.visible) return null;
+        const {
+            visible,
+            loading
+        } = this.props;
+        if (!visible) return null;
+        const opacity = loading ? .5 : 1;
         return (
             <div className="modal is-active">
                 <div className="modal-background" onClick={toggleModal} />
-                <div className="modal-card">
+                <div className="modal-card" style={{opacity}}>
                     <header className="modal-card-head">
                         <p className="modal-card-title">Saved items</p>
                         <button className="modal-close" onClick={toggleModal} />
@@ -36,7 +36,7 @@ class CartContainer extends Component {
                     </section>
                     <footer className="modal-card-foot">
                         <a className="button is-success" onClick={() => sendCart(this.message.value)}>Send this order</a>
-                        <a className="button is-outline" disabled>Empty cart</a>
+                        <a className="button is-outline" onClick={() => emptyCart()}>Empty cart</a>
                     </footer>
                 </div>
             </div>
@@ -45,9 +45,11 @@ class CartContainer extends Component {
 }
 
 CartContainer.propTypes = {
-    visible: PropTypes.bool
+    visible: PropTypes.bool,
+    loading: PropTypes.bool
 };
 
 export default connect(state => ({
-    visible: state.cart.isVisible
+    visible: state.cart.isVisible,
+    loading: state.cart.isLoading
 }))(CartContainer);

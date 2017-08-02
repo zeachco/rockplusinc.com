@@ -9,7 +9,7 @@ const defaultState = {
 module.exports = (state = defaultState, {type, payload}) => {
   switch (type) {
     case CART.TOGGLE: return {...state, isVisible: !state.isVisible}
-    case CART.FETCH_START: 
+    case CART.FETCH_START:
       return {
         ...state,
         isLoading: true
@@ -22,17 +22,17 @@ module.exports = (state = defaultState, {type, payload}) => {
         isVisible: payload === null ? false : payload.items.length > 0,
         totalItems: payload ? payload.items.reduce((qty, item) => qty + item.quantity, 0) : 0
       };
-    case CART.ADD_ITEM: 
+    case CART.ADD_ITEM:
       return {
         ...state,
         isLoading: true
       }
-    case CART.SENDING: 
+    case CART.SENDING:
       return {
         ...state,
         isLoading: true
       }
-    case CART.SENT: 
+    case CART.SENT:
       return {
         ...state,
         cartData: null,
@@ -40,12 +40,10 @@ module.exports = (state = defaultState, {type, payload}) => {
         isVisible: false,
         totalItems: 0
       }
-    case CART.FETCH_FAIL: 
+    case CART.FETCH_FAIL:
       return {
         ...state,
-        cartData: null,
-        isLoading: false,
-        totalItems: 0
+        isLoading: false
       };
   }
   return state;

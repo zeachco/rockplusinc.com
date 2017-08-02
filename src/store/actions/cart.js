@@ -19,6 +19,24 @@ export function sendCart(message = '') {
     });
 }
 
+export const emptyCart = () => {
+    store.dispatch({
+        type: CART.FETCH_START
+    });
+    return axios.delete('/api/cart').then(xhr => {
+        store.dispatch({
+            type: CART.FETCH_DONE,
+            payload: xhr.data
+        });
+    }).catch(err => {
+        console.error(err); // eslint-disable-line no-console
+        store.dispatch({
+            type: CART.FETCH_FAIL,
+            payload: []
+        });
+    });
+};
+
 export function fetchCart() {
     store.dispatch({
         type: CART.FETCH_START

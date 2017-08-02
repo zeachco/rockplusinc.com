@@ -15,19 +15,19 @@ const reducers = combineReducers({
   cart
 });
 
-let store = null;
+window.store = null;
 
 if (process.env.NODE_ENV !== 'production') {
     // Allow Redux devtools
     // https://github.com/zalmoxisus/redux-devtools-extension#usage
-    store = createStore(
+    window.store = createStore(
         reducers,
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
             actionsBlacklist: []
         }) // eslint-disable-line  no-underscore-dangle
     );
 } else {
-    store = createStore(reducers);
+    window.store = createStore(reducers);
 }
 
-module.exports = store;
+module.exports = window.store;
