@@ -1,4 +1,4 @@
-module.exports.init =  token => {
+module.exports.init = token => {
   (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function() {
@@ -10,6 +10,6 @@ module.exports.init =  token => {
     a.src = g;
     m.parentNode.insertBefore(a, m)
   })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', token, 'auto');
-  ga('send', 'pageview');
+  window.ga('create', token, 'auto');
+  window.ga('send', 'pageview');
 };

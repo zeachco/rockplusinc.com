@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 import cx from 'classnames';
@@ -37,11 +38,11 @@ const Sidebar = ({ categories, displayName, isMobile, params }) => {
   };
 
   renderCategory.propTypes = {
-    value: React.PropTypes.string.isRequired,
-    style: React.PropTypes.object.isRequired,
-    label: React.PropTypes.string.isRequired,
-    count: React.PropTypes.number.isRequired,
-    parent: React.PropTypes.string
+    value: PropTypes.string.isRequired,
+    style: PropTypes.object.isRequired,
+    label: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    parent: PropTypes.string
   };
 
   if (!isMobile) {

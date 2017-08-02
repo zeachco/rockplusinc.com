@@ -1,5 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+
 import Sidebar from '../components/Sidebar';
 
 const CartPage = ({
@@ -15,7 +17,7 @@ const CartPage = ({
           <th>Individual Price</th>
         </tr>
         {cartItems.map(row => (
-          <tr>
+          <tr key={row.id}>
             <td>{row.name}</td>
           </tr>
         ))}

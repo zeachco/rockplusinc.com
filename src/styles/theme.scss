@@ -1,4 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Luckiest+Guy);
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+
+$blue: #72d0eb;
+$green: #008800;
+$green-invert: #fff;
+// $family-serif: "Luckiest Guy", "Georgia", serif;
+$primary: $green;
+$primary-invert: $green-invert;
+$danger: $orange;
+// $family-primary: $family-serif;
+
+// 4. Import the rest of Bulma
+@import "../../node_modules/bulma/bulma.sass";
+
 @import "body";
 @import "responsive";
 @import "background";
