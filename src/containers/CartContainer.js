@@ -36,7 +36,7 @@ class CartContainer extends Component {
                     </section>
                     <footer className="modal-card-foot">
                         <a className="button is-success" onClick={() => sendCart(this.message.value)}>Send this order</a>
-                        <a className="button is-outline" disabled onClick={() => console.log('reset')}>Empty cart</a>
+                        <a className="button is-outline" disabled>Empty cart</a>
                     </footer>
                 </div>
             </div>
