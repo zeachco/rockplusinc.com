@@ -23,10 +23,10 @@ export const emptyCart = () => {
     store.dispatch({
         type: CART.FETCH_START
     });
-    return axios.delete('/api/cart').then(xhr => {
+    return axios.delete('/api/cart').then(() => {
         store.dispatch({
             type: CART.FETCH_DONE,
-            payload: xhr.data
+            payload: []
         });
     }).catch(err => {
         console.error(err); // eslint-disable-line no-console
