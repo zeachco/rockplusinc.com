@@ -26,13 +26,13 @@ export const emptyCart = () => {
     return axios.delete('/api/cart').then(() => {
         store.dispatch({
             type: CART.FETCH_DONE,
-            payload: []
+            payload: null
         });
     }).catch(err => {
         console.error(err); // eslint-disable-line no-console
         store.dispatch({
             type: CART.FETCH_FAIL,
-            payload: []
+            payload: null
         });
     });
 };
@@ -50,7 +50,7 @@ export function fetchCart() {
         console.error(err); // eslint-disable-line no-console
         store.dispatch({
             type: CART.FETCH_FAIL,
-            payload: []
+            payload: null
         });
     });
 }
