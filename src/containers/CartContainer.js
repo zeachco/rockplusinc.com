@@ -35,6 +35,7 @@ class CartContainer extends Component {
                         </div>
                     </section>
                     <footer className="modal-card-foot">
+                        <a className="button is-success" onClick={toggleModal}>Continue shopping</a>
                         <a className="button is-success" onClick={() => sendCart(this.message.value)}>Send this order</a>
                         <a className="button is-outline" onClick={() => emptyCart()}>Empty cart</a>
                     </footer>
