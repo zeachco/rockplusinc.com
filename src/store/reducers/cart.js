@@ -53,8 +53,9 @@ module.exports = (state = defaultState, {type, payload}) => {
       return {
         ...state,
         isLoading: false,
-        messageVisible: false,
-        messageValue: ''
+        isVisible: false,
+        messageVisible: true,
+        messageValue: 'Could not send order due to a server issue, please try again or contact seller'
       };
   }
   return state;
