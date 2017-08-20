@@ -14,7 +14,7 @@ class CartContainer extends Component {
         if (!visible) return null;
         const opacity = loading ? .5 : 1;
         return (
-            <div className="modal is-active">
+            <div className="modal cart-popup is-active">
                 <div className="modal-background" onClick={toggleModal} />
                 <div className="modal-card" style={{opacity}}>
                     <header className="modal-card-head">
