@@ -6,7 +6,7 @@ module.exports = argConfig => wps(Object.assign({
   devtool: 'eval',
   proxy: {
     '/api/': {
-      target: 'http://rockplus.com:8080',
+      target: 'http://rockplus.com.dev:8080',
       changeOrigin: true
     }
   }

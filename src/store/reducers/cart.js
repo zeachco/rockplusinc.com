@@ -3,7 +3,9 @@ import {CART} from '../types';
 const defaultState = {
   cartData: null,
   isLoading: true,
-  isVisible: false
+  isVisible: false,
+  messageVisible: false,
+  messageValue: ''
 };
 
 module.exports = (state = defaultState, {type, payload}) => {
@@ -38,12 +40,16 @@ module.exports = (state = defaultState, {type, payload}) => {
         cartData: null,
         isLoading: false,
         isVisible: false,
+        messageVisible: true,
+        messageValue: 'Order was sent from Cart',
         totalItems: 0
       }
     case CART.FETCH_FAIL:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        messageVisible: false,
+        messageValue: ''
       };
   }
   return state;
