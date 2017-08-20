@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect} from 'react-redux';
+import UmsgContainer from '../containers/UmsgContainer';
 
 const Sidebar = require('../components/Sidebar');
 const Item = require('../components/Item');
@@ -38,6 +39,7 @@ class Products extends React.Component {
     return (
       <div>
         <Sidebar {...this.props}/>
+        <UmsgContainer />
         <div
           id="item_list"
           style={{

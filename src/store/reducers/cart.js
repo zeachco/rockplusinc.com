@@ -3,7 +3,9 @@ import {CART} from '../types';
 const defaultState = {
   cartData: null,
   isLoading: true,
-  isVisible: false
+  isVisible: false,
+  messageVisible: false,
+  messageValue: ''
 };
 
 module.exports = (state = defaultState, {type, payload}) => {
@@ -38,12 +40,22 @@ module.exports = (state = defaultState, {type, payload}) => {
         cartData: null,
         isLoading: false,
         isVisible: false,
+        messageVisible: true,
+        messageValue: 'Order was sent from Cart',
         totalItems: 0
+      }
+    case CART.CLEAR_SENT_MESSAGE :
+      return {
+        ...state,
+        messageVisible: false
       }
     case CART.FETCH_FAIL:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        isVisible: false,
+        messageVisible: true,
+        messageValue: 'Could not send order due to a server issue, please try again or contact seller'
       };
   }
   return state;
