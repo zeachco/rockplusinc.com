@@ -8,6 +8,12 @@ export function toggleModal() {
     });
 }
 
+export const clearCartMessage = () => {
+    store.dispatch({
+        type: CART.CLEAR_SENT_MESSAGE
+    });
+}
+
 export function sendCart(message = '') {
     store.dispatch({
         type: CART.SENDING
@@ -16,6 +22,7 @@ export function sendCart(message = '') {
         store.dispatch({
             type: CART.SENT
         });
+        setTimeout(clearCartMessage, 5000);
     });
 }
 
@@ -72,4 +79,8 @@ export function addToCart(id, quantity = 1) {
     }).catch(err => console.error(err)); // eslint-disable-line no-console
 }
 
-export default { fetchCart, addToCart };
+export default {
+    fetchCart,
+    clearCartMessage,
+    addToCart
+};

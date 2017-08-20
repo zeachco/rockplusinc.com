@@ -44,6 +44,11 @@ module.exports = (state = defaultState, {type, payload}) => {
         messageValue: 'Order was sent from Cart',
         totalItems: 0
       }
+    case CART.CLEAR_SENT_MESSAGE :
+      return {
+        ...state,
+        messageVisible: false
+      }
     case CART.FETCH_FAIL:
       return {
         ...state,

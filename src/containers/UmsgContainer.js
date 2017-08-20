@@ -1,47 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import cx from 'classnames';
 
-class UmsgContainer extends Component {
-    constructor(...props) {
-        super(...props);
-        this.self = this;
-        this.state = {
-            messageVisible: false,
-            messageValue: ''
-        };        
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-        return true;    
-    }
-    componentWillUnmount() {
-        if (typeof this.timer !== 'undefined') clearTimeout(this.timer);
-    }
-    setTimer() {
-        this.timer = setTimeout(this.timeUpdate.bind(this), 5000);
-    }
-    timeUpdate() {
-        this.setState.bind(this, {messageVisible: false, messageValue: ''});
-        this.forceUpdate.bind(this);
-    }
-    render() {
-        const {
-            messageVisible,
-            messageValue
-        } = this.props;
-        if (!messageVisible) return null;
-        this.setTimer();    
-        return (
-            <div> 
-                <span>{messageValue}</span>
-            </div>
-        );
-    }
-}
+import {clearCartMessage} from '../store/actions/cart'
+
+const UmsgContainer = ({
+    messageValue,
+    messageVisible
+}) =>  (
+    <div className={cx('modal', {'is-active': messageVisible})}>
+        <div className="modal-background" onClick={clearCartMessage} />
+        <div className="modal-content">
+            <section className="modal-card-body">
+                {messageValue}
+            </section>
+        </div>
+        <button className="modal-close is-large" aria-label="close" onClick={clearCartMessage} />
+    </div>
+);
 
 UmsgContainer.propTypes = {
-    messageVisible: PropTypes.bool,
-    messageValue: PropTypes.node
+    messageValue: PropTypes.string,
+    messageVisible: PropTypes.bool
 };
 
 export default connect(state => ({
