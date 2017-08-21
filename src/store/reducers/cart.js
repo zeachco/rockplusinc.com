@@ -10,7 +10,10 @@ const defaultState = {
 
 module.exports = (state = defaultState, {type, payload}) => {
   switch (type) {
-    case CART.TOGGLE: return {...state, isVisible: !state.isVisible}
+    case CART.TOGGLE: return {...state, isVisible: !state.isVisible};
+
+    case CART.MODAL_HIDE: return {...state, isVisible: false};
+
     case CART.FETCH_START:
       return {
         ...state,

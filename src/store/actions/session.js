@@ -2,6 +2,7 @@ import axios from 'axios';
 import store from '..';
 import {browserHistory} from 'react-router';
 import {fetchCart} from './cart';
+import {hideModalAtLogin} from './cart';
 const {dispatch} = store;
 
 const defaultSession = {
@@ -42,7 +43,8 @@ function login(username, password) {
       payload: {...defaultSession, ...xhr.data}
     });
     browserHistory.push('/');
-    fetchCart();
+    const hideModal = true;
+    fetchCart(hideModal);
   }).catch(xhr => {
     dispatch({
       type: 'LOGIN_FAIL',

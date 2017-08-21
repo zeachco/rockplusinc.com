@@ -1,6 +1,7 @@
 const defaultState = {
   isAuth: false,
   isLoading: true,
+  isVisible: false,
   meta: {}
 }
 
