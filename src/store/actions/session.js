@@ -2,7 +2,6 @@ import axios from 'axios';
 import store from '..';
 import {browserHistory} from 'react-router';
 import {fetchCart} from './cart';
-import {hideModalAtLogin} from './cart';
 const {dispatch} = store;
 
 const defaultSession = {
@@ -29,6 +28,23 @@ function fetchSession() {
     });
   });
 }
+function toLogin() {
+  axios
+  .get('/api/profile/me')
+  .catch(() => {
+    dispatch( {
+      type: 'SESSION_NOT_LOGGEDIN'
+    });
+    browserHistory.push('/login');
+  });
+}
+
+export function redirectionToLogin() {
+  store.dispatch({
+      type: 'SESSION_OR_LOGIN'
+  });
+  setInterval(toLogin, 60000); 
+}
 
 function login(username, password) {
   dispatch({
@@ -45,6 +61,7 @@ function login(username, password) {
     browserHistory.push('/');
     const hideModal = true;
     fetchCart(hideModal);
+    redirectionToLogin();
   }).catch(xhr => {
     dispatch({
       type: 'LOGIN_FAIL',

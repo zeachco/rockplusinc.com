@@ -12,6 +12,11 @@ const session = (state = defaultState, action) => {
         isAuth: false,
         isLoading: true
       };
+    case 'SESSION_NOT_LOGGEDIN':
+      return {
+        isAuth: false,
+        isLoading: false
+      };
     case 'SESSION_FETCH_DONE':
       return {
         isLoading: false,
