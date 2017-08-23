@@ -1,6 +1,7 @@
 const defaultState = {
   isAuth: false,
   isLoading: true,
+  isVisible: false,
   meta: {}
 }
 
@@ -10,6 +11,11 @@ const session = (state = defaultState, action) => {
       return {
         isAuth: false,
         isLoading: true
+      };
+    case 'SESSION_NOT_LOGGEDIN':
+      return {
+        isAuth: false,
+        isLoading: false
       };
     case 'SESSION_FETCH_DONE':
       return {

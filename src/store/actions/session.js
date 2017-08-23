@@ -28,6 +28,23 @@ function fetchSession() {
     });
   });
 }
+function toLogin() {
+  axios
+  .get('/api/profile/me')
+  .catch(() => {
+    dispatch( {
+      type: 'SESSION_NOT_LOGGEDIN'
+    });
+    browserHistory.push('/login');
+  });
+}
+
+export function redirectionToLogin() {
+  store.dispatch({
+      type: 'SESSION_OR_LOGIN'
+  });
+  setInterval(toLogin, 60000); 
+}
 
 function login(username, password) {
   dispatch({
@@ -42,7 +59,9 @@ function login(username, password) {
       payload: {...defaultSession, ...xhr.data}
     });
     browserHistory.push('/');
-    fetchCart();
+    const hideModal = true;
+    fetchCart(hideModal);
+    redirectionToLogin();
   }).catch(xhr => {
     dispatch({
       type: 'LOGIN_FAIL',

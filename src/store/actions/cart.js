@@ -44,7 +44,7 @@ export const emptyCart = () => {
     });
 };
 
-export function fetchCart() {
+export function fetchCart(hideModalCart = false) {
     store.dispatch({
         type: CART.FETCH_START
     });
@@ -53,6 +53,10 @@ export function fetchCart() {
             type: CART.FETCH_DONE,
             payload: xhr.data
         });
+        if (hideModalCart)
+            store.dispatch({
+                type: CART.MODAL_HIDE
+            });
     }).catch(err => {
         console.error(err); // eslint-disable-line no-console
         store.dispatch({
