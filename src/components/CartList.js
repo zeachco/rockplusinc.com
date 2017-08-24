@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import AutoBind from 'auto-bind-es5';
 
 import CartItem from './CartItem';
+import CartListSummary from '../components/CartListSummary';
+
 
 class CartList extends Component {
     constructor(props) {
@@ -22,6 +24,8 @@ class CartList extends Component {
                         quantity={item.quantity}
                     />
                 ))}
+                <hr />
+                <CartListSummary items={items} />                
             </div>
         );
     }
