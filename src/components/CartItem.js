@@ -28,7 +28,11 @@ const CartItem = ({
                 <div className="card-content">
                     <div className="media">
                         <div className="media-left">
-                            <figure className="image is-128x128">
+                            <figure className="image is-128x128" style={{
+                                    width: '128px',
+                                    height: 'auto'
+                                }}
+                                      >
                                 <img src={item.files && item.files[0]} alt={item.name}  style={{
                                     maxWidth: '100%',
                                     maxHeight: '100%'
