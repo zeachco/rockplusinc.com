@@ -19,7 +19,7 @@ class CartContainer extends Component {
                 <div className="modal-card" style={{opacity}}>
                     <header className="modal-card-head">
                         <p className="modal-card-title">Saved items</p>
-                        <button className="modal-close" onClick={toggleModal} />
+                        <button className="delete" onClick={toggleModal} />
                     </header>
                     <section className="modal-card-body">
                         <CartList />
