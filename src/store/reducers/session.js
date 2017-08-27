@@ -2,6 +2,7 @@ const defaultState = {
   isAuth: false,
   isLoading: true,
   isVisible: false,
+  isFailedLogin: false,
   meta: {}
 }
 
@@ -46,18 +47,24 @@ const session = (state = defaultState, action) => {
       return {
         isAuth: false,
         isLoading: false,
-        errMsg: 'Cannot log in'
+        errMsg: 'Cannot log in',
+        isFailedLogin: true,
+        ...state
       };
     case 'LOGIN_REQUEST_DONE':
       return {
         isAuth: true,
         isLoading: false,
-        ...action.payload
+        isFailedLogin: false,
+        ...action.payload,
+        ...state
       };
     case 'LOGIN_REQUEST_FAIL':
       return {
         isAuth: false,
-        isLoading: false
+        isLoading: false,
+        isFailedLogin: true,
+        ...state
       };
     default:
       return state;
