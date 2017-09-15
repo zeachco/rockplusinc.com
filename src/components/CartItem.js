@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 import {addToCart} from '../store/actions/cart';
 
-const addQty = (item, qty) => ev => {
+const addQty = (item, qty, options) => ev => {
     ev.preventDefault();
-    addToCart(item, qty);
+    addToCart(item._id, qty, options);
 }
 
 const CartItem = ({
     item,
-    quantity
+    quantity,
+    options
 }) => (
     <div className="card">
         <header className="card-header">
@@ -48,9 +49,9 @@ const CartItem = ({
             </div>
         </div>
         <footer className="card-footer">
-            <a className="card-footer-item" onClick={addQty(item._id, -1)}>-</a>
+            <a className="card-footer-item" onClick={addQty(item, -1, options)}>-</a>
             <span className="card-footer-item">{quantity}</span>
-            <a className="card-footer-item" onClick={addQty(item._id, 1)}>+</a>
+            <a className="card-footer-item" onClick={addQty(item, 1, options)}>+</a>
         </footer>
     </div>
 );
@@ -62,8 +63,13 @@ CartItem.propTypes = {
         shortDescription: PropTypes.string,
         files: PropTypes.array
     }).isRequired,
-    quantity: PropTypes.number.isRequired
-}
+    quantity: PropTypes.number.isRequired,
+    options: PropTypes.object,
+};
+
+CartItem.defaultProps = {
+    options: {}
+};
 
 export default CartItem;
 

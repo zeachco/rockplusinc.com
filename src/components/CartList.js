@@ -22,6 +22,7 @@ class CartList extends Component {
                         key={item._id}
                         item={item.data || {}}
                         quantity={item.quantity}
+                        options={item.options}
                     />
                 ))}
                 <hr />
