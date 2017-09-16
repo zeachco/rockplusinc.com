@@ -19,7 +19,7 @@ UserSpanMessage.propTypes = {
   errorWarningOrInfo: PropTypes.string
 };
 
-module.exports = UserSpanMessage; 
+module.exports = UserSpanMessage;
 
 /* const mapStateToProps = state => ({
   cart: state.cart
