@@ -66,14 +66,14 @@ export function fetchCart(hideModalCart = false) {
     });
 }
 
-export function addToCart(id, quantity = 1) {
+export function addToCart(id, quantity = 1, options = {}) {
     store.dispatch({
         type: CART.ADD_ITEM
     });
     axios.post('/api/cart', {
         itemId: id,
         quantity,
-        options: {}
+        options
     }).then(xhr => {
         store.dispatch({
             type: CART.FETCH_DONE,

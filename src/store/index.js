@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import categories from './reducers/categories';
 import session from './reducers/session';
 import itemReducer from './reducers/items';
+import itemDetails from './reducers/itemDetails'
 import geometry from './reducers/geometry';
 import cart from './reducers/cart';
 
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   categories,
   session,
   itemReducer,
+  itemDetails,
   geometry,
   cart
 });

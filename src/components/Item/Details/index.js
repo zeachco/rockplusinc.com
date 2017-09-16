@@ -8,6 +8,8 @@ import {connect} from'react-redux';
 
 import Price from 'cms-core/src/components/Price/Price';
 import AddToCart from '../../AddToCart';
+import ItemOptions from './ItemOptions';
+import { open as openItemDetails, close as closeItemDetails } from '../../../store/actions/itemDetails';
 
 const noop = () => {};
 
@@ -29,9 +31,8 @@ class ItemDetails extends Component {
   }
 
   open() {
-    this
-      .customDialog
-      .show();
+    openItemDetails(this.props.item);
+    this.customDialog.show();
     const { src } = this.props;
     const img = new Image();
     img.src = src;
@@ -68,7 +69,7 @@ class ItemDetails extends Component {
       description
     } = item.data;
     const isVisible = item.get('visible');
-    const { loading, dynamicPrice = item.getPrice() } = this.state;
+    const { loading } = this.state;
     const bg = {
       backgroundImage: `url("${loading
         ? thumbsSrc
@@ -83,7 +84,7 @@ class ItemDetails extends Component {
     const priceJsx = canSeePrices ? (
       <tr>
         <td>Price:</td>
-        <td><Price value={dynamicPrice} /><AddToCart item={item} /></td>
+        <td><Price value={ this.props.calculatedPrice } /><AddToCart item={item} /></td>
       </tr>
     ) : null;
 
@@ -100,7 +101,11 @@ class ItemDetails extends Component {
             alt={title}
             onClick={this.open}
           />
-          <SkyLight hideOnOverlayClicked ref={el => this.customDialog = el} title={title}>
+          <SkyLight 
+            hideOnOverlayClicked
+            ref={el => this.customDialog = el}
+            afterClose={closeItemDetails}
+            title={title}>
             <div>
               <div className="col-half">
                 <div className={imgClasses}>
@@ -140,22 +145,7 @@ class ItemDetails extends Component {
                       </tr>
                     </tbody>
                   </table>
-                  {options.map(og => (
-                    <div className="item-option-select" key={og.code}>
-                      <label>{og.code}</label>
-                      <select
-                        onChange={(e) => {
-                          e.preventDefault();
-                          item.selectOption(og.code, e.target.value);
-                          this.setState({ dynamicPrice: item.getPrice() });
-                        }}
-                      >
-                        {og.options.map((o, index) => (
-                          <option value={o.code} key={`${index}_${o.code}`}>{o.code}</option>
-                        ))}
-                      </select>
-                    </div>
-                  ))}
+                  <ItemOptions options={options} initialValues={item.selectedOptions} />
                 </center>
               </div>
             </div>
@@ -171,9 +161,13 @@ ItemDetails.propTypes = {
   imgClassName: PropTypes.string.isRequired,
   thumbsSrc: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
-  canSeePrices: PropTypes.bool.isRequired
+  canSeePrices: PropTypes.bool.isRequired,
+  calculatedPrice: PropTypes.number.isRequired
 };
 
-module.exports = connect(state => ({
-  canSeePrices: state.session.meta.prices
-}))(ItemDetails);
+module.exports = connect(state => {
+  return {
+    calculatedPrice: state.itemDetails.calculatedPrice,
+    canSeePrices: state.session.meta.prices
+  };
+})(ItemDetails);
