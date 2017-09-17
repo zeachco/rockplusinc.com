@@ -1,8 +1,6 @@
 import React from 'react';
-import axios from 'axios';
-import { browserHistory } from 'react-router';
 
-const store = require('../store');
+import {logout} from '../store/actions/session';
 const LoadingImg = require('../img/loading.gif');
 
 class Logout extends React.Component {
@@ -13,15 +11,8 @@ class Logout extends React.Component {
     };
   }
   componentDidMount() {
-    // console.log('mount!');
     this.setState({loading: true});
-    axios.delete('/api/v2/logout').then(() => {
-      store.dispatch({type: 'LOGIN_REQUEST_FAIL'});
-      browserHistory.push('/');
-    });
-  }
-  componentWillUnmount() {
-    // console.log('unmount!');
+    logout();
   }
   render() {
     return (
