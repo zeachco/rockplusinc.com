@@ -43,7 +43,7 @@ const CartItem = ({
                         <div className="media-content">
                             <p className="title is-4">{item.name}</p>
                             <p className="subtitle is-6">{item.shortDescription}</p>
-                            { Object.keys(options).map(key => (<p className="subtitle is-6">{ `${key}: ${options[key]}`}</p>)) }
+                            { Object.keys(options).map(key => (<p key={key} className="subtitle is-6">{ `${key}: ${options[key]}`}</p>)) }
                         </div>
                     </div>
                 </div>
