@@ -26,7 +26,7 @@ class CartList extends Component {
                     />
                 ))}
                 <hr />
-                <CartListSummary items={items} />                
+                <CartListSummary items={items} />
             </div>
         );
     }

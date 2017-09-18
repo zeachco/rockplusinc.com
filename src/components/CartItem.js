@@ -65,7 +65,7 @@ CartItem.propTypes = {
         files: PropTypes.array
     }).isRequired,
     quantity: PropTypes.number.isRequired,
-    options: PropTypes.object,
+    options: PropTypes.object
 };
 
 CartItem.defaultProps = {
