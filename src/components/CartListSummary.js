@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const total = (
-    (items) => 
-     {
-        let t = 0;
-        items.forEach((e)=> t = t + e.quantity * e.data.price);
-        return t.toFixed(2);
-     }
+const total = (items => items
+    .reduce((sum, item) => (sum + item.quantity * item.data.getPrice()), 0)
+    .toFixed(2)
 );
 
 const CartListSummary = ({
@@ -48,4 +44,3 @@ CartListSummary.propTypes = {
 };
 
 export default CartListSummary;
-

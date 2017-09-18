@@ -5,7 +5,7 @@ import {addToCart} from '../store/actions/cart';
 
 const addQty = (item, qty, options) => ev => {
     ev.preventDefault();
-    addToCart(item._id, qty, options);
+    addToCart(item.data._id, qty, options);
 }
 
 const CartItem = ({
@@ -16,7 +16,7 @@ const CartItem = ({
     <div className="card">
         <header className="card-header">
             <p className="card-header-title">
-                {item.name}
+                {item.data.name}
             </p>
             <a className="card-header-icon">
             <span className="icon">
@@ -34,15 +34,15 @@ const CartItem = ({
                                     height: 'auto'
                                 }}
                                       >
-                                <img src={item.files && item.files[0]} alt={item.name}  style={{
+                                <img src={item.data.files && item.data.files[0]} alt={item.data.name}  style={{
                                     maxWidth: '100%',
                                     maxHeight: '100%'
                                 }}/>
                             </figure>
                         </div>
                         <div className="media-content">
-                            <p className="title is-4">{item.name}</p>
-                            <p className="subtitle is-6">{item.shortDescription}</p>
+                            <p className="title is-4">{item.data.name}</p>
+                            <p className="subtitle is-6">{item.data.shortDescription}</p>
                             { Object.keys(options).map(key => (<p key={key} className="subtitle is-6">{ `${key}: ${options[key]}`}</p>)) }
                         </div>
                     </div>
