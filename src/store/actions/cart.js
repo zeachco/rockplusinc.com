@@ -75,10 +75,6 @@ export function addToCart(id, quantity = 1, options = {}) {
         quantity,
         options
     }).then(xhr => {
-        store.dispatch({
-            type: CART.FETCH_DONE,
-            payload: xhr.data
-        });
         fetchCart();
     }).catch(err => console.error(err)); // eslint-disable-line no-console
 }
