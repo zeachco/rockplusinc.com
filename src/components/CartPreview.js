@@ -25,6 +25,10 @@ CartPreview.propTypes = {
     isLoading: PropTypes.bool.isRequired
 };
 
+CartPreview.defaultProps = {
+    count: 0
+};
+
 export default connect(state => ({
     count: state.cart.totalItems,
     isLoading: state.cart.isLoading 
