@@ -54,10 +54,14 @@ export function fetchCart(hideModalCart = false) {
             xhr.data.items = xhr.data.items.map(item => {
                 //TODO -> missing "cart line" model?
                 item.data = new Item(item.data);
-                Object.keys(item.options).forEach(key => {
-                    //TODO shouldn't that be done in Item ctor?
-                    item.data.selectOption(key, item.options[key]);
-                });
+                try {
+                    Object.keys(item.options).forEach(key => {
+                        //TODO shouldn't that be done in Item ctor?
+                        item.data.selectOption(key, item.options[key]);
+                    });
+                } catch(err) {
+                    // silent error
+                }
                 return item;
             });
         }
@@ -68,7 +72,7 @@ export function fetchCart(hideModalCart = false) {
             payload: cartData
         });
         if (hideModalCart)
-            store.dispatch({ 
+            store.dispatch({
                 type: CART.MODAL_HIDE
             });
     }).catch(err => {
