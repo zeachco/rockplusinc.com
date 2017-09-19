@@ -19,14 +19,14 @@ class CartList extends Component {
             <div>
                 {items.map(item => (
                     <CartItem
-                        key={item._id}
+                        key={item.uuid}
                         item={item.data || {}}
                         quantity={item.quantity}
                         options={item.options}
                     />
                 ))}
                 <hr />
-                <CartListSummary items={items} />                
+                <CartListSummary items={items} />
             </div>
         );
     }

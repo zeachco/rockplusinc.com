@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '..';
 import {CART} from '../types';
+import Item from 'cms-core/src/models/item';
 
 export function toggleModal() {
     store.dispatch({
@@ -49,12 +50,25 @@ export function fetchCart(hideModalCart = false) {
         type: CART.FETCH_START
     });
     return axios.get('/api/cart').then(xhr => {
+        if (xhr.data && xhr.data.items) {
+            xhr.data.items = xhr.data.items.map(item => {
+                //TODO -> missing "cart line" model?
+                item.data = new Item(item.data);
+                Object.keys(item.options).forEach(key => {
+                    //TODO shouldn't that be done in Item ctor?
+                    item.data.selectOption(key, item.options[key]);
+                });
+                return item;
+            });
+        }
+        return xhr.data;
+    }).then(cartData => {
         store.dispatch({
             type: CART.FETCH_DONE,
-            payload: xhr.data
+            payload: cartData
         });
         if (hideModalCart)
-            store.dispatch({
+            store.dispatch({ 
                 type: CART.MODAL_HIDE
             });
     }).catch(err => {
@@ -75,10 +89,6 @@ export function addToCart(id, quantity = 1, options = {}) {
         quantity,
         options
     }).then(xhr => {
-        store.dispatch({
-            type: CART.FETCH_DONE,
-            payload: xhr.data
-        });
         fetchCart();
     }).catch(err => console.error(err)); // eslint-disable-line no-console
 }
