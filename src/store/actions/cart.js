@@ -15,7 +15,7 @@ export const clearCartMessage = () => {
     });
 }
 
-export function sendCart(message = '') {
+export function sendCart(message = '', autoclose = true) {
     store.dispatch({
         type: CART.SENDING
     });
@@ -23,7 +23,7 @@ export function sendCart(message = '') {
         store.dispatch({
             type: CART.SENT
         });
-        setTimeout(clearCartMessage, 5000);
+        if (autoclose) setTimeout(clearCartMessage, 5000);
     });
 }
 

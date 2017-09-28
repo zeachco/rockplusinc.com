@@ -9,7 +9,8 @@ class CartContainer extends Component {
     render() {
         const {
             visible,
-            loading
+            loading,
+            autoclosePrompt
         } = this.props;
         if (!visible) return null;
         const opacity = loading ? .5 : 1;
@@ -36,7 +37,7 @@ class CartContainer extends Component {
                     </section>
                     <footer className="modal-card-foot">
                         <a className="button is-success" onClick={toggleModal}>Continue shopping</a>
-                        <a className="button is-success" onClick={() => sendCart(this.message.value)}>Send this order</a>
+                        <a className="button is-success" onClick={() => sendCart(this.message.value, autoclosePrompt)}>Send this order</a>
                         <a className="button is-outline" onClick={() => emptyCart()}>Empty cart</a>
                     </footer>
                 </div>
@@ -47,10 +48,12 @@ class CartContainer extends Component {
 
 CartContainer.propTypes = {
     visible: PropTypes.bool,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    autoclosePrompt: PropTypes.bool
 };
 
 export default connect(state => ({
     visible: state.cart.isVisible,
-    loading: state.cart.isLoading
+    loading: state.cart.isLoading,
+    autoclosePrompt: !!state.session.email
 }))(CartContainer);
