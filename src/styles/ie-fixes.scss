@@ -8,3 +8,8 @@
         margin: inherit;
     }
 }
+
+//Fix scrolling in modal cards in IE10+
+.modal-card {
+    overflow: auto !important;
+}
