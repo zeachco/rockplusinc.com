@@ -1,0 +1,15 @@
+// Bulma fixes to support IE10+
+// Bulma advertise a partial support for IE10+ , but the project's moderators are currently rejecting perfectly working PRs
+//  if they only add support for IE10+ . IE10+ support don't look like a priority as of now. 
+
+//Fix for horizontal alignement of modals
+.modal-content, .modal-card {
+    @media (min-width: 769px) {
+        margin: inherit;
+    }
+}
+
+//Fix scrolling in modal cards in IE10+
+.modal-card {
+    overflow: auto !important;
+}
