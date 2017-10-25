@@ -92,7 +92,7 @@ export function addToCart(id, quantity = 1, options = {}) {
         itemId: id,
         quantity,
         options
-    }).then(xhr => {
+    }).then(() => {
         fetchCart();
     }).catch(err => console.error(err)); // eslint-disable-line no-console
 }

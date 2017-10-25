@@ -9,7 +9,6 @@ const defaultState = {
 };
 
 module.exports = (state = defaultState, {type, payload}) => {
-  if (type.indexOf('CART.') === 0) console.log(type, payload);
   switch (type) {
     case CART.TOGGLE: return {...state, isVisible: !state.isVisible};
 
