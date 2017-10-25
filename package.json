@@ -38,6 +38,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress --hot",
+    "test": "echo 0;",
     "build": "webpack -p --progress --env.isProd",
     "deploy": "fly default"
   }

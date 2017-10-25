@@ -15,9 +15,10 @@ class CartContainer extends Component {
         if (!visible) return null;
         const opacity = loading ? .5 : 1;
         return (
-            <div className="modal cart-popup is-active">
-                <div className="modal-background" onClick={toggleModal} />
-                <div className="modal-card" style={{opacity}}>
+            <div className="rp-modal-container">
+                <div className="rp-modal-mask" onClick={toggleModal} />
+                <div className="rp-modal-content">
+                <div className="modal-card2" style={{opacity}}>
                     <header className="modal-card-head">
                         <p className="modal-card-title">Saved items</p>
                         <button className="delete" onClick={toggleModal} />
@@ -40,6 +41,7 @@ class CartContainer extends Component {
                         <a className="button is-success" onClick={() => sendCart(this.message.value, autoclosePrompt)}>Send this order</a>
                         <a className="button is-outline" onClick={() => emptyCart()}>Empty cart</a>
                     </footer>
+                    </div>
                 </div>
             </div>
         );
