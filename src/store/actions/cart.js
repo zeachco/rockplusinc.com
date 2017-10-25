@@ -49,7 +49,7 @@ export function fetchCart(hideModalCart = false) {
     store.dispatch({
         type: CART.FETCH_START
     });
-    return axios.get('/api/cart').then(xhr => {
+    return axios.get('/api/cart?' + Math.random()).then(xhr => {
         if (xhr.data && xhr.data.items) {
             xhr.data.items = xhr.data.items.map(item => {
                 //TODO -> missing "cart line" model?
