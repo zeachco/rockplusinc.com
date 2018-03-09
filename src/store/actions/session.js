@@ -1,7 +1,9 @@
-import axios from 'axios';
-import store from '..';
 import {browserHistory} from 'react-router';
+
+import store from '..';
 import {fetchCart} from './cart';
+import {backend} from '../../utils/api';
+
 const {dispatch} = store;
 
 const defaultSession = {
@@ -11,32 +13,35 @@ const defaultSession = {
   }
 }
 
-function fetchSession() {
+export function fetchSession() {
   store.dispatch({
     type: 'SESSION_FETCH_START'
   });
-  return axios.get('/api/profile/me').then(xhr => {
+  return backend('profile/me')
+  .then(data => {
+    fetchCart(true);
     store.dispatch({
       type: 'SESSION_FETCH_DONE',
-      payload: {...defaultSession, ...xhr.data}
+      payload: {...defaultSession, ...data}
     });
-    fetchCart();
-  }).catch(xhr => {
+
+  })
+  .catch(err => {
     store.dispatch({
       type: 'SESSION_FETCH_FAIL',
-      payload: xhr
+      payload: err
     });
-  });
+  })
 }
-function toLogin() {
-  axios
-  .get('/api/profile/me')
-  .catch(() => {
-    dispatch( {
-      type: 'SESSION_NOT_LOGGEDIN'
-    });
-    browserHistory.push('/login');
-  });
+
+export function toLogin() {
+  backend('profile/me')
+    .catch(() => {
+      dispatch( {
+        type: 'SESSION_NOT_LOGGEDIN'
+      });
+      browserHistory.push('/login');
+    })
 }
 
 export function redirectionToLogin() {
@@ -46,35 +51,35 @@ export function redirectionToLogin() {
   setInterval(toLogin, 60000); 
 }
 
-function login(username, password) {
+export function login(username, password) {
   dispatch({
     type: 'SESSION_FETCH_START'
   });
-  return axios.post('/api/login', {
+  return backend.post('login', {
     username,
     password
-  }).then(xhr => {
+  }).then(data => {
     dispatch({
       type: 'SESSION_FETCH_DONE',
-      payload: {...defaultSession, ...xhr.data}
+      payload: {...defaultSession, ...data}
     });
     browserHistory.push('/');
     const hideModal = true;
     fetchCart(hideModal);
     redirectionToLogin();
-  }).catch(xhr => {
+  }).catch(err => {
     dispatch({
       type: 'LOGIN_FAIL',
-      payload: xhr
+      payload: err
     });
   });
 }
 
-function logout() {
+export function logout() {
   dispatch({
     type: 'DISCONNECT_START'
   });
-  return axios.delete('/api/logout').then(() => {
+  return backend.post('logout').then(() => {
     dispatch({
       type: 'DISCONNECT_DONE'
     });
@@ -82,12 +87,11 @@ function logout() {
   });
 }
 
-function profileUpdate(profile) {
+export function profileUpdate(profile) {
   dispatch({
     type: 'PROFILE_UPDATE_START'
   });
-  axios
-    .put('/api/profile/me', profile)
+  backend.put('profile/me', profile)
     .then(data => {
       dispatch({
         type: 'PROFILE_UPDATE_DONE',
@@ -96,7 +100,7 @@ function profileUpdate(profile) {
     });
 }
 
-module.exports = {
+export default {
   fetchSession,
   login,
   logout,

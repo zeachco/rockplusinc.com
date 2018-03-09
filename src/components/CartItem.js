@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {addToCart} from '../store/actions/cart';
+import {media} from '../utils/api'
 
 const addQty = (item, qty, options) => ev => {
     ev.preventDefault();
@@ -34,7 +35,7 @@ const CartItem = ({
                                     height: 'auto'
                                 }}
                                       >
-                                <img src={item.data.files && item.data.files[0]} alt={item.data.name}  style={{
+                                <img src={media(item.data.files && item.data.files[0])} alt={item.data.name}  style={{
                                     maxWidth: '100%',
                                     maxHeight: '100%'
                                 }}/>

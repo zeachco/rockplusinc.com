@@ -71,4 +71,4 @@ const session = (state = defaultState, action) => {
   }
 };
 
-module.exports = session;
+export default session;

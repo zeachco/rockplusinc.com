@@ -110,4 +110,4 @@ const mapStatetoProps = store => {
   })
 };
 
-module.exports = connect(mapStatetoProps)(Sidebar);
+export default connect(mapStatetoProps)(Sidebar);

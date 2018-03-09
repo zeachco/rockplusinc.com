@@ -24,4 +24,4 @@ const mapStatetoProps = store => ({
   scrollY: store.geometry.scrollY
 });
 
-module.exports = connect(mapStatetoProps)(HeaderNavigation);
+export default connect(mapStatetoProps)(HeaderNavigation);

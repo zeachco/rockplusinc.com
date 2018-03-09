@@ -1,7 +1,7 @@
-import axios from 'axios';
+import {backend} from '../../utils/api'
 import store from '..';
 import {CART} from '../types';
-import Item from 'cms-core/src/models/item';
+import Item from '../../models/Item';
 
 export function toggleModal() {
     store.dispatch({
@@ -19,7 +19,7 @@ export function sendCart(message = '', autoclose = true) {
     store.dispatch({
         type: CART.SENDING
     });
-    axios.post('/api/cart/send', {message}).then(() => {
+    backend.post('cart/send', {message}).then(() => {
         store.dispatch({
             type: CART.SENT
         });
@@ -31,7 +31,7 @@ export const emptyCart = () => {
     store.dispatch({
         type: CART.FETCH_START
     });
-    return axios.delete('/api/cart').then(() => {
+    return backend.delete('cart').then(() => {
         store.dispatch({
             type: CART.FETCH_DONE,
             payload: null
@@ -49,9 +49,9 @@ export function fetchCart(hideModalCart = false) {
     store.dispatch({
         type: CART.FETCH_START
     });
-    return axios.get('/api/cart?' + Math.random()).then(xhr => {
-        if (xhr.data && xhr.data.items) {
-            xhr.data.items = xhr.data.items.map(item => {
+    return backend('cart?' + Math.random()).then(data => {
+        if (data && data.items) {
+            data.items = data.items.map(item => {
                 //TODO -> missing "cart line" model?
                 item.data = new Item(item.data);
                 try {
@@ -65,7 +65,7 @@ export function fetchCart(hideModalCart = false) {
                 return item;
             });
         }
-        return xhr.data;
+        return data;
     }).then(cartData => {
         store.dispatch({
             type: CART.FETCH_DONE,
@@ -88,7 +88,7 @@ export function addToCart(id, quantity = 1, options = {}) {
     store.dispatch({
         type: CART.ADD_ITEM
     });
-    axios.post('/api/cart', {
+    backend.post('cart', {
         itemId: id,
         quantity,
         options

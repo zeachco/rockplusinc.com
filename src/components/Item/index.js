@@ -2,11 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import Price from 'cms-core/src/components/Price/Price';
+import {media} from '../../utils/api'
+import Price from '../Price';
 import AddToCart from '../AddToCart';
 
-const Details = require('./Details');
-const NoImageAvail = require('../../img/nopic.png');
+import Details from './Details';
+import NoImageAvail from '../../img/nopic.png';
+
+const randomItemFromList = list => list[Math.ceil(Math.random() * list.length - 1)];
+
+const newPriceIcons = [
+  require('../../img/newprice/new-price-1.gif'),
+  require('../../img/newprice/new-price-2.gif'),
+  require('../../img/newprice/new-price-3.gif'),
+  require('../../img/newprice/new-price-4.gif')
+];
+
+const newIcons = [
+  require('../../img/new/new1.gif'),
+  require('../../img/new/new2.gif'),
+  require('../../img/new/new3.gif'),
+  require('../../img/new/new4.gif'),
+  require('../../img/new/new5.gif'),
+  require('../../img/new/new6.gif'),
+  require('../../img/new/new7.gif'),
+  require('../../img/new/new8.gif'),
+  require('../../img/new/new9.gif')
+];
+
+const newArrivalIcons = [
+  require('../../img/newarrival/new-arrival-1.gif'),
+  require('../../img/newarrival/new-arrival-2.gif'),
+  require('../../img/newarrival/new-arrival-3.gif'),
+  require('../../img/newarrival/new-arrival-4.gif')
+];
+
+const backorderIcons = [
+  require('../../img/backorder/bo-1.png'),
+  require('../../img/backorder/bo2.png')
+];
 
 const Item = ({item}) => {
   const id = item.get('_id');
@@ -20,10 +54,10 @@ const Item = ({item}) => {
   const showNewPrice = item.flag('price') && !showBackorder;
   const showClearance = item.flag('clearance') && !showBackorder;
 
-  const NewArrivalImage = require(`img/newarrival/new-arrival-${Math.ceil(Math.random() * 4)}.gif`);
-  const NewImage = require(`img/new/new${Math.ceil(Math.random() * 9)}.gif`);
-  const NewPriceImage = require(`img/newprice/new-price-${Math.ceil(Math.random() * 4)}.gif`);
-  const BackorderImage = require('img/backorder/bo2.png');
+  const NewArrivalImage = randomItemFromList(newArrivalIcons)
+  const NewImage = randomItemFromList(newIcons);
+  const NewPriceImage = randomItemFromList(newPriceIcons);
+  const BackorderImage = randomItemFromList(backorderIcons);
   const imgFull = item.get('files')[0] || NoImageAvail;
   const imgThumb = item.get('files')[0] ? imgFull + '/thumb' : NoImageAvail;
   return (
@@ -45,8 +79,8 @@ const Item = ({item}) => {
           <small>
             <Details
               imgClassName="png_alpha"
-              src={imgFull}
-              thumbsSrc={imgThumb}
+              src={media(imgFull)}
+              thumbsSrc={media(imgThumb)}
               title={name}
               item={item}/>
           </small>
@@ -64,4 +98,4 @@ Item.propTypes = {
   item: PropTypes.object
 };
 
-module.exports = Item;
+export default Item;

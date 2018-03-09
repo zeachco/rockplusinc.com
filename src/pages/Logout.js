@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {logout} from '../store/actions/session';
-const LoadingImg = require('../img/loading.gif');
+import LoadingImg from '../img/loading.gif';
 
 class Logout extends React.Component {
   constructor(...props) {
@@ -35,4 +35,4 @@ class Logout extends React.Component {
   }
 }
 
-module.exports = Logout;
+export default Logout;

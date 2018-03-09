@@ -32,4 +32,4 @@ if (process.env.NODE_ENV !== 'production') {
     window.store = createStore(reducers);
 }
 
-module.exports = window.store;
+export default window.store;

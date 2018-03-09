@@ -8,7 +8,7 @@ const defaultState = {
   messageValue: ''
 };
 
-module.exports = (state = defaultState, {type, payload}) => {
+export default (state = defaultState, {type, payload}) => {
   switch (type) {
     case CART.TOGGLE: return {...state, isVisible: !state.isVisible};
 
@@ -60,6 +60,7 @@ module.exports = (state = defaultState, {type, payload}) => {
         messageVisible: true,
         messageValue: 'Could not send order due to a server issue, please try again or contact seller'
       };
+    default:
+      return state;
   }
-  return state;
 };

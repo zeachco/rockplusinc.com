@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 const MenuItem = ({style, to, children, selected}) => {
@@ -18,4 +19,10 @@ const MenuItem = ({style, to, children, selected}) => {
 	);
 };
 
-module.exports = MenuItem;
+MenuItem.propTypes = {
+	style: PropTypes.object,
+	to: PropTypes.string,
+	selected: PropTypes.bool
+}
+
+export default MenuItem;

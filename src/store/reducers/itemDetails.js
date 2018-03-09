@@ -29,9 +29,9 @@ const itemDetails = (state = defaultState, action) => {
       };
     case ITEM_DETAILS.CLOSE:
       return clone(defaultState);
-    default:
+  default:
       return state;
   }
 };
 
-module.exports = itemDetails;
+export default itemDetails;

@@ -7,3 +7,4 @@ _nogit
 # these files are auto-generated
 .babelrc
 .eslintrc.yml
+src/styles/theme.css

@@ -19,4 +19,4 @@ NotFound.propTypes = {
   params: PropTypes.object
 };
 
-module.exports = NotFound;
+export default NotFound;

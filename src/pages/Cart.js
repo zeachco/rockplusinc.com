@@ -42,6 +42,6 @@ CartPage.propTypes = {
   cartItems: PropTypes.array.isRequired
 };
 
-module.exports = connect(state => ({
+export default connect(state => ({
   cartItems: state.cart.items
 }))(CartPage);
