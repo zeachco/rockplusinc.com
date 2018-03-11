@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import './styles/theme.scss';
-require('./store/actions/geometry'); // watches for resize / scroll
-
-const Routes = require('./core/routes');
-
-const { fetchCategories } = require('./store/actions/categories');
-const { fetchSession } = require('./store/actions/session');
+import './styles/theme.css';
+import './store/actions/geometry'; // watches for resize / scroll
+import Routes from './core/routes'
+import { fetchCategories } from './store/actions/categories'
+import { fetchSession } from './store/actions/session'
 
 const disableRightClick = ev => ev.preventDefault();
 
@@ -17,12 +15,12 @@ class App extends Component {
   }
   componentDidMount() {
     fetchCategories();
-    fetchSession().then(() => {
-      this.setState({ loading: false });
-    }).catch(err => {
-      throw err;
-      // this.setState({ loading: false, error: xhr });
-    });
+    fetchSession()
+      .then(() => this.setState({ loading: false }))
+      .catch(err => {
+        throw err;
+        // this.setState({ loading: false, error: xhr });
+      });
     document.addEventListener('contextmenu', disableRightClick);
   }
   componentWillUnmount() {
@@ -42,4 +40,4 @@ class App extends Component {
   }
 }
 
-module.exports = App;
+export default App;

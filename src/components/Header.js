@@ -25,4 +25,4 @@ const Header = () => (
   </div>
 );
 
-module.exports = Header;
+export default Header;

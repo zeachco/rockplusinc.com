@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect} from 'react-redux';
 import UmsgContainer from '../containers/UmsgContainer';
 
-const Sidebar = require('../components/Sidebar');
-const Item = require('../components/Item');
-const { fetchCategory, searchItems } = require('../store/actions/items');
+import Sidebar from '../components/Sidebar'
+import Item from '../components/Item'
+import { fetchCategory, searchItems } from '../store/actions/items'
 
 class Products extends React.Component {
   constructor(...props) {
@@ -67,4 +67,4 @@ const mapStatetoProps = store => {
   });
 };
 
-module.exports = connect(mapStatetoProps)(Products);
+export default connect(mapStatetoProps)(Products);

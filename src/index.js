@@ -1,5 +1,4 @@
 import React from 'react';
-import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
@@ -9,15 +8,12 @@ let App = require('./App');
 let store = require('./store');
 
 const Hook = () => {
-	console.clear(); // eslint-disable-line no-console
-	App = require('./App');
-	store = require('./store');
+	App = require('./App').default;
+	store = require('./store').default;
 	render(
-    <AppContainer>
       <Provider store={store}>
         <App />
-      </Provider>
-    </AppContainer>,
+      </Provider>,
     document.querySelector('#root')
   );
 };

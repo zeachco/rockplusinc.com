@@ -1,8 +1,8 @@
 import React from 'react';
 
 import CartContainer from '../containers/CartContainer';
-const Header = require('./Header');
-const HeaderNavigation = require('./HeaderNavigation');
+import Header from './Header';
+import HeaderNavigation from './HeaderNavigation';
 
 const Application = props => (
   <div>
@@ -13,4 +13,4 @@ const Application = props => (
   </div>
 );
 
-module.exports = Application;
+export default Application;

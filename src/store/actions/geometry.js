@@ -37,7 +37,7 @@ window.addEventListener('resize', dispatchResize);
 dispatchScroll();
 dispatchResize();
 
-module.exports = {
+export default {
   dispatchScroll,
   dispatchResize
 };

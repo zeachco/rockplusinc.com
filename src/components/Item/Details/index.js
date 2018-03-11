@@ -6,10 +6,11 @@ import cx from 'classnames';
 import autoBind from 'auto-bind-es5';
 import {connect} from'react-redux';
 
-import Price from 'cms-core/src/components/Price/Price';
+import Price from '../../Price';
 import AddToCart from '../../AddToCart';
 import ItemOptions from './ItemOptions';
 import { open as openItemDetails, close as closeItemDetails } from '../../../store/actions/itemDetails';
+import {media} from '../../../utils/api'
 
 const noop = () => {};
 
@@ -73,7 +74,7 @@ class ItemDetails extends Component {
     const bg = {
       backgroundImage: `url("${loading
         ? thumbsSrc
-        : mainImage}")`
+        : media(mainImage)}")`
     };
     const imgClasses = cx('lightboxImg_container', {
       loading: !!loading
@@ -117,6 +118,7 @@ class ItemDetails extends Component {
                     className="otherImages"
                     onClick={() => this.setState({mainImage: img})}
                     src={img}
+                    alt="thumb"
                   />
                 ))}
               </div>
@@ -165,7 +167,7 @@ ItemDetails.propTypes = {
   calculatedPrice: PropTypes.number.isRequired
 };
 
-module.exports = connect(state => {
+export default connect(state => {
   return {
     calculatedPrice: state.itemDetails.calculatedPrice,
     canSeePrices: state.session.meta.prices

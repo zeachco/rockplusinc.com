@@ -8,4 +8,4 @@ const categories = (state = defaultState, action) => {
   }
 };
 
-module.exports = categories;
+export default categories;

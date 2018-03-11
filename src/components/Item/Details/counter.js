@@ -35,8 +35,8 @@ class Counter extends React.Component {
       </div>
     )
   }
-};
+}
 
 const mapStateToProps = store => ({cart: store.cart});
 
-module.exports = connect(mapStateToProps)(Counter);
+export default connect(mapStateToProps)(Counter);

@@ -1,27 +1,27 @@
-import axios from 'axios';
 import store from '..';
+import {backend} from '../../utils/api'
 
-function fetchItems(path = '') {
+export function fetchItems(path = '') {
   store.dispatch({
     type: 'LOAD_ITEMS_START'
   });
-  axios.get('/api/items' + path).then(xhr => {
+  backend('items' + path).then(data => {
     store.dispatch({
       type: 'LOAD_ITEMS_DONE',
-      payload: xhr.data
+      payload: data
     });
   })
 }
 
-function searchItems(text) {
+export function searchItems(text) {
   fetchItems('/search/' + text);
 }
 
-function fetchCategory(category) {
+export function fetchCategory(category) {
   fetchItems('/category/' + category);
 }
 
-module.exports = {
+export default {
   searchItems,
   fetchCategory,
   fetchItems

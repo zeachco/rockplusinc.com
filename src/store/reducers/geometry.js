@@ -18,4 +18,4 @@ const geometryReducer = (state = initialState, action) => {
   }
 };
 
-module.exports = geometryReducer;
+export default geometryReducer;

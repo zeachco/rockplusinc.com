@@ -16,7 +16,6 @@ const tmpDir = uuid.v1();
 // run commands on localhost
 plan.local((local) => {
   local.log('Copy files to remote hosts');
-  local.exec('npm run build');
   const filesToCopy = local.exec(`find ${distFolder}/*`, {
     silent: true
   });

@@ -1,4 +1,4 @@
-import Item from 'cms-core/src/models/item';
+import Item from '../../models/Item';
 
 const defaultState = {
   data: [],
@@ -21,4 +21,4 @@ const itemReducer = (state = defaultState, action) => {
   }
 };
 
-module.exports = itemReducer;
+export default itemReducer;

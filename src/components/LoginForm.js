@@ -14,8 +14,10 @@ const LoginForm  = ({
   lastLoginFailed
 }) => (
   <form disabled={loading} onSubmit={login}>
-    <UserSpanMessage shouldAppear={`${lastLoginFailed}`} text="Your last login failed, check your user and password then try again" 
-                       />
+    <UserSpanMessage
+      shouldAppear={`${lastLoginFailed}`}
+      text="Your last login failed, check your user and password then try again" 
+    />
     <br/><br/>
     <div className="log_container">
       <label htmlFor="log_user">User&nbsp;
@@ -35,7 +37,7 @@ LoginForm.propTypes = {
   lastLoginFailed: PropTypes.bool
 };
 
-module.exports = connect(state => ({
+export default connect(state => ({
   loading: state.session.isLoading,
   lastLoginFailed: state.session.isFailedLogin
 }))(LoginForm);

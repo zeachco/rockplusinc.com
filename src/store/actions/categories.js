@@ -1,16 +1,16 @@
-import axios from 'axios';
 import store from '..';
+import {backend} from '../../utils/api';
 
-function fetchCategories() {
+export function fetchCategories() {
   store.dispatch({
     type: 'FETCH_CATEGORIES_START'
   });
-  return axios.get('/api/categories/rockplusinc.com').then(xhr => {
+  return backend('categories/rockplusinc.com').then(data => {
     store.dispatch({
       type: 'FETCH_CATEGORIES_DONE',
-      payload: xhr.data
+      payload: data
     });
   });
 }
 
-module.exports = { fetchCategories };
+export default { fetchCategories };

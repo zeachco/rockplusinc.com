@@ -178,7 +178,7 @@ ul#admin_bar{
 	left:0px;
 	top:0px;
 	padding:10px;
-	background:url('img/white.png');
+	background:url('~/img/white.png');
 	border:none;
 	border-right:1px solid #888;
 	border-bottom:1px solid #888;

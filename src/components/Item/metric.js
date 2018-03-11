@@ -1,8 +1,9 @@
 // http://www.mathsisfun.com/metric-imperial-conversion-charts.html
 import React from 'react';
+import PropTypes from 'prop-types'
 import Quantity from 'quantities';
 
-const Mesure = props => {
+export const Mesure = props => {
   if (!props.value) {
     return null;
   }
@@ -18,7 +19,11 @@ const Mesure = props => {
   );
 };
 
-const Mass = props => {
+Mesure.propTypes = {
+  value: PropTypes.number
+};
+
+export const Mass = props => {
   if (!props.value) {
     return null;
   }
@@ -34,7 +39,11 @@ const Mass = props => {
   );
 };
 
-module.exports = {
+Mass.propTypes = {
+  value: PropTypes.number
+};
+
+export default {
   Mesure,
   Mass
 };
