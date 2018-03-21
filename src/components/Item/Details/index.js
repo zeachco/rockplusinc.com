@@ -34,13 +34,17 @@ class ItemDetails extends Component {
   open() {
     openItemDetails(this.props.item);
     this.customDialog.show();
-    const { src } = this.props;
-    const img = new Image();
-    img.src = src;
-    this.setState({
-      loading: !img.complete
-    });
-    img.addEventListener('load', this.loaded);
+    const { src, canSeeImages } = this.props;
+    if(canSeeImages){
+      const img = new Image();
+      img.src = src;
+      this.setState({
+        loading: !img.complete
+      });
+      img.addEventListener('load', this.loaded);
+    }  else {
+      this.loaded();
+    }
   }
 
   loaded() {
@@ -56,6 +60,7 @@ class ItemDetails extends Component {
       imgClassName,
       item,
       thumbsSrc,
+      canSeeImages,
       canSeePrices
     } = this.props;
 
@@ -67,7 +72,6 @@ class ItemDetails extends Component {
       name,
       code,
       shortDescription,
-      canSeeImages,
       description
     } = item.data;
     const isVisible = item.get('visible');
