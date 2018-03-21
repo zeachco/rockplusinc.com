@@ -67,15 +67,18 @@ class ItemDetails extends Component {
       name,
       code,
       shortDescription,
+      canSeeImages,
       description
     } = item.data;
     const isVisible = item.get('visible');
     const { loading } = this.state;
-    const bg = {
-      backgroundImage: `url("${loading
+    const bgStyle = {};
+
+    if(canSeeImages) {
+      bgStyle.backgroundImage = `url("${loading
         ? thumbsSrc
         : media(mainImage)}")`
-    };
+    }
     const imgClasses = cx('lightboxImg_container', {
       loading: !!loading
     });
@@ -110,7 +113,7 @@ class ItemDetails extends Component {
             <div>
               <div className="col-half">
                 <div className={imgClasses}>
-                  <div className="lightboxImg" style={bg} />
+                  <div className="lightboxImg" style={bgStyle} />
                 </div>
                 {item.get('files').filter(f => mainImage !== f).map(img => (
                   <img
@@ -164,12 +167,14 @@ ItemDetails.propTypes = {
   thumbsSrc: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
   canSeePrices: PropTypes.bool.isRequired,
+  canSeeImages: PropTypes.bool.isRequired,
   calculatedPrice: PropTypes.number.isRequired
 };
 
 export default connect(state => {
   return {
     calculatedPrice: state.itemDetails.calculatedPrice,
-    canSeePrices: state.session.meta.prices
+    canSeePrices: state.session.meta.prices,
+    canSeeImages: state.session.meta.images
   };
 })(ItemDetails);
