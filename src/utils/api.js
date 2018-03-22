@@ -6,7 +6,7 @@ export const METHODS = {
 };
 
 const defaultSpace = 'rockplus.com';
-export const baseUrl = `https://${defaultSpace}/`;
+export const baseUrl = `https://zeachco.com/`;
 
 export const SETTINGS = {
     backend: baseUrl,

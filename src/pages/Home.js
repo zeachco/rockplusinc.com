@@ -30,7 +30,7 @@ const Home = () => (
         </p>
         <p>
           1700 Ch. Chambly, Longueuil
-          Qc, Canada, J4J 3X5
+          Québec, Canada, J4J 3X5
         </p>
       </footer>
     </div>
