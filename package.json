@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "eslint": "^4.18.2",
-    "flightplan": "^0.6.17",
     "node-sass-chokidar": "^1.1.0",
     "react-scripts": "^1.1.1"
   },
@@ -37,6 +36,6 @@
     "build": "react-scripts build",
     "test": "eslint ./src/**/*.js",
     "predeploy": "npm run build",
-    "deploy": "fly default"
+    "deploy": "firebase deploy"
   }
 }
