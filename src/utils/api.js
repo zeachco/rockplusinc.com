@@ -21,7 +21,8 @@ export const custom = (url, method = METHODS.GET, data = {}) => {
     });
     const options = {
         method,
-        headers
+        headers,
+        mode: 'cors'
     };
     if (method !== METHODS.GET) options.body = JSON.stringify(data);
     const request = new Request(url, options);
