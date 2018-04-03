@@ -55,10 +55,25 @@ export function login(username, password) {
   dispatch({
     type: 'SESSION_FETCH_START'
   });
-  return backend.post('login', {
-    username,
-    password
-  }).then(data => {
+  
+  const safariCors = () => new Promise((yay) => {
+    if(navigator.userAgent.indexOf('Safari') === -1) {
+      return Promise.resolve()
+    }
+    const auth = window.open('https://zeachco.com/cors.html', '_blank', 'width=400, height=400');
+    setTimeout(() => {
+      yay();
+      auth.close();
+    }, 1000)
+  });
+
+  return safariCors().then(() => {
+    return backend.post('login', {
+      username,
+      password
+    })
+  })
+  .then(data => {
     dispatch({
       type: 'SESSION_FETCH_DONE',
       payload: {...defaultSession, ...data}
