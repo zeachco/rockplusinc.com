@@ -1,10 +1,18 @@
-import {browserHistory} from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
 
 import store from '..';
-import {fetchCart} from './cart';
-import {backend} from '../../utils/api';
+import {
+  fetchCart
+} from './cart';
+import {
+  backend
+} from '../../utils/api';
 
-const {dispatch} = store;
+const {
+  dispatch
+} = store;
 
 const defaultSession = {
   meta: {
@@ -18,26 +26,28 @@ export function fetchSession() {
     type: 'SESSION_FETCH_START'
   });
   return backend('profile/me')
-  .then(data => {
-    fetchCart(true);
-    store.dispatch({
-      type: 'SESSION_FETCH_DONE',
-      payload: {...defaultSession, ...data}
-    });
+    .then(data => {
+      fetchCart(true);
+      store.dispatch({
+        type: 'SESSION_FETCH_DONE',
+        payload: { ...defaultSession,
+          ...data
+        }
+      });
 
-  })
-  .catch(err => {
-    store.dispatch({
-      type: 'SESSION_FETCH_FAIL',
-      payload: err
-    });
-  })
+    })
+    .catch(err => {
+      store.dispatch({
+        type: 'SESSION_FETCH_FAIL',
+        payload: err
+      });
+    })
 }
 
 export function toLogin() {
   backend('profile/me')
     .catch(() => {
-      dispatch( {
+      dispatch({
         type: 'SESSION_NOT_LOGGEDIN'
       });
       browserHistory.push('/login');
@@ -46,33 +56,66 @@ export function toLogin() {
 
 export function redirectionToLogin() {
   store.dispatch({
-      type: 'SESSION_OR_LOGIN'
+    type: 'SESSION_OR_LOGIN'
   });
-  setInterval(toLogin, 60000); 
+  setInterval(toLogin, 60000);
 }
 
 export function login(username, password) {
   dispatch({
     type: 'SESSION_FETCH_START'
   });
-  return backend.post('login', {
-    username,
-    password
-  }).then(data => {
-    dispatch({
-      type: 'SESSION_FETCH_DONE',
-      payload: {...defaultSession, ...data}
-    });
-    browserHistory.push('/');
-    const hideModal = true;
-    fetchCart(hideModal);
-    redirectionToLogin();
-  }).catch(err => {
-    dispatch({
-      type: 'LOGIN_FAIL',
-      payload: err
-    });
+
+  const safariCors = () => new Promise((yay) => {
+    if (navigator.userAgent.indexOf('Safari') === -1) {
+      return Promise.resolve()
+    }
+    const settings = [
+      'width=400',
+      'height=400',
+      'toolbar=No',
+      'location=No',
+      'scrollbars=no',
+      'status=No',
+      'resizable=no',
+      'fullscreen=No'
+    ];
+    const auth = window.open('https://zeachco.com/cors', '_blank', settings.join(', '));
+    setTimeout(() => {
+      yay();
+      auth.close();
+    }, 5000);
+    auth.addEventListener('load', () => {
+      setTimeout(() => {
+        yay();
+        auth.close();
+      }, 500);
+    }, false);
   });
+
+  return safariCors().then(() => {
+      return backend.post('login', {
+        username,
+        password
+      })
+    })
+    .then(data => {
+      dispatch({
+        type: 'SESSION_FETCH_DONE',
+        payload: { ...defaultSession,
+          ...data
+        }
+      });
+      browserHistory.push('/');
+      const hideModal = true;
+      fetchCart(hideModal);
+      redirectionToLogin();
+    }).catch(err => {
+      dispatch({
+        type: 'LOGIN_FAIL',
+        payload: err
+      });
+    });
 }
 
 export function logout() {
@@ -95,7 +138,9 @@ export function profileUpdate(profile) {
     .then(data => {
       dispatch({
         type: 'PROFILE_UPDATE_DONE',
-        payload: {...defaultSession, ...data}
+        payload: { ...defaultSession,
+          ...data
+        }
       });
     });
 }

@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './core/polyfills';
+import pkg from '../package.json';
+
+console.info(`App version ${pkg.version}`); // eslint-disable-line no-console
 
 let App = require('./App');
 let store = require('./store');
