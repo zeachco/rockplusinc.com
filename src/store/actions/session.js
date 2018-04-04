@@ -67,7 +67,7 @@ export function login(username, password) {
   });
 
   const safariCors = () => new Promise((yay) => {
-    if (navigator.userAgent.indexOf('Safari') === -1) {
+    if (navigator.vendor.indexOf('Apple') === -1) {
       return Promise.resolve()
     }
     const settings = [
