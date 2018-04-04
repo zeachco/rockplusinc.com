@@ -68,7 +68,7 @@ export function login(username, password) {
 
   const safariCors = () => new Promise((yay) => {
     if (navigator.vendor.indexOf('Apple') === -1) {
-      return Promise.resolve()
+      return yay();
     }
     const settings = [
       'width=400',
