@@ -124,7 +124,7 @@ class ItemDetails extends Component {
                     key={img}
                     className="otherImages"
                     onClick={() => this.setState({mainImage: img})}
-                    src={img}
+                    src={media(img)}
                     alt="thumb"
                   />
                 ))}
